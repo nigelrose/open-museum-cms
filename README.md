@@ -130,8 +130,10 @@ Third-party source datasets and vocabularies may have different licences. See [`
 
 Open Museum CMS was created and is maintained by **Nigel Klemenčič-Puglisevich**.
 
-- Email: [klemencicpuglisevich@gmail.com](mailto:klemencicpuglisevich@gmail.com)
-- Instagram: [@prositministru](https://www.instagram.com/prositministru/)
+- **Email:** [klemencicpuglisevich@gmail.com](mailto:klemencicpuglisevich@gmail.com)
+- **Facebook:** [Niġel Klemencic-Puglisevich](https://www.facebook.com/klemencic.puglisevich/)
+- **LinkedIn:** [Niġel Klemenčič-Puglisevich](https://www.linkedin.com/in/nigel-klemencic-puglisevich/)
+- **Instagram:** [@prositministru](https://www.instagram.com/prositministru/)
 
 ## Contributing
 
