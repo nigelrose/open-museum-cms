@@ -1,0 +1,799 @@
+﻿ListID,ListName,Value,SortOrder,Active,Notes
+LST-00001,AcquisitionMethod,Gift,1,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00002,AcquisitionMethod,Bequest,2,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00003,AcquisitionMethod,Purchase,3,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00004,AcquisitionMethod,Transfer,4,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00005,AcquisitionMethod,Exchange,5,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00006,AcquisitionMethod,Loan,6,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00007,AcquisitionMethod,Found in collection,7,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00008,AcquisitionMethod,Unknown,8,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00009,AcquisitionMethod,Other,9,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00010,AgriculturalActivity,Soil preparation,1,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00011,AgriculturalActivity,Sowing / planting,2,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00012,AgriculturalActivity,Cultivation,3,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00013,AgriculturalActivity,Harvesting,4,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00014,AgriculturalActivity,Threshing / processing,5,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00015,AgriculturalActivity,Dairy,6,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00016,AgriculturalActivity,Animal husbandry,7,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00017,AgriculturalActivity,Forestry,8,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00018,AgriculturalActivity,Horticulture,9,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00019,AgriculturalActivity,Transport,10,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00020,AgriculturalActivity,Other,11,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00021,ArchaeologyCompleteness,Complete,1,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00022,ArchaeologyCompleteness,Near complete,2,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00023,ArchaeologyCompleteness,Partial,3,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00024,ArchaeologyCompleteness,Fragment,4,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00025,ArchaeologyCompleteness,Multiple fragments,5,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00026,ArchaeologyCompleteness,Unknown,6,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00027,ArtSupport,Canvas,1,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00028,ArtSupport,Paper,2,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00029,ArtSupport,Panel,3,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00030,ArtSupport,Board,4,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00031,ArtSupport,Wall,5,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00032,ArtSupport,Textile,6,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00033,ArtSupport,Metal,7,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00034,ArtSupport,Glass,8,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00035,ArtSupport,Other,9,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00036,ArtWorkType,Painting,1,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00037,ArtWorkType,Drawing,2,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00038,ArtWorkType,Print,3,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00039,ArtWorkType,Photograph,4,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00040,ArtWorkType,Collage,5,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00041,ArtWorkType,Mixed media,6,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00042,ArtWorkType,Work on paper,7,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00043,ArtWorkType,Other,8,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00044,AttributionStatus,Documented,1,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00045,AttributionStatus,Attributed,2,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00046,AttributionStatus,Probable,3,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00047,AttributionStatus,Possible,4,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00048,AttributionStatus,Uncertain,5,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00049,AttributionStatus,Unknown,6,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00050,CatalogueStatus,Imported – needs review,1,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00051,CatalogueStatus,In progress,2,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00052,CatalogueStatus,Needs specialist review,3,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00053,CatalogueStatus,Reviewed,4,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00054,CatalogueStatus,Inactive,5,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00055,CeramicGlassForming,Hand built,1,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00056,CeramicGlassForming,Wheel thrown,2,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00057,CeramicGlassForming,Mould made,3,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00058,CeramicGlassForming,Blown,4,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00059,CeramicGlassForming,Cast,5,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00060,CeramicGlassForming,Pressed,6,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00061,CeramicGlassForming,Slumped,7,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00062,CeramicGlassForming,Other / unknown,8,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00063,Certainty,Certain,1,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00064,Certainty,Probable,2,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00065,Certainty,Possible,3,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00066,Certainty,Uncertain,4,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00067,Certainty,Unknown,5,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00068,Classification,Architecture,1,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00069,Classification,Archaeological Material,2,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00070,Classification,Arms & Armour,3,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00071,Classification,Art,4,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00072,Classification,Basketry,5,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00073,Classification,Books & Bound Materials,6,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00074,Classification,Ceramics,7,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00075,Classification,Clothing & Costume,8,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00076,Classification,Communication Objects,9,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00077,Classification,Containers,10,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00078,Classification,Decorative Arts,11,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00079,Classification,Documents & Records,12,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00080,Classification,Drawings,13,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00081,Classification,Furniture,14,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00082,Classification,Furnishings,15,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00083,Classification,Glass,16,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00084,Classification,Indigenous Material Culture,17,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00085,Classification,Jewellery & Personal Adornment,18,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00086,Classification,Metalwork,19,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00087,Classification,Military & Service Objects,20,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00088,Classification,Musical Instruments,21,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00089,Classification,Natural History Specimens,22,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00090,Classification,Numismatic Objects,23,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00091,Classification,Paintings,24,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00092,Classification,Photographic Objects,25,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00093,Classification,Photography,26,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00094,Classification,Prints,27,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00095,Classification,Religious & Ceremonial Objects,28,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00096,Classification,Sculpture,29,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00097,Classification,Textiles,30,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00098,Classification,Tools & Equipment,31,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00099,Classification,Agricultural Objects,32,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00100,Classification,Toys & Games,33,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00101,Classification,Transportation Objects,34,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00102,Classification,Scientific Instruments,35,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00103,Classification,Household & Domestic Objects,36,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00104,Classification,Food & Beverage Objects,37,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00105,Classification,Medical & Health Objects,38,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00106,Classification,Manuscripts,39,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00107,Classification,Mosaics & Architectural Decoration,40,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00108,Classification,Unclassified,41,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00109,CollectionArea,Archaeology & Antiquities,1,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00110,CollectionArea,Archives & Documents,2,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00111,CollectionArea,Art & Decorative Arts,3,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00112,CollectionArea,Community & Social History,4,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00113,CollectionArea,Costume & Textiles,5,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00114,CollectionArea,Military & Service,6,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00115,CollectionArea,Models & Miniatures,7,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00116,CollectionArea,Natural History,8,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00117,CollectionArea,Numismatics,9,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00118,CollectionArea,Philately,10,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00119,CollectionArea,Photography,11,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00120,CollectionArea,Religious Life,12,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00121,CollectionArea,Unclassified,13,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00122,Culture,Unknown,1,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00123,Culture,Not recorded,2,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00124,DateQualifier,Circa,1,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00125,DateQualifier,Approximately,2,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00126,DateQualifier,Before,3,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00127,DateQualifier,After,4,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00128,DateQualifier,Uncertain,5,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00129,DateQualifier,Between,6,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00130,DeaccessionReason,Outside collecting mandate,1,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00131,DeaccessionReason,Duplicate / redundant,2,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00132,DeaccessionReason,Deteriorated beyond reasonable conservation,3,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00133,DeaccessionReason,Hazardous material,4,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00134,DeaccessionReason,Return / repatriation,5,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00135,DeaccessionReason,Transfer to another institution,6,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00136,DeaccessionReason,Legal / ownership issue,7,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00137,DeaccessionReason,Loss / destruction,8,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00138,DeaccessionReason,Other,9,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00139,DisplayStatus,Not on display,1,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00140,DisplayStatus,Scheduled for display,2,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00141,DisplayStatus,On display,3,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00142,DispositionMethod,Return to donor / source,1,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00143,DispositionMethod,Transfer to another institution,2,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00144,DispositionMethod,Repatriation,3,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00145,DispositionMethod,Sale,4,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00146,DispositionMethod,Destruction,5,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00147,DispositionMethod,Retained as teaching / non-collection material,6,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00148,DispositionMethod,Lost / destroyed,7,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00149,DispositionMethod,Other,8,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00150,DocumentationStatus,Not assessed,1,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00151,DocumentationStatus,Documentation located,2,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00152,DocumentationStatus,Partial documentation,3,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00153,DocumentationStatus,No documentation located,4,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00154,DocumentationStatus,Loan documentation,5,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00155,DocumentationStatus,Review required,6,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00156,DocumentationStatus,Unknown,7,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00157,ExhibitPriority,High,1,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00158,ExhibitPriority,Medium,2,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00159,ExhibitPriority,Low,3,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00160,ExhibitionStatus,Concept,1,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00161,ExhibitionStatus,Planning,2,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00162,ExhibitionStatus,Shortlisting,3,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00163,ExhibitionStatus,Approved,4,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00164,ExhibitionStatus,Installed,5,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00165,ExhibitionStatus,Open,6,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00166,ExhibitionStatus,Closed,7,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00167,ExhibitionStatus,Deinstalled,8,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00168,ExhibitionStatus,Cancelled,9,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00169,ExhibitionStatus,Archived,10,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00170,ExhibitionType,Permanent,1,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00171,ExhibitionType,Temporary,2,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00172,FurnitureType,Chair,1,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00173,FurnitureType,Armchair,2,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00174,FurnitureType,Stool,3,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00175,FurnitureType,Bench,4,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00176,FurnitureType,Table,5,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00177,FurnitureType,Desk,6,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00178,FurnitureType,Chest,7,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00179,FurnitureType,Cabinet,8,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00180,FurnitureType,Cupboard,9,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00181,FurnitureType,Bed,10,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00182,FurnitureType,Shelf,11,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00183,FurnitureType,Screen,12,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00184,FurnitureType,Other,13,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00185,IdentificationCertainty,Certain,1,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00186,IdentificationCertainty,Probable,2,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00187,IdentificationCertainty,Possible,3,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00188,IdentificationCertainty,Uncertain,4,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00189,IdentificationCertainty,Unknown,5,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00190,IndigenousSensitivity,Open,1,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00191,IndigenousSensitivity,Community consultation recommended,2,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00192,IndigenousSensitivity,Restricted,3,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00193,IndigenousSensitivity,Ceremonially sensitive,4,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00194,IndigenousSensitivity,Secret / sacred,5,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00195,IndigenousSensitivity,Human remains / funerary,6,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00196,IndigenousSensitivity,Unknown / review required,7,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00197,InscriptionType,Inscription,1,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00198,InscriptionType,Maker’s mark,2,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00199,InscriptionType,Hallmark,3,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00200,InscriptionType,Label,4,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00201,InscriptionType,Stamp,5,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00202,InscriptionType,Seal,6,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00203,InscriptionType,Signature,7,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00204,InscriptionType,Date mark,8,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00205,InscriptionType,Ownership mark,9,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00206,InscriptionType,Graffiti,10,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00207,InscriptionType,Other,11,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00208,InterpretiveRole,Anchor object,1,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00209,InterpretiveRole,Supporting object,2,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00210,InterpretiveRole,Context object,3,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00211,InterpretiveRole,Archival document,4,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00212,InterpretiveRole,Photograph / image,5,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00213,InterpretiveRole,Reproduction,6,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00214,InterpretiveRole,Interactive / media,7,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00215,InterpretiveRole,Other,8,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00216,JoineryType,Mortise and tenon,1,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00217,JoineryType,Dovetail,2,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00218,JoineryType,Dowelled,3,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00219,JoineryType,Nailed,4,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00220,JoineryType,Screwed,5,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00221,JoineryType,Pegged,6,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00222,JoineryType,Glued,7,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00223,JoineryType,Jointed – other,8,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00224,JoineryType,Unknown,9,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00225,LegalDocumentStatus,Not assessed,1,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00226,LegalDocumentStatus,None located,2,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00227,LegalDocumentStatus,Pending,3,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00228,LegalDocumentStatus,Complete,4,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00229,LegalDocumentStatus,Incomplete,5,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00230,LegalDocumentStatus,Missing,6,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00231,LegalDocumentStatus,Not applicable,7,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00232,LifecycleStatus,Active,1,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00233,LifecycleStatus,Deaccessioned,2,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00234,LifecycleStatus,Deleted,3,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00235,LocationCheckedStatus,Not yet checked,1,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00236,LocationCheckedStatus,Yes,2,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00237,LocationCheckedStatus,No,3,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00238,LocationType,Building,1,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00239,LocationType,Room,2,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00240,LocationType,Case,3,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00241,LocationType,Cabinet,4,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00242,LocationType,Shelf,5,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00243,LocationType,Drawer,6,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00244,LocationType,Box,7,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00245,LocationType,Exhibit,8,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00246,LocationType,Off-site,9,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00247,LocationType,Temporary,10,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00248,LocationType,Other,11,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00249,Material,Aluminium,1,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00250,Material,Ash,2,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00251,Material,Bamboo,3,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00252,Material,Bark,4,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00253,Material,Beech,5,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00254,Material,Birch,6,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00255,Material,Bone,7,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00256,Material,Brass,8,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00257,Material,Bronze,9,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00258,Material,Canvas,10,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00259,Material,Cardboard,11,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00260,Material,Cane,12,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00261,Material,Cedar,13,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00262,Material,Ceramic,14,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00263,Material,Charcoal,15,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00264,Material,Cherry wood,16,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00265,Material,Clay,17,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00266,Material,Copper,18,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00267,Material,Cotton,19,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00268,Material,Earthenware,20,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00269,Material,Enamel,21,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00270,Material,Fibre,22,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00271,Material,Flax,23,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00272,Material,Glass,24,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00273,Material,Gold,25,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00274,Material,Gold leaf,26,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00275,Material,Gouache,27,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00276,Material,Graphite,28,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00277,Material,Hemp,29,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00278,Material,Horn,30,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00279,Material,Ink,31,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00280,Material,Iron,32,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00281,Material,Ivory,33,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00282,Material,Jute,34,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00283,Material,Leather,35,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00284,Material,Limestone,36,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00285,Material,Linen,37,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00286,Material,Mahogany,38,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00287,Material,Maple,39,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00288,Material,Marble,40,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00289,Material,Metal,41,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00290,Material,Nylon,42,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00291,Material,Oak,43,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00292,Material,Oil paint,44,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00293,Material,Paper,45,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00294,Material,Parchment,46,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00295,Material,Pastel,47,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00296,Material,Photographic emulsion,48,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00297,Material,Photographic paper,49,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00298,Material,Pigment,50,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00299,Material,Pine,51,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00300,Material,Plaster,52,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00301,Material,Plastic,53,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00302,Material,Polyester,54,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00303,Material,Porcelain,55,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00304,Material,Rattan,56,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00305,Material,Rayon,57,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00306,Material,Resin,58,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00307,Material,Rosewood,59,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00308,Material,Rubber,60,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00309,Material,Shell,61,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00310,Material,Silk,62,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00311,Material,Silver,63,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00312,Material,Steel,64,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00313,Material,Stone,65,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00314,Material,Stoneware,66,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00315,Material,Straw,67,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00316,Material,Tempera,68,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00317,Material,Textile,69,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00318,Material,Tin,70,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00319,Material,Vellum,71,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00320,Material,Walnut,72,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00321,Material,Watercolour,73,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00322,Material,Wax,74,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00323,Material,Wood,75,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00324,Material,Wool,76,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00325,Material,Wrought iron,77,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00326,Material,Unknown,78,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00327,MediaType,Photograph,1,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00328,MediaType,Scan,2,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00329,MediaType,Document,3,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00330,MediaType,Audio,4,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00331,MediaType,Video,5,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00332,MediaType,3D model,6,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00333,MediaType,Other,7,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00334,MovementType,Relocation,1,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00335,MovementType,Exhibition,2,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00336,MovementType,Loan,3,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00337,MovementType,Photography,4,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00338,MovementType,Research,5,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00339,MovementType,Conservation,6,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00340,MovementType,Temporary location,7,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00341,MovementType,Return,8,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00342,MovementType,Other,9,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00343,NaturalHistoryType,Zoology,1,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00344,NaturalHistoryType,Botany,2,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00345,NaturalHistoryType,Palaeontology,3,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00346,NaturalHistoryType,Geology / Mineralogy,4,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00347,NaturalHistoryType,Other,5,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00348,ObjectType,adze,1,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00349,ObjectType,album,2,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00350,ObjectType,amulet,3,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00351,ObjectType,anvil,4,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00352,ObjectType,apron,5,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00353,ObjectType,armchair,6,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00354,ObjectType,arrow,7,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00355,ObjectType,axe,8,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00356,ObjectType,awl,9,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00357,ObjectType,badge,10,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00358,ObjectType,bag,11,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00359,ObjectType,basket,12,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00360,ObjectType,bead,13,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00361,ObjectType,bench,14,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00362,ObjectType,blade,15,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00363,ObjectType,blanket,16,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00364,ObjectType,book,17,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00365,ObjectType,bottle,18,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00366,ObjectType,bowl,19,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00367,ObjectType,box,20,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00368,ObjectType,brace,21,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00369,ObjectType,bracelet,22,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00370,ObjectType,brooch,23,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00371,ObjectType,buckle,24,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00372,ObjectType,bust,25,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00373,ObjectType,cabinet,26,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00374,ObjectType,candlestick,27,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00375,ObjectType,cap,28,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00376,ObjectType,carpet,29,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00377,ObjectType,case,30,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00378,ObjectType,casket,31,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00379,ObjectType,chair,32,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00380,ObjectType,chalice,33,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00381,ObjectType,chest,34,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00382,ObjectType,chisel,35,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00383,ObjectType,coat,36,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00384,ObjectType,coin,37,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00385,ObjectType,comb,38,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00386,ObjectType,container,39,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00387,ObjectType,cup,40,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00388,ObjectType,cushion,41,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00389,ObjectType,dagger,42,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00390,ObjectType,dish,43,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00391,ObjectType,document,44,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00392,ObjectType,door,45,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00393,ObjectType,drawing,46,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00394,ObjectType,dress,47,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00395,ObjectType,drill,48,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00396,ObjectType,ewer,49,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00397,ObjectType,fan,50,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00398,ObjectType,figurine,51,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00399,ObjectType,file,52,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00400,ObjectType,flask,53,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00401,ObjectType,fragment,54,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00402,ObjectType,frame,55,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00403,ObjectType,garment,56,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00404,ObjectType,goblet,57,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00405,ObjectType,hammer,58,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00406,ObjectType,harrow,59,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00407,ObjectType,hat,60,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00408,ObjectType,hoe,61,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00409,ObjectType,hook,62,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00410,ObjectType,jar,63,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00411,ObjectType,jewellery,64,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00412,ObjectType,jug,65,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00413,ObjectType,knife,66,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00414,ObjectType,lamp,67,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00415,ObjectType,oil lamp,68,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00416,ObjectType,lantern,69,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00417,ObjectType,letter,70,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00418,ObjectType,level,71,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00419,ObjectType,lock,72,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00420,ObjectType,map,73,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00421,ObjectType,mask,74,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00422,ObjectType,medal,75,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00423,ObjectType,medallion,76,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00424,ObjectType,model,77,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00425,ObjectType,mould,78,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00426,ObjectType,necklace,79,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00427,ObjectType,painting,80,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00428,ObjectType,panel,81,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00429,ObjectType,photograph,82,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00430,ObjectType,pitchfork,83,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00431,ObjectType,plane,84,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00432,ObjectType,plate,85,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00433,ObjectType,plough,86,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00434,ObjectType,plow,87,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00435,ObjectType,poster,88,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00436,ObjectType,pot,89,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00437,ObjectType,print,90,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00438,ObjectType,programme,91,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00439,ObjectType,rake,92,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00440,ObjectType,rasp,93,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00441,ObjectType,relief,94,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00442,ObjectType,ring,95,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00443,ObjectType,robe,96,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00444,ObjectType,sculpture,97,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00445,ObjectType,screen,98,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00446,ObjectType,scythe,99,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00447,ObjectType,seal,100,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00448,ObjectType,shirt,101,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00449,ObjectType,shoe,102,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00450,ObjectType,sickle,103,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00451,ObjectType,spindle,104,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00452,ObjectType,spoon,105,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00453,ObjectType,stamp,106,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00454,ObjectType,statue,107,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00455,ObjectType,stool,108,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00456,ObjectType,table,109,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00457,ObjectType,tablet,110,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00458,ObjectType,textile,111,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00459,ObjectType,tile,112,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00460,ObjectType,tool,113,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00461,ObjectType,tray,114,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00462,ObjectType,vase,115,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00463,ObjectType,vessel,116,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00464,ObjectType,waistcoat,117,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00465,ObjectType,weapon,118,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00466,ObjectType,weaving,119,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00467,ObjectType,wrench,120,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00468,ObjectType,yoke,121,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00469,ObjectType,seed drill,122,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00470,ObjectType,cultivator,123,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00471,ObjectType,churn,124,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00472,ObjectType,flail,125,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00473,ObjectType,grain measure,126,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00474,ObjectType,pruning hook,127,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00475,ObjectType,harness,128,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00476,ObjectType,mallet,129,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00477,ObjectType,saw,130,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00478,ObjectType,auger,131,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00479,ObjectType,tongs,132,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00480,ObjectType,pincers,133,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00481,ObjectType,pliers,134,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00482,ObjectType,spanner,135,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00483,ObjectType,screwdriver,136,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00484,ObjectType,rule,137,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00485,ObjectType,square,138,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00486,ObjectType,divider,139,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00487,ObjectType,compass,140,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00488,ObjectType,vise,141,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00489,ObjectType,clamp,142,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00490,ObjectType,basketry vessel,143,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00491,ObjectType,shield,144,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00492,ObjectType,sword,145,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00493,ObjectType,helmet,146,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00494,ObjectType,drinking horn,147,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00495,ObjectType,headrest,148,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00496,ObjectType,tapestry,149,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00497,ObjectType,sampler,150,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00498,ObjectType,altarpiece,151,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00499,ObjectType,fresco,152,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00500,ObjectType,mosaic,153,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00501,ObjectType,engraving,154,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00502,ObjectType,etching,155,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00503,ObjectType,watercolour,156,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00504,ObjectType,hanging scroll,157,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00505,ObjectType,scroll,158,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00506,ObjectType,manuscript,159,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00507,ObjectType,cartes-de-visite,160,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00508,ObjectType,cabinet card,161,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00509,ObjectType,postcard,162,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00510,ObjectType,negative,163,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00511,ObjectType,transparency,164,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00512,ObjectType,herbarium sheet,165,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00513,ObjectType,fossil,166,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00514,ObjectType,mineral specimen,167,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00515,ObjectType,shell specimen,168,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00516,ObjectType,taxidermy specimen,169,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00517,ObjectType,specimen jar,170,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00518,ObjectType,archaeological sherd,171,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00519,Orientation,Portrait,1,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00520,Orientation,Landscape,2,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00521,Orientation,Square,3,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00522,Orientation,Circular,4,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00523,Orientation,Irregular,5,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00524,Orientation,Not applicable,6,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00525,Orientation,Unknown,7,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00526,OwnershipStatus,Not assessed,1,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00527,OwnershipStatus,Museum-owned,2,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00528,OwnershipStatus,Museum title documented,3,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00529,OwnershipStatus,On deposit,4,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00530,OwnershipStatus,Loan,5,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00531,OwnershipStatus,Custody only,6,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00532,OwnershipStatus,Unclear / review required,7,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00533,OwnershipStatus,Unknown,8,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00534,OwnershipStatus,Other,9,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00535,PartyType,Person,1,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00536,PartyType,Organisation,2,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00537,PartyType,Family,3,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00538,PartyType,Community / Group,4,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00539,PartyType,Unknown,5,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00540,Period,Palaeolithic,1,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00541,Period,Mesolithic,2,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00542,Period,Neolithic,3,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00543,Period,Chalcolithic,4,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00544,Period,Bronze Age,5,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00545,Period,Iron Age,6,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00546,Period,Classical,7,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00547,Period,Hellenistic,8,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00548,Period,Roman,9,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00549,Period,Late Antique,10,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00550,Period,Byzantine,11,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00551,Period,Medieval,12,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00552,Period,Renaissance,13,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00553,Period,Early Modern,14,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00554,Period,18th century,15,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00555,Period,19th century,16,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00556,Period,20th century,17,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00557,Period,Contemporary,18,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00558,Period,Unknown,19,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00559,PhotoStatus,Not assessed,1,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00560,PhotoStatus,Source image,2,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00561,PhotoStatus,Mapping needed,3,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00562,PhotoStatus,Linked,4,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00563,PhotoStatus,Photography required,5,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00564,PhotoStatus,No photograph required,6,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00565,PlaceRole,Made / created in,1,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00566,PlaceRole,Manufactured in,2,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00567,PlaceRole,Published in,3,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00568,PlaceRole,Printed in,4,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00569,PlaceRole,Used in,5,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00570,PlaceRole,Found in,6,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00571,PlaceRole,Excavated at,7,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00572,PlaceRole,Collected in,8,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00573,PlaceRole,Acquired in,9,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00574,PlaceRole,Associated with,10,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00575,PlaceRole,Depicts / represents,11,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00576,PlaceRole,Other,12,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00577,PlaceType,Country,1,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00578,PlaceType,Region / Province,2,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00579,PlaceType,Island,3,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00580,PlaceType,City / Town / Village,4,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00581,PlaceType,Neighbourhood,5,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00582,PlaceType,Site,6,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00583,PlaceType,Building,7,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00584,PlaceType,Institution,8,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00585,PlaceType,Geographic feature,9,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00586,PlaceType,Other,10,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00587,PublicAccessStatus,Internal only,1,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00588,PublicAccessStatus,Approved for public access,2,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00589,PublicAccessStatus,Restricted,3,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00590,RecordType,Object / Collection Item,1,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00591,RecordType,Archival Unit,2,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00592,RecordType,Digital Record,3,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00593,RecordType,Unresolved,4,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00594,ReferenceRole,Identification,1,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00595,ReferenceRole,Dating,2,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00596,ReferenceRole,Provenance,3,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00597,ReferenceRole,Publication,4,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00598,ReferenceRole,Exhibition,5,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00599,ReferenceRole,Conservation,6,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00600,ReferenceRole,Interpretation,7,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00601,ReferenceRole,Comparative material,8,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00602,ReferenceRole,General reference,9,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00603,ReferenceRole,Other,10,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00604,RepatriationStatus,Not assessed,1,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00605,RepatriationStatus,No active request,2,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00606,RepatriationStatus,Research / provenance review,3,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00607,RepatriationStatus,Consultation underway,4,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00608,RepatriationStatus,Return / repatriation requested,5,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00609,RepatriationStatus,Returned / repatriated,6,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00610,RepatriationStatus,Other,7,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00611,ReviewPriority,High,1,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00612,ReviewPriority,Normal,2,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00613,ReviewPriority,Low,3,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00614,ReviewType,Catalogue review,1,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00615,ReviewType,Specialist review,2,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00616,ReviewType,Location verification,3,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00617,ReviewType,Documentation review,4,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00618,ReviewType,Rights review,5,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00619,ReviewType,Condition review,6,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00620,ReviewType,Other,7,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00621,RoleType,Maker / Creator,1,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00622,RoleType,Artist,2,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00623,RoleType,Author,3,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00624,RoleType,Designer,4,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00625,RoleType,Manufacturer,5,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00626,RoleType,Printer,6,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00627,RoleType,Photographer,7,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00628,RoleType,Donor,8,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00629,RoleType,Bequeather,9,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00630,RoleType,Depositor,10,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00631,RoleType,Previous Owner,11,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00632,RoleType,Collector,12,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00633,RoleType,Subject,13,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00634,RoleType,Publisher,14,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00635,RoleType,Issuing Authority,15,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00636,RoleType,Signer,16,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00637,RoleType,Distributor,17,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00638,RoleType,Retailer,18,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00639,RoleType,User / Owner,19,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00640,RoleType,Associated Person / Organisation,20,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00641,RoleType,Other,21,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00642,RoleType,Commissioned by,22,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00643,RoleType,Engraver,23,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00644,RoleType,Sculptor,24,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00645,RoleType,Architect,25,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00646,RoleType,Editor,26,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00647,RoleType,Compiler,27,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00648,RoleType,Recipient,28,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00649,RoleType,Sender,29,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00650,RoleType,Depicted Person,30,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00651,RoleType,Interviewer,31,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00652,RoleType,Interviewee,32,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00653,RoleType,Performer,33,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00654,RoleType,Organisation represented,34,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00655,RoleType,Excavator,35,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00656,RoleType,Finder,36,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00657,RoleType,Conservator,37,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00658,SchoolStyle,Renaissance,1,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00659,SchoolStyle,Baroque,2,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00660,SchoolStyle,Rococo,3,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00661,SchoolStyle,Neoclassical,4,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00662,SchoolStyle,Romantic,5,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00663,SchoolStyle,Realist,6,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00664,SchoolStyle,Impressionist,7,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00665,SchoolStyle,Post-Impressionist,8,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00666,SchoolStyle,Arts and Crafts,9,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00667,SchoolStyle,Art Nouveau,10,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00668,SchoolStyle,Art Deco,11,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00669,SchoolStyle,Modernist,12,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00670,SchoolStyle,Cubist,13,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00671,SchoolStyle,Expressionist,14,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00672,SchoolStyle,Surrealist,15,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00673,SchoolStyle,Abstract,16,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00674,SchoolStyle,Pop Art,17,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00675,SchoolStyle,Minimalist,18,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00676,SchoolStyle,Contemporary,19,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00677,SchoolStyle,Unknown,20,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00678,SculptureProcess,Carved,1,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00679,SculptureProcess,Cast,2,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00680,SculptureProcess,Modelled,3,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00681,SculptureProcess,Constructed,4,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00682,SculptureProcess,Forged,5,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00683,SculptureProcess,Assembled,6,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00684,SculptureProcess,Mixed process,7,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00685,SculptureProcess,Unknown,8,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00686,SculptureType,Freestanding,1,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00687,SculptureType,Relief,2,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00688,SculptureType,Bust,3,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00689,SculptureType,Figure,4,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00690,SculptureType,Statuette,5,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00691,SculptureType,Architectural sculpture,6,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00692,SculptureType,Assemblage,7,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00693,SculptureType,Other,8,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00694,SelectionStatus,Candidate,1,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00695,SelectionStatus,Shortlisted,2,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00696,SelectionStatus,Selected,3,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00697,SelectionStatus,Installed,4,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00698,SelectionStatus,Removed,5,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00699,Technique,Albumen printing,1,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00700,Technique,Appliqué,2,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00701,Technique,Block printing,3,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00702,Technique,Braiding,4,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00703,Technique,Caning,5,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00704,Technique,Carving,6,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00705,Technique,Casting,7,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00706,Technique,Coiling,8,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00707,Technique,Collage,9,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00708,Technique,Crocheting,10,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00709,Technique,Dovetailing,11,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00710,Technique,Drawing,12,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00711,Technique,Dyeing,13,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00712,Technique,Embossing,14,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00713,Technique,Embroidery,15,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00714,Technique,Enamelling,16,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00715,Technique,Engraving,17,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00716,Technique,Etching,18,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00717,Technique,Felting,19,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00718,Technique,Firing,20,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00719,Technique,Forging,21,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00720,Technique,Gelatin silver printing,22,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00721,Technique,Gilding,23,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00722,Technique,Glazing,24,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00723,Technique,Hand building,25,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00724,Technique,Intaglio printing,26,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00725,Technique,Joinery,27,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00726,Technique,Knitting,28,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00727,Technique,Lace-making,29,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00728,Technique,Lacquering,30,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00729,Technique,Letterpress printing,31,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00730,Technique,Lithography,32,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00731,Technique,Machining,33,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00732,Technique,Mortise and tenon,34,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00733,Technique,Moulding,35,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00734,Technique,Mould-made,36,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00735,Technique,Offset lithography,37,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00736,Technique,Oil painting,38,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00737,Technique,Painting,39,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00738,Technique,Pastel drawing,40,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00739,Technique,Photography,41,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00740,Technique,Plaiting,42,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00741,Technique,Printing,43,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00742,Technique,Quilting,44,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00743,Technique,Relief printing,45,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00744,Technique,Screen printing,46,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00745,Technique,Sewing,47,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00746,Technique,Slip casting,48,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00747,Technique,Slip decoration,49,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00748,Technique,Soldering,50,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00749,Technique,Stamping,51,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00750,Technique,Tapestry weave,52,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00751,Technique,Tempera painting,53,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00752,Technique,Turning,54,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00753,Technique,Twining,55,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00754,Technique,Upholstery,56,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00755,Technique,Watercolour painting,57,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00756,Technique,Weaving,58,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00757,Technique,Welding,59,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00758,Technique,Wheel throwing,60,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00759,Technique,Woodworking,61,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00760,Technique,Unknown,62,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00761,TextileConstruction,Woven,1,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00762,TextileConstruction,Knitted,2,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00763,TextileConstruction,Crocheted,3,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00764,TextileConstruction,Felted,4,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00765,TextileConstruction,Twined,5,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00766,TextileConstruction,Coiled,6,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00767,TextileConstruction,Plaited,7,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00768,TextileConstruction,Lace-made,8,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00769,TextileConstruction,Non-woven,9,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00770,TextileConstruction,Other,10,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00771,TextileType,Garment,1,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00772,TextileType,Household textile,2,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00773,TextileType,Furnishing textile,3,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00774,TextileType,Rug / carpet,4,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00775,TextileType,Lace,5,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00776,TextileType,Embroidery,6,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00777,TextileType,Basketry / fibre work,7,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00778,TextileType,Sample / fragment,8,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00779,TextileType,Other,9,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00780,ToolFunctionalCategory,Cutting,1,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00781,ToolFunctionalCategory,Shaping,2,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00782,ToolFunctionalCategory,Striking,3,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00783,ToolFunctionalCategory,Boring / drilling,4,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00784,ToolFunctionalCategory,Holding / gripping,5,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00785,ToolFunctionalCategory,Measuring / marking,6,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00786,ToolFunctionalCategory,Fastening,7,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00787,ToolFunctionalCategory,Harvesting,8,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00788,ToolFunctionalCategory,Soil preparation,9,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00789,ToolFunctionalCategory,Processing,10,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00790,ToolFunctionalCategory,Other,11,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00791,ToolPowerSource,Hand,1,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00792,ToolPowerSource,Human-powered mechanical,2,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00793,ToolPowerSource,Animal-powered,3,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00794,ToolPowerSource,Water-powered,4,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00795,ToolPowerSource,Steam-powered,5,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00796,ToolPowerSource,Electric,6,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00797,ToolPowerSource,Fuel-powered,7,True,Open Museum CMS curated starter term; review/adapt locally
+LST-00798,ToolPowerSource,Other / unknown,8,True,Open Museum CMS curated starter term; review/adapt locally

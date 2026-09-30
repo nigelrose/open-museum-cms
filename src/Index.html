@@ -1,0 +1,1447 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base target="_top">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+    :root {
+      --red:#c8102e;
+      --red-dark:#8d0d22;
+      --ink:#202222;
+      --cream:#f5efe6;
+      --cream-2:#fbf8f2;
+      --paper:#ffffff;
+      --line:#ded6ca;
+      --muted:#6d6b66;
+      --shadow:0 10px 30px rgba(25,25,22,.07);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;min-height:100%;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:var(--cream-2)}
+    button,input,select,textarea{font:inherit} button{cursor:pointer} a{color:var(--red-dark)}
+    .site-header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+    .masthead{max-width:1320px;margin:auto;padding:12px 24px 9px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .identity{display:flex;align-items:center;gap:13px;min-width:250px}
+    .museum-logo{width:48px;height:48px;object-fit:contain}.brand-mark{width:48px;height:48px;display:grid;place-items:center;background:var(--red);color:#fff;font-family:Georgia,serif;font-weight:800;font-size:18px;letter-spacing:.02em}
+    .identity-title{font-family:Georgia,"Times New Roman",serif;font-size:22px;font-weight:700;line-height:1}
+    .identity-subtitle{font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--red);margin-top:4px}
+    .header-tools{display:flex;gap:10px;align-items:center;flex:1;justify-content:flex-end}
+    .global-search{width:min(480px,48vw);border:1px solid var(--line);background:var(--cream-2);border-radius:3px;padding:9px 11px}
+    .button{border:1px solid var(--line);background:#fff;color:var(--ink);padding:9px 13px;border-radius:3px;font-weight:700}
+    .button:hover{background:var(--cream)}
+    .button.primary{background:var(--red);border-color:var(--red);color:#fff}
+    .button.primary:hover{background:var(--red-dark)}
+    .button.small{padding:6px 9px;font-size:13px}
+    .main-nav{border-top:1px solid #eee7dd;background:#fff}
+    .nav-inner{max-width:1320px;margin:auto;padding:0 24px;display:flex;align-items:center;gap:26px;overflow:auto}
+    .nav-item{border:0;border-bottom:3px solid transparent;background:transparent;padding:12px 0 10px;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;white-space:nowrap}
+    .nav-item:hover,.nav-item.active{color:var(--red);border-bottom-color:var(--red)}
+    .content{max-width:1320px;margin:auto;padding:34px 24px 50px}.app-footer{max-width:1320px;margin:0 auto 28px;padding:0 24px;color:var(--muted);font-size:11px;text-align:center}
+    .eyebrow{color:var(--red);font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.12em;margin-bottom:5px}
+    .page-title{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;margin-bottom:22px}
+    .page-title h1{font-family:Georgia,"Times New Roman",serif;margin:0;font-size:36px;font-weight:500;line-height:1.08}
+    .page-title p{margin:7px 0 0;color:var(--muted)}
+    .kpi-grid{display:grid;grid-template-columns:repeat(4,minmax(160px,1fr));gap:14px;margin:18px 0 28px}
+    .kpi{background:var(--cream);border-left:3px solid var(--red);padding:18px}
+    .kpi .number{font-family:Georgia,serif;font-size:35px;font-weight:700}
+    .kpi .label{font-weight:800;margin-top:3px} .kpi .hint{font-size:12px;color:var(--muted);margin-top:4px}
+    .card{background:#fff;border:1px solid var(--line);box-shadow:var(--shadow)}
+    .card+.card{margin-top:18px}
+    .card-header{padding:16px 18px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:12px}
+    .card-header h2{font-family:Georgia,serif;font-size:25px;font-weight:500;margin:0}
+    .card-body{padding:18px}
+    .queue-grid{display:grid;grid-template-columns:repeat(2,minmax(240px,1fr));gap:12px}
+    .queue-card{background:var(--cream);padding:19px;border-top:2px solid var(--red)}
+    .queue-card h3{font-family:Georgia,serif;font-size:22px;font-weight:500;margin:0 0 5px}
+    .queue-card .count{font-size:30px;font-weight:800}
+    .subnav{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+    .subnav button{border:1px solid var(--line);background:#fff;padding:8px 12px}
+    .subnav button.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+    .filter-grid{display:grid;grid-template-columns:repeat(4,minmax(160px,1fr));gap:12px;margin-bottom:14px}
+    .filter-grid .span-2{grid-column:span 2}
+    input,select,textarea{width:100%;border:1px solid #cfc7ba;background:#fff;padding:10px 11px;border-radius:2px;color:var(--ink)}
+    input:focus,select:focus,textarea:focus{outline:2px solid rgba(200,16,46,.15);border-color:var(--red)}
+    .field label{display:block;font-size:12px;font-weight:850;text-transform:uppercase;letter-spacing:.04em;margin-bottom:5px}
+    .field small{display:block;color:var(--muted);margin-top:5px}
+    .field.full{grid-column:1/-1} textarea{min-height:105px;resize:vertical}
+    .table-wrap{overflow:auto;border:1px solid var(--line);background:#fff}
+    table{width:100%;border-collapse:collapse}
+    th{background:var(--cream);text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.05em;padding:10px;border-bottom:1px solid var(--line)}
+    td{padding:11px 10px;border-bottom:1px solid #eee8df;vertical-align:top}
+    tbody tr:hover{background:#fdfaf5}
+    .record-link{border:0;background:transparent;color:var(--red-dark);font-weight:800;padding:0;text-align:left}
+    .badge{display:inline-block;padding:3px 7px;font-size:11px;font-weight:800;background:#eee;border-radius:999px}
+    .badge.high{background:#f6dfe4;color:#8b1730} .badge.good{background:#dfefe3;color:#28583a} .badge.review{background:#fff0c6;color:#66520b}
+    .muted{color:var(--muted)} .tiny{font-size:11px;margin-top:4px}
+    .pagination{display:flex;gap:8px;align-items:center;justify-content:flex-end;margin-top:12px}
+    .detail-grid{display:grid;grid-template-columns:1.35fr .65fr;gap:18px}
+    .definition-grid{display:grid;grid-template-columns:190px 1fr;border-top:1px solid var(--line)}
+    .definition-grid dt,.definition-grid dd{margin:0;padding:10px 0;border-bottom:1px solid #eee8df}
+    .definition-grid dt{font-weight:800;padding-right:14px}
+    .section-tabs{display:flex;gap:7px;flex-wrap:wrap;margin:17px 0}
+    .tab-button{border:1px solid var(--line);background:#fff;padding:7px 10px;border-radius:999px}
+    .tab-button.active{background:var(--red);color:#fff;border-color:var(--red)}
+    .related-list{display:grid;gap:10px} .related-item{border:1px solid var(--line);padding:12px;background:#fff}
+    .location-tree ul{list-style:none;padding-left:22px} .location-node{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+    .location-code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--muted);font-size:12px}
+    .modal-backdrop{position:fixed;inset:0;background:rgba(20,20,18,.62);display:grid;place-items:center;padding:20px;z-index:100}
+    .modal{width:min(980px,97vw);max-height:94vh;overflow:auto;background:#fff;box-shadow:0 30px 90px rgba(0,0,0,.25)}
+    .modal-header{display:flex;justify-content:space-between;align-items:center;padding:18px 20px;border-bottom:1px solid var(--line);background:var(--cream)}
+    .modal-header h2{font-family:Georgia,serif;font-size:27px;font-weight:500;margin:0}
+    .modal-body{padding:20px} .modal-footer{padding:15px 20px;border-top:1px solid var(--line);display:flex;justify-content:flex-end;gap:10px}
+    .form-grid{display:grid;grid-template-columns:repeat(2,minmax(220px,1fr));gap:15px}
+    .date-row{display:grid;grid-template-columns:190px 1fr 1fr;gap:10px;align-items:end}
+    .legacy-note{background:#fff8e7;border-left:3px solid #cc9c20;padding:10px 12px;font-size:13px;margin-top:8px}
+    details.multi-picker{border:1px solid #cfc7ba;background:#fff;position:relative}
+    details.multi-picker summary{list-style:none;padding:10px 11px;cursor:pointer;min-height:42px}
+    details.multi-picker summary::-webkit-details-marker{display:none}
+    .multi-menu{padding:8px 10px 10px;border-top:1px solid var(--line);max-height:230px;overflow:auto}
+    .multi-option{display:flex;gap:8px;align-items:center;padding:4px 0} .multi-option input{width:auto}
+    .multi-add{margin-top:7px}
+    .measure-box{border:1px solid var(--line);background:var(--cream);padding:13px}
+    .measurement-buttons{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:10px}
+    .measurement-row{display:grid;grid-template-columns:150px 1fr 70px 42px;gap:8px;align-items:center;margin-top:7px}
+    .remove-measurement{border:0;background:#fff;color:var(--red);font-weight:900}
+    .loading-card,.error-card{background:#fff;border:1px solid var(--line);padding:22px} .error-card{border-color:#d5a6af;color:#7c1527}
+    .empty{padding:28px;text-align:center;color:var(--muted)}
+    .toast{position:fixed;right:20px;bottom:20px;background:var(--ink);color:#fff;padding:12px 15px;z-index:200} .toast.error{background:var(--red-dark)}
+    .mobile-menu{display:none}
+    .app-hidden{display:none!important}
+    .analysis-card-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.analysis-card-head .badge{margin-left:6px}.analysis-summary{display:grid;grid-template-columns:170px 1fr;margin:12px 0 0;border-top:1px solid var(--line)}.analysis-summary dt,.analysis-summary dd{margin:0;padding:7px 0;border-bottom:1px solid #eee8df}.analysis-summary dt{font-weight:800;padding-right:10px}.analysis-guidance{font-size:12px;background:var(--cream);padding:9px;margin-top:10px;color:var(--muted)}.inline-add{display:flex;gap:8px;align-items:center;margin-top:10px}.setup-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px}.setup-section{margin-top:18px}.setup-grid{display:grid;grid-template-columns:repeat(2,minmax(240px,1fr));gap:14px}.setup-list{display:grid;gap:8px}.setup-row{border:1px solid var(--line);padding:12px;background:#fff}.setup-banner{border:1px solid #d8b964;background:#fff8df;padding:14px 16px;margin:0 0 18px}.help-callout{background:#f3f0ea;border-left:3px solid var(--red);padding:12px 14px;margin-bottom:16px}
+
+    /* Mobile interaction and layout */
+    .nav-toggle{display:none;border:1px solid var(--line);background:#fff;padding:9px 12px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--ink)}
+    .table-wrap{-webkit-overflow-scrolling:touch}
+    button,.nav-item,.tab-button{touch-action:manipulation}
+
+    @media(max-width:1100px), (hover:none) and (pointer:coarse){
+      html,body{overflow-x:hidden}
+      .site-header{position:sticky;top:0}
+      .masthead{display:grid;grid-template-columns:1fr auto;gap:10px 12px;padding:10px 14px}
+      .identity{min-width:0}
+      .identity-title{font-size:19px;line-height:1.05}
+      .identity-subtitle{font-size:9px;letter-spacing:.1em}
+      .museum-logo{width:42px;height:42px}
+      .nav-toggle{display:inline-flex;align-items:center;justify-content:center;align-self:center;min-height:44px}
+      .header-tools{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1fr) auto;width:100%;gap:8px}
+      .global-search{width:100%;min-width:0;font-size:16px;min-height:44px}
+      #newRecordButton{min-height:44px;white-space:nowrap}
+
+      .main-nav{display:none;border-top:1px solid var(--line);box-shadow:0 12px 18px rgba(0,0,0,.06)}
+      .main-nav.open{display:block}
+      .nav-inner{display:grid;grid-template-columns:1fr;padding:6px 14px 12px;gap:0}
+      .nav-item{text-align:left;padding:13px 4px;border-bottom:1px solid #eee7dd;min-height:44px}
+      .nav-item.active{border-bottom-color:var(--red)}
+
+      .content{padding:22px 14px calc(70px + env(safe-area-inset-bottom))}
+      .page-title{display:grid;grid-template-columns:1fr;gap:12px}
+      .page-title h1{font-size:29px;overflow-wrap:anywhere}
+      .page-title>div:last-child{display:flex;gap:8px;flex-wrap:wrap}
+      .page-title>div:last-child .button{flex:1 1 120px;min-height:44px}
+      .eyebrow{font-size:10px}
+
+      .kpi-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+      .kpi{padding:13px}
+      .kpi .number{font-size:29px}
+      .kpi .label{font-size:13px}
+      .kpi .hint{font-size:11px}
+      .queue-grid{grid-template-columns:1fr}
+
+      .filter-grid,.form-grid{grid-template-columns:1fr}
+      .filter-grid .span-2,.field.full{grid-column:auto}
+      .date-row{grid-template-columns:1fr}
+      input,select,textarea{font-size:16px;min-height:44px}
+      textarea{min-height:120px}
+
+      /* Turn collection tables into readable record cards on phones. */
+      .table-wrap{border:0;background:transparent;overflow:visible}
+      .table-wrap table,.table-wrap tbody,.table-wrap tr,.table-wrap td{display:block;width:100%}
+      .table-wrap thead{display:none}
+      .table-wrap tbody{display:grid;gap:10px}
+      .table-wrap tr{background:#fff;border:1px solid var(--line);box-shadow:0 4px 14px rgba(25,25,22,.04)}
+      .table-wrap td{display:grid;grid-template-columns:108px minmax(0,1fr);gap:8px;padding:9px 12px;border-bottom:1px solid #eee8df;align-items:start}
+      .table-wrap td::before{content:attr(data-label);font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+      .table-wrap td:first-child{display:block;padding:13px 12px;background:var(--cream)}
+      .table-wrap td:first-child::before{display:none}
+      .table-wrap td:last-child{border-bottom:0}
+      .record-link{font-family:Georgia,"Times New Roman",serif;font-size:19px;line-height:1.15}
+      .pagination{justify-content:space-between;gap:6px}
+      .pagination .button{min-height:44px}
+
+      .detail-grid{grid-template-columns:1fr}
+      .definition-grid{grid-template-columns:1fr}
+      .definition-grid dt{padding-bottom:2px;border-bottom:0;color:var(--red-dark)}
+      .definition-grid dd{padding-top:2px}
+      .section-tabs{overflow-x:auto;flex-wrap:nowrap;padding-bottom:4px;-webkit-overflow-scrolling:touch}
+      .tab-button{white-space:nowrap;min-height:42px}
+      .card-header{padding:14px}
+      .card-body{padding:14px}
+
+      .measurement-buttons{display:grid;grid-template-columns:1fr 1fr}
+      .measurement-buttons .button{min-height:44px}
+      .measurement-row{grid-template-columns:1fr 1fr 48px 40px}
+      details.multi-picker summary{min-height:44px}
+
+      /* Full-screen editor on phones. */
+      .modal-backdrop{padding:0;display:block}
+      .modal{width:100vw;height:100dvh;max-height:none;overflow:auto;box-shadow:none}
+      .modal-header{position:sticky;top:0;z-index:3;padding:14px;background:var(--cream)}
+      .modal-header h2{font-size:23px}
+      .modal-body{padding:14px 14px 110px}
+      .modal-footer{position:fixed;left:0;right:0;bottom:0;z-index:4;background:#fff;padding:10px 14px calc(10px + env(safe-area-inset-bottom));box-shadow:0 -7px 20px rgba(0,0,0,.08)}
+      .modal-footer .button{flex:1;min-height:46px}
+      .toast{left:12px;right:12px;bottom:calc(74px + env(safe-area-inset-bottom));text-align:center}
+    }
+
+    @media(max-width:430px){
+      .header-tools{grid-template-columns:1fr}
+      #newRecordButton{width:100%}
+      .kpi-grid{grid-template-columns:1fr 1fr}
+      .kpi .number{font-size:26px}
+      .measurement-buttons{grid-template-columns:1fr}
+      .measurement-row{grid-template-columns:1fr 90px 42px}
+      .measurement-row strong{grid-column:1/-1}
+      .table-wrap td{grid-template-columns:92px minmax(0,1fr)}
+    }
+
+    @media(max-width:950px){
+      .masthead{align-items:flex-start;flex-wrap:wrap}
+      .header-tools{width:100%;justify-content:stretch} .global-search{width:100%}
+      .kpi-grid{grid-template-columns:repeat(2,1fr)} .detail-grid{grid-template-columns:1fr}
+      .filter-grid{grid-template-columns:repeat(2,1fr)} .date-row{grid-template-columns:1fr}
+    }
+    @media(max-width:620px){
+      .content{padding:22px 12px calc(70px + env(safe-area-inset-bottom))}
+      .identity-title{font-size:19px} .museum-logo{width:42px;height:42px}
+      .kpi-grid,.queue-grid,.filter-grid,.form-grid{grid-template-columns:1fr}
+      .kpi-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .filter-grid .span-2,.field.full{grid-column:auto}
+      .definition-grid{grid-template-columns:1fr}
+    }
+  
+    .record-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+    .button.danger{border-color:#b92036;color:#9d1830;background:#fff}.button.danger:hover{background:#fff0f2}
+    .button.warning{border-color:#a96f00;color:#745000;background:#fff8df}.button.warning:hover{background:#ffefb8}
+    .status-banner{max-width:1320px;margin:0 auto 18px;padding:11px 14px;border-left:4px solid var(--red);background:#f5efe6}
+    .status-banner.deleted{border-left-color:#6b6b6b;background:#ecebea}.status-banner.deaccessioned{border-left-color:#a96f00;background:#fff6d9}
+    .lifecycle-deaccessioned{background:#fff0c6;color:#66520b}.lifecycle-deleted{background:#e9e7e4;color:#555}
+    .danger-panel{background:#fff0f2;border-left:4px solid var(--red);padding:12px 14px;margin-bottom:15px}
+    .entity-grid,.exhibit-grid{display:grid;grid-template-columns:repeat(3,minmax(220px,1fr));gap:12px}
+    .entity-card,.exhibit-card{border:1px solid var(--line);background:#fff;text-align:left;padding:16px;display:flex;flex-direction:column;gap:5px;min-height:150px}
+    .entity-card:hover,.exhibit-card:hover{border-color:var(--red);box-shadow:var(--shadow)}
+    .entity-title,.exhibit-title{font-family:Georgia,serif;font-size:22px;line-height:1.1;color:var(--ink)}
+    .exhibit-count{font-family:Georgia,serif;font-size:34px;font-weight:700;color:var(--red)}
+    .exhibit-item,.candidate-row{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:12px;align-items:center;border-bottom:1px solid #eee8df;padding:10px 0}
+    .candidate-row{grid-template-columns:minmax(0,1fr) auto}
+    @media(max-width:900px){.entity-grid,.exhibit-grid{grid-template-columns:repeat(2,minmax(180px,1fr))}}
+    @media(max-width:620px){.entity-grid,.exhibit-grid{grid-template-columns:1fr}.record-actions{justify-content:flex-start;margin-top:12px}.exhibit-item,.candidate-row{grid-template-columns:1fr}.exhibit-item .button,.candidate-row .button{width:100%}}
+
+    /* v0.3.2 media, account, carousel, and edit-history UI */
+    .account-chip{display:flex;align-items:center;gap:8px;border-left:1px solid var(--line);padding-left:10px;min-width:0}
+    .account-copy{min-width:0;line-height:1.1}.account-email{font-size:11px;font-weight:800;max-width:210px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .account-role{font-size:10px;color:var(--muted);margin-top:2px}.account-switch{padding:6px 8px;font-size:11px;white-space:nowrap}
+    .media-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px}
+    .media-tile{border:1px solid var(--line);background:var(--cream-2);overflow:hidden;display:flex;flex-direction:column;min-height:180px}
+    .media-thumb-wrap{aspect-ratio:4/3;background:#e9e4dc;overflow:hidden;display:grid;place-items:center}
+    .media-thumb{width:100%;height:100%;object-fit:cover;display:block}
+    .media-meta{padding:10px;display:grid;gap:4px}.media-meta strong{overflow-wrap:anywhere}
+    .numismatic-card{margin-top:18px}
+    .history-details{border-top:1px solid var(--line);margin-top:8px;padding-top:8px}
+    .history-details summary{cursor:pointer;font-weight:800;color:var(--red-dark);padding:7px 0}
+    .history-table{width:100%;font-size:12px;margin-top:8px}.history-table th,.history-table td{padding:7px 6px}
+    .carousel-shell{margin:8px 0 30px;background:#151515;color:#fff;position:relative;overflow:hidden;min-height:300px;height:min(500px,52vw);max-height:500px}
+    .carousel-stage{height:100%;position:relative}
+    .carousel-slide{position:absolute;inset:0;opacity:0;transition:opacity .45s ease;pointer-events:none;border:0;padding:0;background:#151515;color:#fff;text-align:left;width:100%;height:100%}
+    .carousel-slide.active{opacity:1;pointer-events:auto}
+    .carousel-slide img{width:100%;height:100%;object-fit:cover;display:block}
+    .carousel-overlay{position:absolute;inset:auto 0 0 0;padding:54px 24px 22px;background:linear-gradient(transparent,rgba(0,0,0,.82));color:#fff}
+    .carousel-title{font-family:Georgia,serif;font-size:28px;line-height:1.05;margin:0 0 5px}
+    .carousel-caption{font-size:13px;opacity:.9}
+    .carousel-controls{position:absolute;right:16px;top:16px;display:flex;gap:7px;z-index:3}
+    .carousel-controls button{width:42px;height:42px;border:1px solid rgba(255,255,255,.7);background:rgba(0,0,0,.48);color:#fff;font-size:20px}
+    .carousel-loading{height:100%;display:grid;place-items:center;color:#ddd}
+    @media(max-width:1100px), (hover:none) and (pointer:coarse){
+      .account-chip{grid-column:1/-1;border-left:0;border-top:1px solid var(--line);padding:8px 0 0;justify-content:space-between}
+      .account-email{max-width:65vw}
+      .media-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .carousel-shell{height:360px;min-height:260px}
+      .carousel-title{font-size:23px}
+    }
+    @media(max-width:520px){
+      .media-grid{grid-template-columns:1fr}
+      .carousel-shell{height:300px}
+      .carousel-overlay{padding:44px 14px 14px}
+    }
+
+
+    /* Faceted search, authority, analysis, and setup UI */
+    .facet-layout{display:grid;grid-template-columns:300px minmax(0,1fr);gap:20px;align-items:start}
+    .facet-panel{background:#fff;border:1px solid var(--line);padding:14px;position:sticky;top:145px;max-height:calc(100vh - 170px);overflow:auto}
+    .facet-panel>.field{margin-bottom:12px}.date-mini{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}
+    .facet-group{border-top:1px solid var(--line);padding:8px 0}.facet-group>summary{cursor:pointer;font-weight:800;font-size:13px}.facet-selected{display:inline-grid;place-items:center;min-width:20px;height:20px;border-radius:999px;background:var(--red);color:#fff;font-size:10px;margin-left:5px}
+    .facet-options{display:grid;gap:5px;padding-top:8px}.facet-options label{display:flex;gap:7px;align-items:flex-start;font-size:13px}.facet-options input{width:auto;margin-top:3px}.facet-options em{font-style:normal;color:var(--muted);font-size:11px}.facet-more{margin-top:5px}.facet-more summary{cursor:pointer;color:var(--red-dark);font-size:12px;font-weight:700}
+    .facet-actions{position:sticky;bottom:-14px;background:#fff;border-top:1px solid var(--line);padding:12px 0 2px;display:flex;gap:7px}.search-toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:10px}.toolbar-actions{display:flex;gap:7px;align-items:center}.toolbar-actions select{width:auto}
+    .filter-chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}.filter-chip{border:1px solid var(--line);background:var(--cream);padding:5px 8px;font-size:12px}.filter-chip.static{display:inline-block}
+    .collection-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px}.collection-card{border:1px solid var(--line);background:#fff;padding:0;text-align:left;color:var(--ink);overflow:hidden}.collection-card-image{aspect-ratio:4/3;background:#e9e4dc;display:grid;place-items:center;overflow:hidden}.collection-card-image img{width:100%;height:100%;object-fit:cover}.collection-card-copy{display:grid;gap:3px;padding:11px}.collection-card-copy strong{font-family:Georgia,serif;font-size:18px}.collection-card-copy span,.collection-card-copy small{color:var(--muted)}
+    .authority-subnav{margin-top:-6px}.inscription-text{font-family:Georgia,serif;font-size:18px;padding:7px 0}.history-section+.history-section{margin-top:18px}.history-section h3{font-family:Georgia,serif;font-weight:500;font-size:21px;margin:0 0 9px}
+    @media(max-width:1100px), (hover:none) and (pointer:coarse){.facet-layout{grid-template-columns:1fr}.facet-panel{position:static;max-height:none}.search-toolbar{align-items:flex-start;flex-direction:column}.toolbar-actions{width:100%;flex-wrap:wrap}.collection-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media(max-width:560px){.collection-grid{grid-template-columns:1fr}.date-mini{grid-template-columns:1fr}}
+
+</style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="masthead">
+      <div class="identity">
+        <div id="brandMark" class="brand-mark" aria-hidden="true">OM</div>
+        <img id="institutionLogo" class="museum-logo app-hidden" alt="" src="">
+        <div>
+          <div id="identityTitle" class="identity-title">Your Museum</div>
+          <div id="identitySubtitle" class="identity-subtitle">Open Museum CMS</div>
+        </div>
+      </div>
+      <button id="navToggle" class="nav-toggle" type="button" aria-expanded="false" aria-controls="primaryNav">☰ Menu</button>
+      <div class="header-tools">
+        <input id="globalSearch" class="global-search" type="search" placeholder="Search the collection…">
+        <button id="newRecordButton" class="button primary">+ New record</button>
+        <div class="account-chip" title="Current Google Workspace account">
+          <div class="account-copy"><div id="currentUserEmail" class="account-email">Loading account…</div><div id="currentUserRole" class="account-role"></div></div>
+          <button id="switchAccountButton" class="button account-switch" type="button" title="Open Google account chooser in a new tab">Switch account</button>
+        </div>
+      </div>
+    </div>
+    <nav class="main-nav" id="primaryNav" aria-label="Primary">
+      <div class="nav-inner">
+        <button class="nav-item active" data-view="dashboard">Overview</button>
+        <button class="nav-item" data-view="advancedSearch">Advanced Search</button>
+        <button class="nav-item" data-view="collection">Collection</button>
+        <button class="nav-item" data-view="archives">Archives</button>
+        <button class="nav-item" data-view="locations">Locations</button>
+        <button class="nav-item" data-view="futureExhibits">Future Exhibit Planning</button>
+        <button class="nav-item" data-view="authorities">Authorities</button>
+        <button class="nav-item" data-view="needsReview">Needs Review</button>
+        <button id="setupNav" class="nav-item" data-view="setup">Setup</button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="content" class="content">
+    <div class="loading-card">Loading Open Museum CMS…</div>
+  </main>
+  <footer class="app-footer">Open Museum CMS · Developed by Nigel Klemenčič-Puglisevich · GPL-3.0-or-later</footer>
+
+  <div id="modalRoot"></div>
+  <div id="toastRoot"></div>
+
+  <script>
+    const App={settings:{},user:null,enums:{},stats:{},view:'dashboard',params:{page:1,pageSize:50},locations:[],advancedParams:null,facetedParams:{page:1,pageSize:24,sort:'title_asc'},facetedView:'list',people:[],places:[],subjects:[],references:[],accessions:[],exhibitions:[],collectionMode:'all',archiveMode:'archives',futureExhibitMode:'permanent',authorityMode:'people',backStack:[],currentScreen:null,carouselTimer:null,appUrl:''};
+
+    document.addEventListener('DOMContentLoaded',()=>{bindShell();initialise();});
+
+    function gas(name,...args){
+      return new Promise((resolve,reject)=>{
+        const r=google.script.run
+          .withSuccessHandler(resolve)
+          .withFailureHandler(e=>reject(new Error(e&&e.message?e.message:String(e))));
+        r[name](...args);
+      });
+    }
+
+    async function initialise(){
+      try{
+        const data=await gas('apiBootstrap');
+        App.settings=data.settings||{};App.user=data.user;App.enums=data.enums||{};App.stats=data.stats||{};App.appUrl=data.appUrl||'';applyBranding(App.settings);
+        document.getElementById('newRecordButton').classList.toggle('app-hidden',!data.user.permissions.includes('create'));
+        document.getElementById('setupNav').classList.toggle('app-hidden',!data.user.permissions.includes('admin'));
+        document.getElementById('currentUserEmail').textContent=data.user.email||'';
+        document.getElementById('currentUserRole').textContent=data.user.role||'';
+        navigate('dashboard');
+      }catch(e){fatal(e)}
+    }
+
+    function applyBranding(s){
+      s=s||{};
+      if(s.primaryColour)document.documentElement.style.setProperty('--red',s.primaryColour);
+      if(s.primaryDarkColour)document.documentElement.style.setProperty('--red-dark',s.primaryDarkColour);
+      if(s.backgroundColour)document.documentElement.style.setProperty('--cream-2',s.backgroundColour);
+      document.getElementById('identityTitle').textContent=s.institutionName||'Your Museum';
+      document.getElementById('identitySubtitle').textContent=s.systemName||'Open Museum CMS';
+      const logo=document.getElementById('institutionLogo'),mark=document.getElementById('brandMark');
+      if(s.logoUrl){logo.src=s.logoUrl;logo.alt=(s.institutionName||'Institution')+' logo';logo.classList.remove('app-hidden');mark.classList.add('app-hidden');}
+      else{logo.classList.add('app-hidden');mark.classList.remove('app-hidden');mark.textContent=(s.shortName||'OM').replace(/[^A-Za-z0-9]/g,'').slice(0,2).toUpperCase()||'OM';}
+    }
+
+    function bindShell(){
+      document.querySelectorAll('.nav-item').forEach(b=>b.onclick=()=>navigate(b.dataset.view));
+      const navToggle=document.getElementById('navToggle');
+      const primaryNav=document.getElementById('primaryNav');
+      navToggle.onclick=()=>{
+        const open=primaryNav.classList.toggle('open');
+        navToggle.setAttribute('aria-expanded',String(open));
+        navToggle.textContent=open?'✕ Close':'☰ Menu';
+      };
+      document.getElementById('newRecordButton').onclick=()=>recordForm({record:{},related:{measurements:[]}});
+      document.getElementById('switchAccountButton').onclick=()=>{
+        // Do not use window.location.href as the "continue" value here:
+        // Apps Script HTML runs in a sandboxed googleusercontent frame and that
+        // internal frame URL can produce Google's "400 malformed request" page.
+        //
+        // Instead, open Google's account chooser in a separate tab. After choosing
+        // an account, return to this CMS tab and reload it. Google, not Apps Script,
+        // ultimately controls which browser Google session is active.
+        window.open('https://accounts.google.com/AccountChooser','_blank','noopener');
+        toast('Choose the Google account in the new tab, then return here and reload the CMS.');
+      };
+      document.getElementById('globalSearch').addEventListener('keydown',e=>{
+        if(e.key==='Enter'){
+          App.view='collection';App.params={page:1,pageSize:50,q:e.target.value.trim()};
+          setNav('collection');renderRecordList('Collection');
+        }
+      });
+    }
+
+    function setNav(view){
+      document.querySelectorAll('.nav-item').forEach(x=>x.classList.toggle('active',x.dataset.view===view));
+    }
+
+    function closeMobileNav(){
+      const nav=document.getElementById('primaryNav');
+      const toggle=document.getElementById('navToggle');
+      if(nav)nav.classList.remove('open');
+      if(toggle){toggle.setAttribute('aria-expanded','false');toggle.textContent='☰ Menu';}
+    }
+
+    function cloneState(obj){return JSON.parse(JSON.stringify(obj||{}))}
+    function setCurrentScreen(screen){App.currentScreen=screen}
+    function pushCurrentScreen(){
+      if(App.currentScreen){
+        App.backStack.push(cloneState(App.currentScreen));
+        if(App.backStack.length>30)App.backStack.shift();
+      }
+    }
+    function goBack(){
+      const screen=App.backStack.pop();
+      if(!screen)return navigate('dashboard');
+      restoreScreen(screen);
+    }
+    function restoreScreen(s){
+      if(!s)return navigate('dashboard');
+      if(s.kind==='dashboard')return dashboard();
+      if(s.kind==='collection')return collectionPage(s.mode||'all',s.params||null);
+      if(s.kind==='archives')return archivesPage(s.mode||'archives',s.params||null);
+      if(s.kind==='recordList'){App.view=s.view||'collection';App.params=s.params||{page:1,pageSize:50};setNav(App.view);return renderRecordList(s.title||'Collection',s.subtitle||'');}
+      if(s.kind==='advanced'){App.facetedParams=s.params||{page:1,pageSize:24,sort:'title_asc'};return advancedSearch(true);}
+      if(s.kind==='locations')return locations();
+      if(s.kind==='authorities')return authoritiesPage(s.mode||'people');
+      if(s.kind==='people')return authoritiesPage('people');
+      if(s.kind==='place')return openPlace(s.id,false);
+      if(s.kind==='subject')return openSubject(s.id,false);
+      if(s.kind==='reference')return openReference(s.id,false);
+      if(s.kind==='party')return openParty(s.id,false);
+      if(s.kind==='accessions')return collectionPage('accessions');
+      if(s.kind==='accession')return openAccession(s.id,false);
+      if(s.kind==='futureExhibits')return futureExhibitsPage(s.mode||'permanent');
+      if(s.kind==='exhibition')return openExhibition(s.id,false);
+      if(s.kind==='record')return openRecord(s.id,false);
+      if(s.kind==='setup')return setupPage();
+      return navigate(s.view||'dashboard');
+    }
+
+    function navigate(view){
+      App.view=view; setNav(view); closeMobileNav(); window.scrollTo({top:0,behavior:'smooth'});
+      if(view==='dashboard')return dashboard();
+      if(view==='advancedSearch')return advancedSearch(false);
+      if(view==='collection')return collectionPage('all');
+      if(view==='archives')return archivesPage('archives');
+      if(view==='locations')return locations();
+      if(view==='futureExhibits')return futureExhibitsPage('permanent');
+      if(view==='authorities')return authoritiesPage('people');
+      if(view==='needsReview'){
+        App.params={catalogueStatus:'Imported – needs review',page:1,pageSize:50};
+        return renderRecordList('Needs Review','Imported catalogue records awaiting review.');
+      }
+      if(view==='setup')return setupPage();
+    }
+
+    function dashboard(){
+      const s=App.stats;
+      html(`<div class="eyebrow">Collections database</div>
+        <div class="page-title"><div><h1>Collection overview</h1><p>${esc(App.settings.institutionName||'Institution')} collections-management workspace.</p></div></div>
+        ${App.user.permissions.includes('admin')&&String(App.settings.setupComplete||'No')!=='Yes'?`<div class="setup-banner"><strong>Finish setup:</strong> customise your institution name, users, storage folders, vocabularies, and analysis profiles. <button class="button small" id="finishSetup">Open Setup</button></div>`:''}
+        <section id="overviewCarousel" class="carousel-shell" aria-label="Collection image highlights"><div class="carousel-loading">Loading collection images…</div></section>
+        <div class="kpi-grid">
+          ${kpi(s.total,'Catalogue records','Active collection records')}
+          ${kpi(s.needsReview,'Needs review','Records awaiting review')}
+          ${kpi(s.locationsUnchecked,'Location checks','Physical location not yet verified')}
+          ${kpi(s.photography,'Photography queue','Images requiring attention')}
+          ${kpi(s.archives,'Archival records','Archival units')}
+          ${kpi(s.photographs,'Photographs','Photography collection')}
+          ${kpi(s.highPriority,'High priority','Records flagged for attention')}
+          ${kpi(s.deaccessioned||0,'Deaccessioned','Retained in institutional history')}
+        </div>
+        <div class="card"><div class="card-header"><h2>Work queues</h2></div><div class="card-body queue-grid">
+          ${queue('Needs Review',s.needsReview,'needsReview')}
+          ${queue('High Priority',s.highPriority,'highPriority')}
+          ${queue('Photography',s.photography,'photoQueue')}
+          ${queue('Unverified Locations',s.locationsUnchecked,'locationQueue')}
+        </div></div>`);
+      setCurrentScreen({kind:'dashboard'});if(document.getElementById('finishSetup'))document.getElementById('finishSetup').onclick=()=>navigate('setup');
+      document.querySelectorAll('[data-queue]').forEach(b=>b.onclick=()=>openQueue(b.dataset.queue));
+      loadOverviewCarousel();
+    }
+
+    function openQueue(q){
+      if(q==='needsReview') return navigate('needsReview');
+      if(q==='highPriority'){App.view='collection';setNav('collection');App.params={reviewPriority:'High',page:1,pageSize:50};return renderRecordList('High Priority');}
+      if(q==='photoQueue'){App.view='archives';setNav('archives');App.params={photoQueue:true,page:1,pageSize:50};return renderRecordList('Photography Queue','Records requiring image migration or photography.');}
+      if(q==='locationQueue'){App.view='collection';setNav('collection');App.params={page:1,pageSize:50,q:''};return renderRecordList('Location Verification','Use Advanced Search and record management to verify current locations.');}
+    }
+
+    function kpi(n,l,h){return `<div class="kpi"><div class="number">${esc(n)}</div><div class="label">${esc(l)}</div><div class="hint">${esc(h)}</div></div>`}
+    function queue(t,n,q){return `<div class="queue-card"><h3>${esc(t)}</h3><div class="count">${esc(n)}</div><button class="button small" data-queue="${q}">Open</button></div>`}
+
+    function collectionPage(mode='all',preservedParams=null){
+      App.view='collection';App.collectionMode=mode;setNav('collection');closeMobileNav();
+      const deletedAllowed=App.user&&App.user.permissions.includes('delete');
+      const controls=`<div class="subnav">
+        <button class="${mode==='all'?'active':''}" id="collectionAll">All Collection</button>
+        <button class="${mode==='accessions'?'active':''}" id="collectionAccessions">Accessions</button>
+        <button class="${mode==='deaccessioned'?'active':''}" id="collectionDeaccessioned">Deaccessioned</button>
+        ${deletedAllowed?`<button class="${mode==='deleted'?'active':''}" id="collectionDeleted">Deleted</button>`:''}
+      </div>`;
+
+      if(mode==='accessions')return accessionsPage(controls);
+
+      App.params=preservedParams || (
+        mode==='deaccessioned' ? {lifecycleStatus:'Deaccessioned',page:1,pageSize:50}
+        : mode==='deleted' ? {lifecycleStatus:'Deleted',page:1,pageSize:50}
+        : {page:1,pageSize:50}
+      );
+
+      const title=mode==='deaccessioned'?'Deaccessioned Records':mode==='deleted'?'Deleted Records':'Collection';
+      renderRecordList(title,'',controls,()=>bindCollectionSubnav(mode));
+    }
+
+    function bindCollectionSubnav(mode){
+      if(document.getElementById('collectionAll'))document.getElementById('collectionAll').onclick=()=>collectionPage('all');
+      if(document.getElementById('collectionAccessions'))document.getElementById('collectionAccessions').onclick=()=>collectionPage('accessions');
+      if(document.getElementById('collectionDeaccessioned'))document.getElementById('collectionDeaccessioned').onclick=()=>collectionPage('deaccessioned');
+      if(document.getElementById('collectionDeleted'))document.getElementById('collectionDeleted').onclick=()=>collectionPage('deleted');
+    }
+
+    function archivesPage(mode='archives',preservedParams=null){
+      App.view='archives';App.archiveMode=mode;setNav('archives');
+      App.params = preservedParams || (mode==='photos'
+        ? {photographCollection:true,page:1,pageSize:50}
+        : {recordType:'Archival Unit',page:1,pageSize:50});
+      const controls=`<div class="subnav"><button class="${mode==='archives'?'active':''}" id="archiveRecords">Archival Records</button><button class="${mode==='photos'?'active':''}" id="archivePhotos">Photographs</button></div>`;
+      renderRecordList(mode==='photos'?'Photographs':'Archives','',controls,()=>{
+        document.getElementById('archiveRecords').onclick=()=>archivesPage('archives');
+        document.getElementById('archivePhotos').onclick=()=>archivesPage('photos');
+      });
+    }
+
+    async function renderRecordList(title,subtitle='',beforeTable='',afterRender=null){
+      loading();
+      try{
+        const d=await gas('apiListRecords',App.params);
+        html(`<div class="eyebrow">Browse</div>
+          <div class="page-title"><div><h1>${esc(title)}</h1><p>${subtitle?esc(subtitle):d.total.toLocaleString()+' matching records.'}</p></div></div>
+          ${beforeTable}
+          <div class="filter-grid">
+            <div class="field span-2"><label>Keyword search</label><input id="q" value="${attr(App.params.q||'')}" placeholder="Title, ID, description, donor, place…"></div>
+            <div class="field"><label>Collection area</label>${selectHtml('area',App.enums.collectionArea,App.params.collectionArea,'All')}</div>
+            <div class="field"><label>Catalogue status</label>${selectHtml('status',App.enums.catalogueStatus,App.params.catalogueStatus,'All')}</div>
+          </div>
+          <div style="margin-bottom:14px"><button id="apply" class="button">Apply filters</button></div>
+          ${recordTable(d)}
+          ${pagination(d)}`);
+
+        document.querySelectorAll('[data-record]').forEach(x=>x.onclick=()=>openRecord(x.dataset.record));
+        document.getElementById('apply').onclick=()=>{
+          App.params={...App.params,q:document.getElementById('q').value.trim(),collectionArea:document.getElementById('area').value,catalogueStatus:document.getElementById('status').value,page:1};
+          renderRecordList(title,subtitle,beforeTable,afterRender);
+        };
+        bindPagination(d,()=>renderRecordList(title,subtitle,beforeTable,afterRender));
+        if(App.view==='collection')setCurrentScreen({kind:'collection',mode:App.collectionMode||'all',params:cloneState(App.params)});
+        else if(App.view==='archives')setCurrentScreen({kind:'archives',mode:App.archiveMode||'archives',params:cloneState(App.params)});
+        else setCurrentScreen({kind:'recordList',view:App.view,params:cloneState(App.params),title,subtitle});
+        if(afterRender)afterRender();
+      }catch(e){error(e)}
+    }
+
+    function advancedSearch(run){
+      App.view='advancedSearch';setNav('advancedSearch');closeMobileNav();
+      if(!run)App.facetedParams={page:1,pageSize:24,sort:'title_asc'};
+      facetedSearch();
+    }
+
+    async function facetedSearch(){
+      loading();
+      try{
+        const d=await gas('apiFacetedSearch',App.facetedParams);
+        const p=App.facetedParams;
+        html(`<div class="eyebrow">Research tools</div><div class="page-title"><div><h1>Advanced Search</h1><p>Faceted search across catalogue fields, authority relationships, display history, and collection management data.</p></div></div>
+          <div class="facet-layout">
+            <aside class="facet-panel">
+              <div class="field"><label>Keywords</label><input id="facetQ" value="${attr(p.q||'')}" placeholder="Search descriptions, authorities, subjects, places…"></div>
+              <div class="date-mini"><div class="field"><label>From year</label><input id="facetFrom" value="${attr(p.dateFromYear||'')}" placeholder="-200"></div><div class="field"><label>To year</label><input id="facetTo" value="${attr(p.dateToYear||'')}" placeholder="2026"></div></div>
+              ${facetGroup('Collection area','collectionArea',d.facets.collectionArea,p.collectionArea)}
+              ${facetGroup('Record type','recordType',d.facets.recordType,p.recordType)}
+              ${facetGroup('Object type','objectType',d.facets.objectType,p.objectType,10)}
+              ${facetGroup('Culture / community','culture',d.facets.culture,p.culture,8)}
+              ${facetGroup('Period','period',d.facets.period,p.period,8)}
+              ${facetGroup('School / style','schoolStyle',d.facets.schoolStyle,p.schoolStyle,8)}
+              ${facetGroup('Analysis profile','analysisProfile',d.facets.analysisProfile,p.analysisProfile,10)}
+              ${facetGroup('Classification','classification',d.facets.classification,p.classification,8)}
+              ${facetGroup('Subjects','subjectId',d.facets.subjectId,p.subjectId,10)}
+              ${facetGroup('Places','placeId',d.facets.placeId,p.placeId,10)}
+              ${facetGroup('Place relationship','placeRole',d.facets.placeRole,p.placeRole)}
+              ${facetGroup('People & organisations','partyId',d.facets.partyId,p.partyId,10)}
+              ${facetGroup('Person / organisation role','roleType',d.facets.roleType,p.roleType,10)}
+              ${facetGroup('Materials','material',d.facets.material,p.material,8)}
+              ${facetGroup('Techniques','technique',d.facets.technique,p.technique,8)}
+              ${facetGroup('Identification certainty','identificationCertainty',d.facets.identificationCertainty,p.identificationCertainty)}
+              ${facetGroup('Display status','displayStatus',d.facets.displayStatus,p.displayStatus)}
+              ${facetGroup('Accession status','accessionState',d.facets.accessionState,p.accessionState)}
+              ${facetGroup('Images','hasImage',d.facets.hasImage,p.hasImage)}
+              ${facetGroup('Exhibition','exhibitionId',d.facets.exhibitionId,p.exhibitionId,8)}
+              ${facetGroup('Catalogue status','catalogueStatus',d.facets.catalogueStatus,p.catalogueStatus)}
+              <div class="facet-actions"><button id="applyFacets" class="button primary">Apply filters</button><button id="clearFacets" class="button">Clear</button></div>
+            </aside>
+            <section class="facet-results">
+              <div class="search-toolbar"><div><strong>${d.total.toLocaleString()}</strong> matching records</div><div class="toolbar-actions"><select id="facetSort"><option value="title_asc" ${p.sort==='title_asc'?'selected':''}>Title A–Z</option><option value="title_desc" ${p.sort==='title_desc'?'selected':''}>Title Z–A</option><option value="date_asc" ${p.sort==='date_asc'?'selected':''}>Date: earliest first</option><option value="date_desc" ${p.sort==='date_desc'?'selected':''}>Date: latest first</option><option value="record_id" ${p.sort==='record_id'?'selected':''}>Record ID</option></select><button id="listView" class="button small ${App.facetedView==='list'?'primary':''}">List</button><button id="gridView" class="button small ${App.facetedView==='grid'?'primary':''}">Grid</button></div></div>
+              <div id="activeFacetChips" class="filter-chips">${activeFacetChips(p,d.facets)}</div>
+              <div id="facetResultBody">${App.facetedView==='grid'?facetGrid(d):recordTable(d)}</div>
+              ${pagination(d,'facet')}
+            </section>
+          </div>`);
+        setCurrentScreen({kind:'advanced',params:cloneState(App.facetedParams)});
+        bindFacetControls(d);
+        if(App.facetedView==='grid')hydrateFacetGrid(d.rows);
+      }catch(e){error(e)}
+    }
+
+    function facetGroup(title,key,items,selected,limit=6){
+      selected=Array.isArray(selected)?selected:(selected?[selected]:[]);items=items||[];
+      if(!items.length)return '';
+      return `<details class="facet-group" ${selected.length?'open':''}><summary>${esc(title)}${selected.length?` <span class="facet-selected">${selected.length}</span>`:''}</summary><div class="facet-options">${items.slice(0,limit).map(x=>`<label><input type="checkbox" data-facet="${attr(key)}" value="${attr(x.value)}" ${selected.includes(String(x.value))?'checked':''}> <span>${esc(x.label)} <em>${x.count}</em></span></label>`).join('')}${items.length>limit?`<details class="facet-more"><summary>Show ${items.length-limit} more</summary>${items.slice(limit).map(x=>`<label><input type="checkbox" data-facet="${attr(key)}" value="${attr(x.value)}" ${selected.includes(String(x.value))?'checked':''}> <span>${esc(x.label)} <em>${x.count}</em></span></label>`).join('')}</details>`:''}</div></details>`;
+    }
+
+    function bindFacetControls(d){
+      document.getElementById('applyFacets').onclick=()=>{
+        const next={page:1,pageSize:24,sort:document.getElementById('facetSort').value,q:document.getElementById('facetQ').value.trim(),dateFromYear:document.getElementById('facetFrom').value.trim(),dateToYear:document.getElementById('facetTo').value.trim()};
+        document.querySelectorAll('[data-facet]:checked').forEach(x=>{(next[x.dataset.facet]??=[]).push(x.value)});
+        App.facetedParams=next;facetedSearch();
+      };
+      document.getElementById('clearFacets').onclick=()=>{App.facetedParams={page:1,pageSize:24,sort:'title_asc'};facetedSearch();};
+      document.getElementById('facetSort').onchange=e=>{App.facetedParams.sort=e.target.value;App.facetedParams.page=1;facetedSearch();};
+      document.getElementById('listView').onclick=()=>{App.facetedView='list';facetedSearch();};
+      document.getElementById('gridView').onclick=()=>{App.facetedView='grid';facetedSearch();};
+      const prev=document.getElementById('facetPrev'),next=document.getElementById('facetNext');if(prev)prev.onclick=()=>{App.facetedParams.page=Math.max(1,d.page-1);facetedSearch()};if(next)next.onclick=()=>{App.facetedParams.page=Math.min(d.pages,d.page+1);facetedSearch()};
+      document.querySelectorAll('[data-record]').forEach(x=>x.onclick=()=>openRecord(x.dataset.record));
+      document.querySelectorAll('[data-chip-key]').forEach(x=>x.onclick=()=>{const key=x.dataset.chipKey,val=x.dataset.chipValue;const arr=Array.isArray(App.facetedParams[key])?App.facetedParams[key]:[];App.facetedParams[key]=arr.filter(v=>String(v)!==String(val));App.facetedParams.page=1;facetedSearch();});
+    }
+
+    function activeFacetChips(p,facets){
+      const labelFor=(key,value)=>{const item=(facets[key]||[]).find(x=>String(x.value)===String(value));return item?item.label:value};
+      const chips=[];Object.keys(p).forEach(key=>{if(['page','pageSize','sort','q','dateFromYear','dateToYear'].includes(key))return;(Array.isArray(p[key])?p[key]:[]).forEach(v=>chips.push(`<button class="filter-chip" data-chip-key="${attr(key)}" data-chip-value="${attr(v)}">${esc(labelFor(key,v))} ×</button>`));});
+      if(p.q)chips.push(`<span class="filter-chip static">Keyword: ${esc(p.q)}</span>`);if(p.dateFromYear||p.dateToYear)chips.push(`<span class="filter-chip static">Date: ${esc(p.dateFromYear||'…')}–${esc(p.dateToYear||'…')}</span>`);return chips.join('');
+    }
+
+    function facetGrid(d){return `<div class="collection-grid">${d.rows.length?d.rows.map(r=>`<button class="collection-card" data-record="${attr(r.RecordID)}"><div class="collection-card-image" ${r.PrimaryDriveFileID?`data-drive-thumb="${attr(r.PrimaryDriveFileID)}"`:''}>${r.PrimaryDriveFileID?'<span class="muted">Loading image…</span>':'<span class="muted">No image</span>'}</div><div class="collection-card-copy"><strong>${esc(r.PreferredTitle)}</strong><span>${esc(r.DateDisplay||'')}</span><span>${esc(r.CollectionArea||'')}</span><small>${esc(r.DisplayStatus||'')}</small></div></button>`).join(''):'<div class="empty">No matching records.</div>'}</div>`}
+    async function hydrateFacetGrid(rows){const fake=(rows||[]).filter(r=>r.PrimaryDriveFileID).map(r=>({DriveFileID:r.PrimaryDriveFileID}));await hydrateDriveThumbnails(fake,document.getElementById('facetResultBody'));}
+
+    function recordTable(d){
+      return `<div class="table-wrap"><table><thead><tr><th>Record</th><th>Type</th><th>Collection</th><th>Date</th><th>Status</th><th>Location</th></tr></thead>
+      <tbody>${d.rows.length?d.rows.map(recordRow).join(''):`<tr><td colspan="6" class="empty">No matching records.</td></tr>`}</tbody></table></div>`;
+    }
+
+    function recordRow(r){
+      const cls=r.ReviewPriority==='High'?'high':r.CatalogueStatus==='Reviewed'?'good':'review';
+      return `<tr><td data-label="Record"><button class="record-link" data-record="${attr(r.RecordID)}">${esc(r.PreferredTitle)}</button><div class="tiny muted">${esc(r.RecordID)}${r.MigrationID?' · '+esc(r.MigrationID):''}</div></td>
+      <td data-label="Type">${esc(r.RecordType)}</td><td data-label="Collection">${esc(r.CollectionArea)}</td><td data-label="Date">${esc(r.DateDisplay)}</td><td data-label="Status"><span class="badge ${cls}">${esc(r.CatalogueStatus||'Unspecified')}</span></td><td data-label="Location">${esc(r.CurrentLocationName)}</td></tr>`;
+    }
+
+    function pagination(d,prefix=''){return `<div class="pagination"><button id="${prefix}Prev" class="button small" ${d.page<=1?'disabled':''}>Previous</button><span>Page ${d.page} of ${d.pages}</span><button id="${prefix}Next" class="button small" ${d.page>=d.pages?'disabled':''}>Next</button></div>`}
+    function bindPagination(d,rerender){document.getElementById('Prev').onclick=()=>{App.params.page=Math.max(1,d.page-1);rerender();};document.getElementById('Next').onclick=()=>{App.params.page=Math.min(d.pages,d.page+1);rerender();};}
+
+    async function openRecord(id,remember=true){
+      if(remember)pushCurrentScreen();
+      loading();
+      try{
+        const d=await gas('apiGetRecord',id),r=d.record;
+        setCurrentScreen({kind:'record',id});
+        const lifecycle=r.LifecycleStatus||((String(r.Active).toLowerCase()==='false')?'Deleted':'Active');
+        const canEdit=App.user.permissions.includes('edit')&&lifecycle==='Active';
+        const canMove=App.user.permissions.includes('move')&&lifecycle==='Active';
+        const canAccessions=App.user.permissions.includes('accessions')&&lifecycle==='Active';
+        const canDeaccession=App.user.permissions.includes('deaccession')&&lifecycle==='Active';
+        const canDelete=App.user.permissions.includes('delete')&&lifecycle==='Active';
+        const canRestore=App.user.permissions.includes('delete')&&lifecycle==='Deleted';
+
+        const classification=splitTerms(r.Classifications).length?splitTerms(r.Classifications).join(', '):(r.ObjectClass||'');
+        const materials=splitTerms(r.Materials).length?splitTerms(r.Materials).join(', '):'';
+        const techniques=splitTerms(r.Techniques).length?splitTerms(r.Techniques).join(', '):'';
+        const legacyMaterialsTechniques=(!materials&&!techniques)?(r.MaterialsTechniquesText||''):'';
+        const measures=measurementDisplay(d.related.measurements,r.MeasurementsDisplay);
+        const coin=(d.related.coin&&d.related.coin.length)?d.related.coin[0]:null;
+
+        html(`${lifecycle!=='Active'?`<div class="status-banner ${lifecycle.toLowerCase()}"><strong>${esc(lifecycle)}</strong>${lifecycle==='Deleted'&&r.DeletionReason?' — '+esc(r.DeletionReason):''}</div>`:''}
+          <div class="eyebrow">${esc(r.CollectionArea||'Collection record')}</div>
+          <div class="page-title"><div><button class="button small" id="back">← Back</button><h1 style="margin-top:12px">${esc(r.PreferredTitle||'(Untitled record)')}</h1><p>${esc(r.RecordID||'')}${r.MigrationID?' · '+esc(r.MigrationID):''}</p></div>
+          <div class="record-actions">${canEdit?'<button class="button" id="edit">Edit</button>':''} ${canMove?'<button class="button" id="move">Move</button>':''} ${canAccessions?'<button class="button" id="accessionAction">'+(r.AccessionID?'Edit accession':'Accession record')+'</button>':''} ${canDeaccession?'<button class="button warning" id="deaccession">Deaccession</button>':''} ${canDelete&&!r.AccessionID?'<button class="button danger" id="deleteRecord">Delete record</button>':''} ${canRestore?'<button class="button primary" id="restoreRecord">Restore record</button>':''}</div></div>
+          <div class="detail-grid"><div>
+            <div class="card"><div class="card-header"><h2>Object information</h2></div><div class="card-body"><dl class="definition-grid">
+              ${def('Record type',r.RecordType)}${def('Object type',r.ObjectTypeGenreForm)}${def('Collection area',r.CollectionArea)}${def('Classifications',classification)}${def('Culture / community',r.CultureText)}${def('Period',r.PeriodText)}${def('School / style',r.SchoolStyleText)}
+              ${def('Date / period',r.DateDisplay)}${def('Identification certainty',r.IdentificationCertainty)}${def('Maker / creator (legacy)',r.MakerCreatorText)}${def('Place of origin / creation (legacy)',r.PlaceOfOriginText)}
+              ${def('Materials',materials)}${def('Techniques',techniques)}${def('Materials / techniques (legacy)',legacyMaterialsTechniques)}${def('Measurements',measures)}
+            </dl></div></div>
+            ${coin?`<div class="card numismatic-card"><div class="card-header"><h2>Numismatic details</h2></div><div class="card-body"><dl class="definition-grid">${def('Authority / ruler',coin.AuthorityRuler)}${def('Political entity',coin.PoliticalEntity)}${def('Coin date',coin.CoinDate)}${def('Mint',coin.Mint)}${def('Denomination',coin.Denomination)}${def('Material',coin.Material)}${def('Mass',coin.Mass_g?coin.Mass_g+' g':'')}${def('Diameter',coin.Diameter_mm?coin.Diameter_mm+' mm':'')}${def('Obverse',coin.ObverseDescription)}${def('Reverse',coin.ReverseDescription)}</dl></div></div>`:''}
+            ${textCard('Description',r.Description)}${textCard('Curatorial / research comments',r.CuratorialComments)}${textCard('Provenance / custodial history',r.ProvenanceCustodialHistory)}${textCard('Notes',r.Notes)}
+          </div><div>
+            <div class="card"><div class="card-header"><h2>Management</h2></div><div class="card-body"><dl class="definition-grid">
+              ${def('Lifecycle',lifecycle)}${def('Accession',d.accession?(d.accession.AccessionNumber||d.accession.AccessionID):(r.AccessionID||'Not accessioned'))}
+              ${def('Catalogue status',r.CatalogueStatus)}${def('Review priority',r.ReviewPriority)}${def('Photo status',r.PhotoStatus)}
+              ${def('Current location',d.currentLocation?d.currentLocation.LocationName:(r.LegacyLocationText||'Not assigned'))}
+              ${def('Location checked',r.LocationCheckedStatus)}${def('Documentation',r.DocumentationStatus)}${def('Public access',r.PublicAccessStatus)}${def('Display status',r.DisplayStatus||'Not on display')}${def('Current display',d.displayExhibition?(d.displayExhibition.ExhibitionTitle+(r.CurrentDisplayLocation?' — '+r.CurrentDisplayLocation:'')):r.CurrentDisplayLocation)}
+              ${def('Catalogued by',r.CataloguedBy||'Not yet recorded')}${def('Credit line',r.CreditLine)}${def('Legacy cataloguer dates',r.LegacyCataloguerDates)}
+            </dl>
+            <details class="history-details" id="editHistoryDetails"><summary>Full edit history</summary><div id="editHistoryBody" class="muted">Open to load edit history.</div></details>
+            </div></div>
+          </div></div>
+          <div class="section-tabs">
+            ${tab('media',d.related.media.length,true)}${tab('analysis',null)}${tab('authorities',null)}${tab('places',null)}${tab('subjects',null)}${tab('inscriptions',null)}${tab('references',null)}${tab('archive',null)}
+            ${tab('movements',null)}${tab('reviews',null)}${tab('exhibitions',null)}${tab('deaccessions',null)}${tab('migration',null)}
+          </div><div id="related"></div>`);
+
+        document.getElementById('back').onclick=goBack;
+        document.getElementById('editHistoryDetails').ontoggle=async e=>{
+          if(!e.target.open||e.target.dataset.loaded==='1')return;
+          const target=document.getElementById('editHistoryBody');target.textContent='Loading…';
+          try{
+            const rows=await gas('apiGetRecordEditHistory',r.RecordID);
+            target.innerHTML=editHistoryTable(rows);
+            e.target.dataset.loaded='1';
+          }catch(err){target.innerHTML=`<span class="error-card">${esc(err.message)}</span>`}
+        };
+        if(document.getElementById('edit'))document.getElementById('edit').onclick=()=>recordForm(d);
+        if(document.getElementById('move'))document.getElementById('move').onclick=()=>moveForm(r);
+        if(document.getElementById('accessionAction'))document.getElementById('accessionAction').onclick=()=>recordAccessionForm(d);
+        if(document.getElementById('deaccession'))document.getElementById('deaccession').onclick=()=>deaccessionForm(d);
+        if(document.getElementById('deleteRecord'))document.getElementById('deleteRecord').onclick=()=>deleteRecordForm(d);
+        if(document.getElementById('restoreRecord'))document.getElementById('restoreRecord').onclick=async()=>{if(confirm('Restore this record to the active collection?')){try{const out=await gas('apiRestoreDeletedRecord',r.RecordID);toast('Record restored.');openRecord(out.record.RecordID,false);}catch(e){toast(e.message,true)}}};
+        document.querySelectorAll('.tab-button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tab-button').forEach(x=>x.classList.remove('active'));b.classList.add('active');related(b.dataset.section,d);});
+        related('media',d);
+      }catch(e){error(e)}
+    }
+
+    function tab(s,n,a=false){
+      const count=(typeof n==='number')?` (${n})`:'';
+      const labels={analysis:'Analysis'};
+      const label=labels[s]||(s.charAt(0).toUpperCase()+s.slice(1));
+      return `<button class="tab-button ${a?'active':''}" data-section="${s}">${label}${count}</button>`;
+    }
+
+    async function related(section,d){
+      let rows=d.related[section];
+      let action='';
+      if(section==='media'&&App.user.permissions.includes('media'))action='<button id="addMedia" class="button small">+ Add media</button>';
+      if(section==='reviews'&&App.user.permissions.includes('review'))action='<button id="addReview" class="button small">+ Add review</button>';
+      if(section==='authorities'&&App.user.permissions.includes('authorities'))action='<button id="linkAuthority" class="button small">+ Link person / organisation</button>';
+      if(section==='places'&&App.user.permissions.includes('authorities'))action='<button id="linkPlace" class="button small">+ Link place</button>';
+      if(section==='subjects'&&App.user.permissions.includes('authorities'))action='<button id="linkSubject" class="button small">+ Add subject</button>';
+      if(section==='inscriptions'&&App.user.permissions.includes('edit'))action='<button id="addInscription" class="button small">+ Add inscription / mark</button>';
+      if(section==='references'&&App.user.permissions.includes('edit'))action='<button id="linkReference" class="button small">+ Add reference</button>';
+
+      const sectionLabels={analysis:'Analysis'};
+      const sectionLabel=sectionLabels[section]||(section.charAt(0).toUpperCase()+section.slice(1));
+      document.getElementById('related').innerHTML=`<div class="card"><div class="card-header"><h2>${esc(sectionLabel)}</h2>${action}</div><div id="relatedBody" class="card-body related-list">${rows===undefined?'<div class="empty">Loading…</div>':''}</div></div>`;
+
+      if(rows===undefined){
+        try{
+          rows=await gas('apiGetRecordRelated',d.record.RecordID,section);
+          d.related[section]=rows;
+        }catch(err){
+          document.getElementById('relatedBody').innerHTML=`<div class="error-card">${esc(err.message)}</div>`;
+          return;
+        }
+      }
+
+      if(section==='media'){
+        document.getElementById('relatedBody').innerHTML=mediaGrid(rows);
+        hydrateDriveThumbnails(rows,document.getElementById('relatedBody'));
+      }else if(section==='analysis'){
+        document.getElementById('relatedBody').innerHTML=analysisProfilesHtml(rows);
+        bindAnalysisControls(d.record,rows);
+      }else if(section==='exhibitions'){
+        document.getElementById('relatedBody').innerHTML=exhibitionHistoryHtml(rows);
+      }else{
+        document.getElementById('relatedBody').innerHTML=rows.length?rows.map(x=>relatedItem(section,x)).join(''):'<div class="empty">No related records.</div>';
+      }
+
+      if(document.getElementById('addReview'))document.getElementById('addReview').onclick=()=>reviewForm(d.record);
+      if(document.getElementById('addMedia'))document.getElementById('addMedia').onclick=()=>mediaForm(d.record);
+      if(document.getElementById('linkAuthority'))document.getElementById('linkAuthority').onclick=()=>linkAuthorityForm(d.record);
+      if(document.getElementById('linkPlace'))document.getElementById('linkPlace').onclick=()=>linkPlaceForm(d.record);
+      if(document.getElementById('linkSubject'))document.getElementById('linkSubject').onclick=()=>linkSubjectForm(d.record);
+      if(document.getElementById('addInscription'))document.getElementById('addInscription').onclick=()=>inscriptionForm(d.record);
+      if(document.getElementById('linkReference'))document.getElementById('linkReference').onclick=()=>linkReferenceForm(d.record);
+      document.querySelectorAll('[data-unlink-role]').forEach(b=>b.onclick=async()=>{if(confirm('Remove this authority relationship?')){try{const out=await gas('apiRemoveRecordRole',b.dataset.unlinkRole);toast('Authority link removed.');openRecord(out.record.RecordID,false);}catch(e){toast(e.message,true)}}});
+      document.querySelectorAll('[data-unlink-place]').forEach(b=>b.onclick=async()=>{if(confirm('Remove this place relationship?')){try{const out=await gas('apiRemoveRecordPlace',b.dataset.unlinkPlace);toast('Place link removed.');openRecord(out.record.RecordID,false);}catch(e){toast(e.message,true)}}});
+      document.querySelectorAll('[data-unlink-subject]').forEach(b=>b.onclick=async()=>{if(confirm('Remove this subject?')){try{const out=await gas('apiRemoveRecordSubject',b.dataset.unlinkSubject);toast('Subject removed.');openRecord(out.record.RecordID,false);}catch(e){toast(e.message,true)}}});
+      document.querySelectorAll('[data-edit-inscription]').forEach(b=>b.onclick=()=>inscriptionForm(d.record,rows.find(x=>String(x.InscriptionID)===String(b.dataset.editInscription))));
+      document.querySelectorAll('[data-delete-inscription]').forEach(b=>b.onclick=async()=>{if(confirm('Delete this inscription / mark entry?')){try{const out=await gas('apiDeleteInscription',b.dataset.deleteInscription);toast('Inscription removed.');openRecord(out.record.RecordID,false);}catch(e){toast(e.message,true)}}});
+      document.querySelectorAll('[data-unlink-reference]').forEach(b=>b.onclick=async()=>{if(confirm('Remove this reference link?')){try{const out=await gas('apiRemoveRecordReference',b.dataset.unlinkReference);toast('Reference removed.');openRecord(out.record.RecordID,false);}catch(e){toast(e.message,true)}}});
+    }
+
+    function exhibitionHistoryHtml(rows){
+      if(!rows||!rows.length)return '<div class="empty">No exhibition history or planning assignments.</div>';
+      const current=rows.filter(x=>x.InstalledDate&&!x.DeinstalledDate&&String(x.Exhibition?.ExhibitionStatus||x.Exhibition?.PlanningStatus||'')==='Installed');
+      const history=rows.filter(x=>x.InstalledDate||['Closed','Archived'].includes(String(x.Exhibition?.ExhibitionStatus||'')));
+      const planning=rows.filter(x=>!history.includes(x)&&!current.includes(x));
+      const section=(title,items)=>items.length?`<div class="history-section"><h3>${esc(title)}</h3>${items.map(x=>`<div class="related-item"><strong>${esc(x.Exhibition?x.Exhibition.ExhibitionTitle:x.ExhibitionID)}</strong><div>${esc(x.DisplayLocation||x.Exhibition?.Venue||'')} · ${esc(x.SelectionStatus||'')}</div><div class="muted">${esc([x.Exhibition?.StartDate,x.Exhibition?.EndDate].filter(Boolean).join('–'))}${x.InstalledDate?' · installed '+esc(x.InstalledDate):''}${x.DeinstalledDate?' · deinstalled '+esc(x.DeinstalledDate):''}</div></div>`).join('')}</div>`:'';
+      return section('Currently on display',current)+section('Exhibition history',history.filter(x=>!current.includes(x)))+section('Future / planning assignments',planning);
+    }
+
+    function mediaGrid(rows){
+      if(!rows||!rows.length)return '<div class="empty">No related media.</div>';
+      return `<div class="media-grid">${rows.map(x=>{
+        const isImage=!!x.DriveFileID && (
+          String(x.MediaType||'').toLowerCase().includes('photo') ||
+          String(x.MediaType||'').toLowerCase().includes('image') ||
+          /\.(jpe?g|png|webp|gif)$/i.test(String(x.FileName||''))
+        );
+        return `<article class="media-tile">
+          <div class="media-thumb-wrap" ${isImage?`data-drive-thumb="${attr(x.DriveFileID)}"`:''}>
+            ${isImage?'<span class="muted">Loading image…</span>':'<span class="muted">Document / file</span>'}
+          </div>
+          <div class="media-meta"><strong>${esc(x.FileName||x.MediaType||'Media')}</strong>${x.ViewDescription?`<span>${esc(x.ViewDescription)}</span>`:''}${x.DriveURL?`<a href="${attr(x.DriveURL)}" target="_blank" rel="noopener">Open in Drive</a>`:''}</div>
+        </article>`;
+      }).join('')}</div>`;
+    }
+
+    async function hydrateDriveThumbnails(rows,scope=document){
+      const ids=[...new Set((rows||[]).map(x=>String(x.DriveFileID||'')).filter(Boolean))];
+      if(!ids.length)return;
+      try{
+        const thumbs=await gas('apiGetMediaThumbnails',ids);
+        ids.forEach(id=>{
+          scope.querySelectorAll(`[data-drive-thumb="${cssEscape(id)}"]`).forEach(host=>{
+            const src=thumbs[id]||'';
+            if(!src){
+              host.innerHTML='<span class="muted">Image preview unavailable</span>';
+              return;
+            }
+            const img=document.createElement('img');
+            img.className='media-thumb';
+            img.loading='lazy';
+            img.alt='Collection image';
+            img.src=src;
+            img.onerror=()=>{host.innerHTML='<span class="muted">Image preview unavailable</span>'};
+            host.innerHTML='';
+            host.appendChild(img);
+          });
+        });
+      }catch(e){
+        scope.querySelectorAll('[data-drive-thumb]').forEach(host=>{
+          host.innerHTML='<span class="muted">Image preview unavailable</span>';
+        });
+      }
+    }
+
+    function cssEscape(value){
+      if(window.CSS&&CSS.escape)return CSS.escape(String(value));
+      return String(value).replace(/["\\]/g,'\\$&');
+    }
+
+    function relatedItem(s,x){
+      if(s==='authorities')return `<div class="related-item"><strong>${esc(x.Party?x.Party.PreferredName:(x.PartyID||'Authority'))}</strong><div>${esc(x.RoleType||'Associated')} ${x.AttributionStatus?'· '+esc(x.AttributionStatus):''}</div><div class="muted">${esc(x.RoleNote||x.Notes||'')}</div>${App.user.permissions.includes('authorities')?`<button class="button small danger" data-unlink-role="${attr(x.RecordRoleID)}">Remove link</button>`:''}</div>`;
+      if(s==='places')return `<div class="related-item"><strong>${esc(x.Place?x.Place.PreferredName:(x.PlaceID||'Place'))}</strong><div>${esc(x.PlaceRole||'Associated with')} · ${esc(x.Certainty||'')}</div><div class="muted">${esc(x.Notes||'')}</div>${App.user.permissions.includes('authorities')?`<button class="button small danger" data-unlink-place="${attr(x.RecordPlaceID)}">Remove link</button>`:''}</div>`;
+      if(s==='subjects')return `<div class="related-item"><strong>${esc(x.Subject?x.Subject.PreferredTerm:(x.SubjectID||'Subject'))}</strong><div>${esc(x.Certainty||'')}</div><div class="muted">${esc(x.Notes||'')}</div>${App.user.permissions.includes('authorities')?`<button class="button small danger" data-unlink-subject="${attr(x.RecordSubjectID)}">Remove</button>`:''}</div>`;
+      if(s==='inscriptions')return `<div class="related-item"><strong>${esc(x.InscriptionType||'Inscription / mark')}</strong> ${x.Position?'· '+esc(x.Position):''}<div class="inscription-text">${esc(x.InscriptionText||'')}</div>${x.Translation?`<div><em>Translation:</em> ${esc(x.Translation)}</div>`:''}<div class="muted">${esc([x.Language,x.Script,x.Certainty,x.Notes].filter(Boolean).join(' · '))}</div>${App.user.permissions.includes('edit')?`<button class="button small" data-edit-inscription="${attr(x.InscriptionID)}">Edit</button> <button class="button small danger" data-delete-inscription="${attr(x.InscriptionID)}">Delete</button>`:''}</div>`;
+      if(s==='references')return `<div class="related-item"><strong>${esc(x.Reference?x.Reference.Citation||x.Reference.Title:(x.ReferenceID||'Reference'))}</strong><div>${esc(x.ReferenceRole||'General reference')} ${x.PageFigure?'· '+esc(x.PageFigure):''}</div>${x.Reference&&x.Reference.URLDOI?`<a href="${attr(x.Reference.URLDOI)}" target="_blank" rel="noopener">Open reference</a>`:''}<div class="muted">${esc(x.Notes||'')}</div>${App.user.permissions.includes('edit')?`<button class="button small danger" data-unlink-reference="${attr(x.RecordReferenceID)}">Remove link</button>`:''}</div>`;
+      if(s==='exhibitions')return `<div class="related-item"><strong>${esc(x.Exhibition?x.Exhibition.ExhibitionTitle:(x.ExhibitionID||'Exhibit'))}</strong><div>${esc(x.SelectionStatus||'Candidate')} · ${esc(x.InterpretiveRole||'')}</div><div class="muted">${esc(x.DisplayLocation||x.PlanningNotes||'')}</div></div>`;
+      if(s==='deaccessions')return `<div class="related-item"><strong>${esc(x.DeaccessionDate||'Deaccession')}</strong><div>${esc(x.Reason||'')}</div><div class="muted">${esc(x.DispositionMethod||'')} ${esc(x.ApprovalReference||'')}</div></div>`;
+      if(s==='movements')return `<div class="related-item"><strong>${esc(x.MovementDate||'Movement')}</strong><div>${esc(x.FromLocationID||'Unassigned')} → ${esc(x.ToLocationID||'')}</div><div class="muted">${esc(x.MovementType||'')} ${esc(x.Reason||'')}</div></div>`;
+      if(s==='reviews')return `<div class="related-item"><strong>${esc(x.ReviewType||'Review')}</strong> · ${esc(x.ReviewDate||'')}<div>${esc(x.Outcome||'')}</div><div class="muted">${esc(x.ReviewedBy||'')}</div></div>`;
+      if(s==='migration')return `<div class="related-item"><strong>${esc(x.MigrationID||'Migration')}</strong><div>${esc(x.SourceWorkbook||'')} · ${esc(x.SourceSheet||'')} · row ${esc(x.SourceRow||'')}</div></div>`;
+      if(s==='archive')return `<div class="related-item"><strong>${esc(x.LevelOfDescription||'Archival detail')}</strong><div>${esc(x.ReferenceCode||'')}</div><div>${esc(x.ScopeAndContent||'')}</div></div>`;
+      return `<div class="related-item">${esc(JSON.stringify(x))}</div>`;
+    }
+
+    function analysisProfilesHtml(data){
+      data=data||{profiles:[],available:[]};
+      const cards=(data.profiles||[]).map(p=>{
+        const valueMap=Object.fromEntries((p.Values||[]).map(v=>[String(v.FieldID),v.ValueText||'']));
+        const filled=(p.Fields||[]).filter(f=>String(valueMap[f.FieldID]||'').trim());
+        return `<div class="related-item analysis-card" data-analysis-profile="${attr(p.ProfileID)}"><div class="analysis-card-head"><div><strong>${esc(p.ProfileName)}</strong>${p.Auto?'<span class="badge good">Suggested automatically</span>':''}${p.Manual?'<span class="badge">Added manually</span>':''}</div>${App.user.permissions.includes('edit')?`<button class="button small" data-edit-analysis="${attr(p.ProfileID)}">Edit</button>`:''}</div><div class="muted tiny">${esc(p.Description||'')}</div>${filled.length?`<dl class="analysis-summary">${filled.slice(0,8).map(f=>`<dt>${esc(f.Label)}</dt><dd>${nl(valueMap[f.FieldID])}${f.Unit?' '+esc(f.Unit):''}</dd>`).join('')}</dl>`:'<div class="muted" style="margin-top:8px">No analytical values entered yet.</div>'}${p.Guidance?`<div class="analysis-guidance">${nl(p.Guidance)}</div>`:''}${p.Manual&&!p.Auto&&App.user.permissions.includes('edit')?`<button class="button small danger" data-remove-analysis="${attr(p.ProfileID)}">Remove profile</button>`:''}</div>`;
+      }).join('');
+      const add=(data.available||[]).length&&App.user.permissions.includes('edit')?`<div class="related-item"><strong>Add an analysis profile</strong><p class="muted">Profiles are optional analytical aids. Add only what is useful for this record.</p><div class="inline-add"><select id="analysisProfileToAdd"><option value="">Choose profile</option>${data.available.map(p=>`<option value="${attr(p.ProfileID)}">${esc(p.ProfileName)}</option>`).join('')}</select><button id="addAnalysisProfile" class="button small">Add</button></div></div>`:'';
+      return cards+add || '<div class="empty">No analytical profile is applicable yet. Use the record classification or add a profile manually.</div>';
+    }
+
+    function bindAnalysisControls(record,data){
+      document.querySelectorAll('[data-edit-analysis]').forEach(b=>b.onclick=()=>{const p=(data.profiles||[]).find(x=>String(x.ProfileID)===String(b.dataset.editAnalysis));if(p)analysisProfileForm(record,p)});
+      document.querySelectorAll('[data-remove-analysis]').forEach(b=>b.onclick=async()=>{if(!confirm('Remove this optional analysis profile and its entered values?'))return;try{const out=await gas('apiRemoveRecordAnalysisProfile',record.RecordID,b.dataset.removeAnalysis);document.getElementById('relatedBody').innerHTML=analysisProfilesHtml(out);bindAnalysisControls(record,out);toast('Analysis profile removed.')}catch(e){toast(e.message,true)}});
+      const add=document.getElementById('addAnalysisProfile');if(add)add.onclick=async()=>{const id=document.getElementById('analysisProfileToAdd').value;if(!id)return;try{const out=await gas('apiAddRecordAnalysisProfile',record.RecordID,id);document.getElementById('relatedBody').innerHTML=analysisProfilesHtml(out);bindAnalysisControls(record,out);toast('Analysis profile added.')}catch(e){toast(e.message,true)}};
+    }
+
+    function analysisFieldInput(fieldDef,value){
+      const id='af_'+fieldDef.FieldID,v=value||'',help=fieldDef.HelpText?`<small>${esc(fieldDef.HelpText)}</small>`:'';
+      if(fieldDef.FieldType==='textarea')return `<div class="field full"><label>${esc(fieldDef.Label)}</label><textarea id="${attr(id)}">${esc(v)}</textarea>${help}</div>`;
+      if(fieldDef.FieldType==='select')return `<div class="field"><label>${esc(fieldDef.Label)}</label>${selectHtml(id,(fieldDef.Options||[]),v,'Select')}</div>`;
+      if(fieldDef.FieldType==='number')return `<div class="field"><label>${esc(fieldDef.Label)}</label><input id="${attr(id)}" type="number" step="any" value="${attr(v)}">${fieldDef.Unit?`<small>Unit: ${esc(fieldDef.Unit)}</small>`:help}</div>`;
+      return `<div class="field"><label>${esc(fieldDef.Label)}</label><input id="${attr(id)}" value="${attr(v)}">${help}</div>`;
+    }
+    function analysisProfileForm(record,p){
+      const map=Object.fromEntries((p.Values||[]).map(v=>[String(v.FieldID),v.ValueText||'']));
+      modal(p.ProfileName,`<div class="form-grid"><div class="field full"><div class="legacy-note"><strong>Optional analytical tool.</strong> ${nl(p.Guidance||'Use only fields that improve the catalogue record.')}</div></div>${(p.Fields||[]).map(f=>analysisFieldInput(f,map[f.FieldID])).join('')}<div class="field full"><label>Reason for Edit <span style="color:var(--red)">*</span></label><textarea id="analysisEditReason" placeholder="Briefly explain what was added or changed." required></textarea></div></div>`,`<button class="button" data-close>Cancel</button><button id="saveAnalysis" class="button primary">Save analysis</button>`);
+      document.getElementById('saveAnalysis').onclick=async()=>{try{busy(true);const reason=document.getElementById('analysisEditReason').value.trim();if(!reason)throw new Error('Reason for Edit is required.');const values={};(p.Fields||[]).forEach(f=>values[f.FieldID]=document.getElementById('af_'+f.FieldID).value);await gas('apiSaveRecordAnalysis',record.RecordID,p.ProfileID,values,reason);closeModal();toast('Analysis saved.');openRecord(record.RecordID,false);}catch(e){toast(e.message,true);busy(false)}};
+    }
+
+    function editHistoryTable(rows){
+      if(!rows||!rows.length)return '<div class="empty">No web-app edit history has been recorded yet.</div>';
+      return `<div class="table-wrap"><table class="history-table"><thead><tr><th>Name</th><th>Date</th><th>Time</th><th>Comment</th></tr></thead><tbody>${rows.map(r=>{
+        const dt=parseCmsDateTime(r.EditedAt);
+        return `<tr><td data-label="Name">${esc(r.DisplayName||r.UserEmail||'')}</td><td data-label="Date">${esc(dt.date)}</td><td data-label="Time">${esc(dt.time)}</td><td data-label="Comment">${esc(r.Comment||r.Action||'')}</td></tr>`;
+      }).join('')}</tbody></table></div>`;
+    }
+
+    function parseCmsDateTime(value){
+      const d=new Date(value);
+      if(isNaN(d))return {date:String(value||''),time:''};
+      return {
+        date:d.toLocaleDateString('en-CA',{year:'numeric',month:'2-digit',day:'2-digit'}),
+        time:d.toLocaleTimeString('en-CA',{hour:'2-digit',minute:'2-digit'})
+      };
+    }
+
+    async function setupPage(){
+      App.view='setup';setNav('setup');closeMobileNav();loading();
+      try{
+        const d=await gas('apiGetAdminConfig');
+        App.adminConfig=d;
+        html(`<div class="eyebrow">Administration</div><div class="page-title"><div><h1>Setup & Customisation</h1><p>Configure your institution without editing code. Changes here are stored in the Settings, Users, Lists, and Analysis Profile sheets.</p></div></div><div class="help-callout"><strong>Designed for non-technical teams:</strong> start with Institution & branding, then Users, then controlled vocabularies. The spreadsheet remains available for advanced bulk editing.</div>
+        <div class="setup-section card"><div class="card-header"><h2>Institution & branding</h2></div><div class="card-body"><div class="form-grid">${d.settingsRows.filter(x=>!['SetupComplete'].includes(String(x.Setting))).map(x=>`<div class="field ${['PermanentExhibitAreas'].includes(x.Setting)?'full':''}"><label>${esc(x.Setting.replace(/([A-Z])/g,' $1').trim())}</label>${x.Setting==='PermanentExhibitAreas'?`<textarea data-setting="${attr(x.Setting)}">${esc(x.Value||'')}</textarea>`:`<input data-setting="${attr(x.Setting)}" value="${attr(x.Value||'')}">`}<small>${esc(x.Description||'')}</small></div>`).join('')}</div><div style="margin-top:14px"><button id="saveSetupSettings" class="button primary">Save institution settings</button></div></div></div>
+        <div class="setup-section card"><div class="card-header"><h2>Google Drive storage</h2></div><div class="card-body"><div class="form-grid"><div class="field"><label>Media root folder ID</label><input id="setupMediaFolder" value="${attr(d.storage.MEDIA_ROOT_FOLDER_ID||'')}"><small>Recommended: a folder in your institution’s Shared Drive.</small></div><div class="field"><label>Accession documents folder ID</label><input id="setupAccessionFolder" value="${attr(d.storage.ACCESSION_DOCS_FOLDER_ID||'')}"></div></div><button id="saveSetupStorage" class="button primary" style="margin-top:14px">Save storage settings</button></div></div>
+        <div class="setup-section card"><div class="card-header"><h2>Users & roles</h2><button id="addSetupUser" class="button small primary">+ Add user</button></div><div class="card-body"><div class="table-wrap"><table><thead><tr><th>Email</th><th>Name</th><th>Role</th><th>Active</th><th></th></tr></thead><tbody>${d.users.map(u=>`<tr><td>${esc(u.Email)}</td><td>${esc(u.DisplayName)}</td><td>${esc(u.Role)}</td><td>${u.Active?'Yes':'No'}</td><td><button class="button small" data-setup-user="${attr(u.Email)}">Edit</button></td></tr>`).join('')}</tbody></table></div></div></div>
+        <div class="setup-section card"><div class="card-header"><h2>Controlled vocabularies</h2></div><div class="card-body"><div class="field"><label>Vocabulary</label><select id="setupVocabulary"><option value="">Choose a list</option>${d.listNames.map(x=>`<option value="${attr(x)}">${esc(x)}</option>`).join('')}</select></div><div id="setupVocabularyBody" style="margin-top:12px" class="muted">Choose a vocabulary to view and edit terms.</div></div></div>
+        <div class="setup-section card"><div class="card-header"><h2>Analysis profiles</h2></div><div class="card-body"><p class="muted">Profiles are optional analytical tools. Turn them off, rename them, or change what makes them appear automatically.</p><div class="setup-list">${d.profiles.map(p=>`<div class="setup-row"><strong>${esc(p.ProfileName)}</strong> <span class="badge ${p.Active?'good':''}">${p.Active?'Active':'Inactive'}</span><div class="muted tiny">${esc(p.Description||'')}</div><div class="tiny">Trigger: ${esc(p.TriggerField||'Manual only')} ${p.TriggerValues?'→ '+esc(p.TriggerValues):''}</div><button class="button small" data-setup-profile="${attr(p.ProfileID)}" style="margin-top:8px">Edit profile</button> <button class="button small" data-setup-profile-fields="${attr(p.ProfileID)}" style="margin-top:8px">Manage fields</button></div>`).join('')}</div><p class="muted tiny" style="margin-top:12px">Use Manage fields for ordinary customisation. The Analysis_Fields sheet remains available for advanced bulk editing.</p></div></div>`);
+        setCurrentScreen({kind:'setup'});bindSetupPage(d);
+      }catch(e){error(e)}
+    }
+
+    function bindSetupPage(d){
+      document.getElementById('saveSetupSettings').onclick=async()=>{try{const payload={};document.querySelectorAll('[data-setting]').forEach(x=>payload[x.dataset.setting]=x.value);payload.SetupComplete='Yes';await gas('apiSaveSettingsAdmin',payload);toast('Institution settings saved.');initialize();}catch(e){toast(e.message,true)}};
+      document.getElementById('saveSetupStorage').onclick=async()=>{try{await gas('apiSaveStorageSettingsAdmin',{MEDIA_ROOT_FOLDER_ID:document.getElementById('setupMediaFolder').value.trim(),ACCESSION_DOCS_FOLDER_ID:document.getElementById('setupAccessionFolder').value.trim()});toast('Storage settings saved.')}catch(e){toast(e.message,true)}};
+      document.getElementById('addSetupUser').onclick=()=>setupUserForm(null);
+      document.querySelectorAll('[data-setup-user]').forEach(b=>b.onclick=()=>setupUserForm(d.users.find(x=>x.Email===b.dataset.setupUser)));
+      document.getElementById('setupVocabulary').onchange=()=>loadSetupVocabulary(document.getElementById('setupVocabulary').value);
+      document.querySelectorAll('[data-setup-profile]').forEach(b=>b.onclick=()=>setupProfileForm(d.profiles.find(x=>x.ProfileID===b.dataset.setupProfile)));
+      document.querySelectorAll('[data-setup-profile-fields]').forEach(b=>b.onclick=()=>setupProfileFields(d.profiles.find(x=>x.ProfileID===b.dataset.setupProfileFields)));
+    }
+    function setupUserForm(u){u=u||{Email:'',DisplayName:'',Role:'ReadOnly',Active:true,Notes:''};modal(u.Email?'Edit user':'Add user',`<div class="form-grid">${field(['AdminEmail','Email','text'],u.Email)}${field(['AdminDisplayName','Display name','text'],u.DisplayName)}${field(['AdminRole','Role','select',['Administrator','Curator','Collections','Volunteer','ReadOnly']],u.Role)}<div class="field"><label><input id="adminActive" style="width:auto" type="checkbox" ${u.Active?'checked':''}> Active</label></div>${field(['AdminNotes','Notes','textarea'],u.Notes||'')}</div>`,`<button class="button" data-close>Cancel</button><button id="saveSetupUser" class="button primary">Save user</button>`);document.getElementById('saveSetupUser').onclick=async()=>{try{busy(true);await gas('apiSaveUserAdmin',{Email:val('AdminEmail'),DisplayName:val('AdminDisplayName'),Role:val('AdminRole'),Active:document.getElementById('adminActive').checked,Notes:val('AdminNotes')});closeModal();toast('User saved.');setupPage()}catch(e){toast(e.message,true);busy(false)}}}
+    async function loadSetupVocabulary(name){const host=document.getElementById('setupVocabularyBody');if(!name){host.innerHTML='Choose a vocabulary.';return}host.innerHTML='Loading…';try{const rows=await gas('apiListVocabularyTermsAdmin',name);host.innerHTML=`<div style="display:flex;gap:8px;margin-bottom:10px"><input id="newVocabularyTerm" placeholder="New term"><button id="addVocabularyTerm" class="button small primary">Add term</button></div><div class="setup-list">${rows.map(r=>`<div class="setup-row" style="display:flex;justify-content:space-between;gap:12px"><span>${esc(r.Value)}</span><button class="button small" data-toggle-vocab="${attr(r.ListID)}" data-current="${r.Active?'1':'0'}">${r.Active?'Deactivate':'Activate'}</button></div>`).join('')}</div>`;document.getElementById('addVocabularyTerm').onclick=async()=>{const v=document.getElementById('newVocabularyTerm').value.trim();if(!v)return;try{await gas('apiAddVocabularyTermAdmin',name,v);await loadSetupVocabulary(name);toast('Term added.')}catch(e){toast(e.message,true)}};document.querySelectorAll('[data-toggle-vocab]').forEach(b=>b.onclick=async()=>{try{await gas('apiToggleVocabularyTermAdmin',b.dataset.toggleVocab,b.dataset.current!=='1');await loadSetupVocabulary(name)}catch(e){toast(e.message,true)}})}catch(e){host.innerHTML=`<span class="error-card">${esc(e.message)}</span>`}}
+    function setupProfileForm(p){modal('Edit analysis profile',`<div class="form-grid">${field(['ProfileName','Profile name','text'],p.ProfileName)}${field(['ProfileDescription','Description','textarea'],p.Description||'')}${field(['TriggerField','Automatic trigger','select',[{value:'',label:'Manual only'},{value:'CollectionArea',label:'Collection Area'},{value:'Classifications',label:'Classification'},{value:'ObjectTypeGenreForm',label:'Object Type'}]],p.TriggerField||'')}${field(['TriggerValues','Trigger values','text'],p.TriggerValues||'')}<div class="field"><label><input id="profileActive" style="width:auto" type="checkbox" ${p.Active?'checked':''}> Active</label></div>${field(['ProfileGuidance','Guidance for cataloguers','textarea'],p.Guidance||'')}</div>`,`<button class="button" data-close>Cancel</button><button id="saveSetupProfile" class="button primary">Save profile</button>`);document.getElementById('saveSetupProfile').onclick=async()=>{try{busy(true);await gas('apiSaveAnalysisProfileAdmin',{ProfileID:p.ProfileID,ProfileName:val('ProfileName'),Description:val('ProfileDescription'),TriggerField:val('TriggerField'),TriggerValues:val('TriggerValues'),Active:document.getElementById('profileActive').checked,Guidance:val('ProfileGuidance')});closeModal();toast('Profile saved.');setupPage()}catch(e){toast(e.message,true);busy(false)}}}
+
+    async function setupProfileFields(profile){
+      if(!profile)return;
+      try{
+        const rows=await gas('apiListAnalysisFieldsAdmin',profile.ProfileID);
+        modal(profile.ProfileName+' — fields',`<div class="field full"><div class="legacy-note"><strong>Keep specialist fields small and useful.</strong> These fields appear only inside this optional analysis profile. Core catalogue fields remain separate.</div></div><div style="margin:12px 0"><button id="addAnalysisField" class="button small primary">+ Add field</button></div><div class="setup-list">${rows.length?rows.map(f=>`<div class="setup-row"><strong>${esc(f.Label)}</strong> <span class="badge ${f.Active?'good':''}">${f.Active?'Active':'Inactive'}</span><div class="tiny muted">${esc(f.FieldType)}${f.OptionsListName?' · list: '+esc(f.OptionsListName):''}${f.Unit?' · '+esc(f.Unit):''}</div>${f.HelpText?`<div class="tiny">${esc(f.HelpText)}</div>`:''}<button class="button small" data-edit-analysis-field="${attr(f.FieldID)}" style="margin-top:7px">Edit field</button></div>`).join(''):'<div class="empty">No fields in this profile yet.</div>'}</div>`,`<button class="button" data-close>Close</button>`);
+        document.getElementById('addAnalysisField').onclick=()=>setupAnalysisFieldForm(profile,null);
+        document.querySelectorAll('[data-edit-analysis-field]').forEach(b=>b.onclick=()=>setupAnalysisFieldForm(profile,rows.find(x=>String(x.FieldID)===String(b.dataset.editAnalysisField))));
+      }catch(e){toast(e.message,true)}
+    }
+    function setupAnalysisFieldForm(profile,f){
+      f=f||{FieldID:'',FieldName:'',Label:'',FieldType:'text',OptionsListName:'',Unit:'',HelpText:'',Active:true,SortOrder:''};
+      const listNames=(App.adminConfig&&App.adminConfig.listNames)||[];
+      const options=[{value:'',label:'No controlled list'}].concat(listNames.map(x=>({value:x,label:x})));
+      modal((f.FieldID?'Edit':'Add')+' analysis field',`<div class="form-grid">${field(['AnalysisFieldLabel','Field label','text'],f.Label||'')}${field(['AnalysisFieldName','Internal field name','text'],f.FieldName||'')} ${field(['AnalysisFieldType','Field type','select',[{value:'text',label:'Short text'},{value:'textarea',label:'Long text'},{value:'number',label:'Number'},{value:'select',label:'Controlled dropdown'}]],f.FieldType||'text')}${field(['AnalysisFieldOptions','Controlled list','select',options],f.OptionsListName||'')}${field(['AnalysisFieldUnit','Unit (optional)','text'],f.Unit||'')}${field(['AnalysisFieldSort','Order','number'],f.SortOrder||'')} ${field(['AnalysisFieldHelp','Help text for cataloguers','textarea'],f.HelpText||'')}<div class="field"><label><input id="analysisFieldActive" style="width:auto" type="checkbox" ${f.Active?'checked':''}> Active</label></div></div>`,`<button class="button" data-close>Cancel</button><button id="saveAnalysisFieldAdmin" class="button primary">Save field</button>`);
+      const syncOptions=()=>{const isSelect=val('AnalysisFieldType')==='select';document.getElementById('f_AnalysisFieldOptions').closest('.field').style.display=isSelect?'':'none'};
+      document.getElementById('f_AnalysisFieldType').onchange=syncOptions;syncOptions();
+      document.getElementById('saveAnalysisFieldAdmin').onclick=async()=>{try{busy(true);await gas('apiSaveAnalysisFieldAdmin',{FieldID:f.FieldID||'',ProfileID:profile.ProfileID,Label:val('AnalysisFieldLabel'),FieldName:val('AnalysisFieldName'),FieldType:val('AnalysisFieldType'),OptionsListName:val('AnalysisFieldOptions'),Unit:val('AnalysisFieldUnit'),SortOrder:val('AnalysisFieldSort'),HelpText:val('AnalysisFieldHelp'),Active:document.getElementById('analysisFieldActive').checked});closeModal();toast('Analysis field saved.');setupProfileFields(profile)}catch(e){toast(e.message,true);busy(false)}};
+    }
+
+    async function locations(){
+      loading();
+      try{
+        App.locations=await gas('apiListLocations');
+        const by={};App.locations.forEach(x=>(by[String(x.ParentLocationID||'')]??=[]).push(x));
+        const tree=p=>(by[p]||[]).map(x=>`<li><div class="location-node"><strong>${esc(x.LocationName||x.LocationID)}</strong><span class="location-code">${esc(x.ShortCode||x.LocationID)}</span><span class="badge">${esc(x.LocationType||'')}</span></div>${by[String(x.LocationID)]?`<ul>${tree(String(x.LocationID))}</ul>`:''}</li>`).join('');
+        html(`<div class="eyebrow">Collection care</div><div class="page-title"><div><h1>Locations</h1><p>Authoritative storage and display hierarchy.</p></div>${App.user.permissions.includes('locations')?'<button id="newLoc" class="button primary">+ New location</button>':''}</div><div class="card"><div class="card-body location-tree"><ul>${tree('')||'<li class="empty">No locations created yet.</li>'}</ul></div></div>`);
+        setCurrentScreen({kind:'locations'});
+        if(document.getElementById('newLoc'))document.getElementById('newLoc').onclick=locationForm;
+      }catch(e){error(e)}
+    }
+
+    function recordForm(data={record:{},related:{measurements:[]}}){
+      const r=data.record||{}, isNew=!r.RecordID;
+      const hasStructuredDate=!!(r.DateStart||r.DateEnd||r.DateQualifier);
+
+      modal(isNew?'New collection record':'Edit collection record',
+        `<div class="form-grid">
+          ${field(['PreferredTitle','Preferred title','text'],r.PreferredTitle||'')}
+          ${field(['RecordType','Record type','select',App.enums.recordType],r.RecordType||'')}
+          ${field(['CatalogueStatus','Catalogue status','select',App.enums.catalogueStatus],r.CatalogueStatus||'')}
+          ${field(['CollectionArea','Collection area','select',App.enums.collectionArea],r.CollectionArea||'')}
+          ${datalistField('ObjectTypeGenreForm','Object type / genre / form',App.enums.objectType,r.ObjectTypeGenreForm||'','Type a term or choose a suggestion. You can still enter a local term.')}
+          ${datalistField('CultureText','Culture / community',App.enums.culture,r.CultureText||'','Use community-preferred terminology where applicable.')}
+          ${datalistField('PeriodText','Period',App.enums.period,r.PeriodText||'','Broad period or local chronological term.')}
+          ${datalistField('SchoolStyleText','School / style',App.enums.schoolStyle,r.SchoolStyleText||'','Optional; mainly useful for art and design collections.')}
+          ${field(['CreditLine','Credit line','text'],r.CreditLine||'')}
+          ${field(['IdentificationCertainty','Identification certainty','select',App.enums.identificationCertainty],r.IdentificationCertainty||'')}
+          <div class="field full">${multiPicker('Classifications','Classifications',App.enums.classification,splitTerms(r.Classifications),'Classification')}${!r.Classifications&&r.ObjectClass?`<div class="legacy-note">Legacy classification: <strong>${esc(r.ObjectClass)}</strong>. Choose one or more standard classifications above when reviewing this record.</div>`:''}</div>
+
+          <div class="field full">
+            <label>Date / period</label>
+            <div class="date-row">
+              <div>${selectHtml('f_DateQualifier',App.enums.dateQualifier,r.DateQualifier||'','No qualifier')}</div>
+              <div><input id="f_DateStart" value="${attr(r.DateStart||'')}" placeholder="YYYY, MM/YYYY, or DD/MM/YYYY"><small>Use a negative year for BC, e.g. -200 or 03/-200.</small></div>
+              <div id="dateEndWrap"><input id="f_DateEnd" value="${attr(r.DateEnd||'')}" placeholder="End date"><small>Shown only for Between.</small></div>
+            </div>
+            ${!hasStructuredDate&&r.DateDisplay?`<div class="legacy-note">Legacy date: <strong>${esc(r.DateDisplay)}</strong>. It will remain unchanged unless you enter a structured date above.</div>`:''}
+          </div>
+
+          ${(r.MakerCreatorText||r.PlaceOfOriginText)?`<div class="field full"><div class="legacy-note"><strong>Legacy relationship data retained:</strong>${r.MakerCreatorText?` Maker / creator: ${esc(r.MakerCreatorText)}.`:''}${r.PlaceOfOriginText?` Place: ${esc(r.PlaceOfOriginText)}.`:''} Use the People & Organisations and Places tabs on the record page to create structured relationships.</div></div>`:''}
+
+          <div class="field full">${multiPicker('Materials','Materials',App.enums.material,splitTerms(r.Materials),'Material')}</div>
+          <div class="field full">${multiPicker('Techniques','Techniques',App.enums.technique,splitTerms(r.Techniques),'Technique')}${!r.Materials&&!r.Techniques&&r.MaterialsTechniquesText?`<div class="legacy-note">Legacy materials / techniques: <strong>${esc(r.MaterialsTechniquesText)}</strong>. Standardise this into the separate Materials and Techniques fields during review.</div>`:''}</div>
+
+          <div class="field full">
+            <label>Measurements</label>
+            ${measurementEditor(data.related&&data.related.measurements?data.related.measurements:[],r.MeasurementsDisplay||'')}
+          </div>
+
+          ${field(['Description','Description','textarea'],r.Description||'')}
+          ${field(['CuratorialComments','Curatorial / research comments','textarea'],r.CuratorialComments||'')}
+          ${field(['ProvenanceCustodialHistory','Provenance / custodial history','textarea'],r.ProvenanceCustodialHistory||'')}
+          ${field(['DocumentationStatus','Documentation status','select',App.enums.documentationStatus],r.DocumentationStatus||'')}
+          ${field(['PhotoStatus','Photo status','select',App.enums.photoStatus],r.PhotoStatus||'')}
+          ${field(['ReviewPriority','Review priority','select',App.enums.reviewPriority],r.ReviewPriority||'')}
+          ${field(['PublicAccessStatus','Public access','select',App.enums.publicAccessStatus],r.PublicAccessStatus||'')}
+          ${field(['Notes','Notes','textarea'],r.Notes||'')}
+          ${!isNew?'<div class="field full"><label for="f_EditReason">Reason for Edit <span style="color:var(--red)">*</span></label><textarea id="f_EditReason" placeholder="Briefly explain what was changed and why. This becomes the Comment in the edit history." required></textarea><small>Required for every edit made through the web app.</small></div>':''}
+        </div>`,
+        `<button class="button" data-close>Cancel</button><button class="button primary" id="saveRecord">${isNew?'Create record':'Save changes'}</button>`);
+
+      bindDateUI();
+      bindMultiPickers();
+      bindMeasurementButtons();
+
+
+      document.getElementById('saveRecord').onclick=async()=>{
+        try{
+          busy(true);
+          const payload={
+            PreferredTitle:val('PreferredTitle'),RecordType:val('RecordType'),CatalogueStatus:val('CatalogueStatus'),CollectionArea:val('CollectionArea'),
+            ObjectTypeGenreForm:val('ObjectTypeGenreForm'),CultureText:val('CultureText'),PeriodText:val('PeriodText'),SchoolStyleText:val('SchoolStyleText'),CreditLine:val('CreditLine'),IdentificationCertainty:val('IdentificationCertainty'),Classifications:getMulti('Classifications'),
+            Materials:getMulti('Materials'),Techniques:getMulti('Techniques'),
+            Description:val('Description'),CuratorialComments:val('CuratorialComments'),ProvenanceCustodialHistory:val('ProvenanceCustodialHistory'),
+            DocumentationStatus:val('DocumentationStatus'),PhotoStatus:val('PhotoStatus'),ReviewPriority:val('ReviewPriority'),
+            PublicAccessStatus:val('PublicAccessStatus'),Notes:val('Notes')
+          };
+
+          const dateStart=document.getElementById('f_DateStart').value.trim();
+          const dateQualifier=document.getElementById('f_DateQualifier').value;
+          const dateEnd=document.getElementById('f_DateEnd').value.trim();
+          if(dateStart || hasStructuredDate || !r.DateDisplay){
+            payload.DateQualifier=dateQualifier;
+            payload.DateStart=dateStart;
+            payload.DateEnd=dateEnd;
+          }
+
+          const measurements=getMeasurements();
+          const editReason=isNew?'':document.getElementById('f_EditReason').value.trim();
+          if(!isNew&&!editReason)throw new Error('Reason for Edit is required.');
+          const result=isNew
+            ? await gas('apiCreateRecord',payload,measurements)
+            : await gas('apiSaveRecord',r.RecordID,payload,measurements,editReason);
+
+          closeModal();toast(isNew?'Record created.':'Record saved.');openRecord(result.record.RecordID,false);
+        }catch(e){toast(e.message,true);busy(false)}
+      };
+    }
+
+    function bindDateUI(){
+      const q=document.getElementById('f_DateQualifier'),end=document.getElementById('dateEndWrap');
+      const update=()=>end.style.display=q.value==='Between'?'block':'none';
+      q.onchange=update;update();
+    }
+
+    function multiPicker(name,label,options,selected,listName){
+      selected=selected||[];
+      const checked=new Set(selected);
+      return `<label>${esc(label)}</label><details class="multi-picker" data-multi="${attr(name)}"><summary><span class="multi-summary">Select ${esc(label.toLowerCase())}</span></summary><div class="multi-menu">
+        <div class="multi-options">${(options||[]).map(o=>`<label class="multi-option"><input type="checkbox" value="${attr(o)}" ${checked.has(o)?'checked':''}> <span>${esc(o)}</span></label>`).join('')}</div>
+        ${App.user.permissions.includes('vocabulary')?`<button type="button" class="button small multi-add" data-add-list="${attr(listName)}" data-target-multi="${attr(name)}">+ Add new term</button>`:''}
+      </div></details>`;
+    }
+
+    function bindMultiPickers(){
+      document.querySelectorAll('details.multi-picker').forEach(d=>{
+        d.querySelectorAll('input[type="checkbox"]').forEach(c=>c.onchange=()=>updateMultiSummary(d.dataset.multi));
+        updateMultiSummary(d.dataset.multi);
+      });
+      document.querySelectorAll('[data-add-list]').forEach(b=>b.onclick=async e=>{
+        e.preventDefault();e.stopPropagation();
+        const value=prompt('New '+b.dataset.addList+' term:');
+        if(!value)return;
+        try{
+          const result=await gas('apiAddVocabularyTerm',b.dataset.addList,value);
+          const name=b.dataset.targetMulti,details=document.querySelector(`details[data-multi="${name}"]`),container=details.querySelector('.multi-options');
+          if(![...container.querySelectorAll('input')].some(x=>x.value===result.value)){
+            const label=document.createElement('label');label.className='multi-option';
+            label.innerHTML=`<input type="checkbox" value="${attr(result.value)}" checked> <span>${esc(result.value)}</span>`;
+            container.appendChild(label);label.querySelector('input').onchange=()=>updateMultiSummary(name);
+          }
+          updateMultiSummary(name);refreshEnumFromResult(b.dataset.addList,result.values);
+        }catch(err){toast(err.message,true)}
+      });
+    }
+
+    function getMulti(name){return [...document.querySelectorAll(`details[data-multi="${name}"] input[type="checkbox"]:checked`)].map(x=>x.value)}
+    function updateMultiSummary(name){
+      const d=document.querySelector(`details[data-multi="${name}"]`);if(!d)return;
+      const values=[...d.querySelectorAll('input[type="checkbox"]:checked')].map(x=>x.value);
+      d.querySelector('.multi-summary').textContent=values.length?values.join(', '):'None selected';
+    }
+
+    async function addVocabularyTerm(listName,selectId){
+      const value=prompt('New '+listName+':');if(!value)return;
+      try{
+        const result=await gas('apiAddVocabularyTerm',listName,value);
+        const select=document.getElementById(selectId);
+        if(![...select.options].some(o=>o.value===result.value)){
+          const option=document.createElement('option');option.value=result.value;option.textContent=result.value;select.appendChild(option);
+        }
+        select.value=result.value;refreshEnumFromResult(listName,result.values);
+      }catch(e){toast(e.message,true)}
+    }
+
+    function refreshEnumFromResult(listName,values){
+      const map={Place:'place',Classification:'classification',Material:'material',Technique:'technique'};
+      if(map[listName])App.enums[map[listName]]=values;
+    }
+
+    function measurementEditor(rows,legacy){
+      const by={};(rows||[]).forEach(r=>by[r.MeasurementType]=r);
+      const types=[['Weight','g'],['Length','mm'],['Width','mm'],['Thickness','mm'],['Diameter','mm']];
+      return `<div class="measure-box"><div class="measurement-buttons">${types.map(([t,u])=>`<button type="button" class="button small add-measurement" data-type="${t}" data-unit="${u}">+ ${t.toLowerCase()} (${u})</button>`).join('')}</div><div id="measurementRows">${types.filter(([t])=>by[t]).map(([t,u])=>measurementRow(t,u,by[t].Value)).join('')}</div>${(!rows||!rows.length)&&legacy?`<div class="legacy-note">Legacy measurements: <strong>${esc(legacy)}</strong>. Add structured measurements above to replace the legacy display.</div>`:''}</div>`;
+    }
+
+    function measurementRow(type,unit,value=''){return `<div class="measurement-row" data-measure="${attr(type)}"><strong>${esc(type)}</strong><input type="number" min="0" step="any" value="${attr(value)}" placeholder="0"><span>${esc(unit)}</span><button type="button" class="remove-measurement" title="Remove">×</button></div>`}
+    function bindMeasurementButtons(){
+      document.querySelectorAll('.add-measurement').forEach(b=>b.onclick=()=>{
+        if(document.querySelector(`[data-measure="${b.dataset.type}"]`))return toast(b.dataset.type+' is already present.',true);
+        document.getElementById('measurementRows').insertAdjacentHTML('beforeend',measurementRow(b.dataset.type,b.dataset.unit,''));
+        bindRemoveMeasurement();
+      });
+      bindRemoveMeasurement();
+    }
+    function bindRemoveMeasurement(){document.querySelectorAll('.remove-measurement').forEach(b=>b.onclick=()=>b.closest('.measurement-row').remove())}
+    function getMeasurements(){
+      return [...document.querySelectorAll('.measurement-row')].map(row=>{
+        const type=row.dataset.measure,unit=type==='Weight'?'g':'mm',value=row.querySelector('input').value;
+        if(value==='')return null;
+        return {MeasurementType:type,Value:Number(value),Unit:unit,Notes:''};
+      }).filter(Boolean);
+    }
+    function measurementDisplay(rows,legacy){
+      if(rows&&rows.length)return rows.map(r=>`${r.MeasurementType}: ${r.Value} ${r.Unit}`).join('; ');
+      return legacy||'';
+    }
+
+
+    async function accessionsPage(controls=''){
+      loading();
+      try{
+        const rows=await gas('apiListAccessions',{}); App.accessions=rows;
+        html(`<div class="eyebrow">Collection management</div><div class="page-title"><div><h1>Accessions</h1><p>Acquisition events and the collection records associated with them.</p></div>${App.user.permissions.includes('accessions')?'<button id="newAccession" class="button primary">+ New accession</button>':''}</div>${controls}<div class="filter-grid"><div class="field span-2"><label>Search accessions</label><input id="accessionSearch" placeholder="Accession number, source, summary…"></div></div><div id="accessionList">${accessionCards(rows)}</div>`);
+        setCurrentScreen({kind:'accessions'});
+        bindCollectionSubnav('accessions');
+        if(document.getElementById('newAccession'))document.getElementById('newAccession').onclick=()=>accessionForm();
+        document.getElementById('accessionSearch').oninput=e=>{const q=e.target.value.toLowerCase();document.getElementById('accessionList').innerHTML=accessionCards(rows.filter(r=>JSON.stringify(r).toLowerCase().includes(q)));bindAccessionCards();};
+        bindAccessionCards();
+      }catch(e){error(e)}
+    }
+
+    function accessionCards(rows){return `<div class="entity-grid">${rows.length?rows.map(a=>`<button class="entity-card" data-accession="${attr(a.AccessionID)}"><span class="entity-title">${esc(a.AccessionNumber||'Unnumbered accession')}</span><span>${esc(a.AccessionDate||'')} · ${esc(a.AcquisitionMethod||'')}</span><span class="muted">${esc(a.DonorSourceDisplay||(a.SourceParty&&a.SourceParty.PreferredName)||'Source not recorded')}</span><strong>${esc(a.ItemCount||0)} linked record${Number(a.ItemCount)===1?'':'s'}</strong></button>`).join(''):'<div class="empty">No accessions recorded yet.</div>'}</div>`}
+    function bindAccessionCards(){document.querySelectorAll('[data-accession]').forEach(b=>b.onclick=()=>openAccession(b.dataset.accession))}
+
+    async function openAccession(id,remember=true){
+      if(remember)pushCurrentScreen();
+      loading();
+      try{
+        const d=await gas('apiGetAccession',id),a=d.accession;
+        setCurrentScreen({kind:'accession',id});
+        html(`<div class="eyebrow">Accession</div><div class="page-title"><div><button class="button small" id="backAccessions">← Back</button><h1 style="margin-top:12px">${esc(a.AccessionNumber||'Unnumbered accession')}</h1><p>${esc(a.AccessionID)}</p></div>${App.user.permissions.includes('accessions')?'<button id="editAccession" class="button">Edit accession</button>':''}</div>
+          <div class="detail-grid"><div>
+            <div class="card"><div class="card-header"><h2>Acquisition</h2></div><div class="card-body"><dl class="definition-grid">
+              ${def('Accession date',a.AccessionDate)}${def('Method',a.AcquisitionMethod)}${def('Source',d.sourceParty?d.sourceParty.PreferredName:a.DonorSourceDisplay)}${def('Summary',a.AccessionSummary)}${def('Ownership',a.OwnershipStatus)}${def('Legal documents',a.LegalDocumentStatus)}
+            </dl>${a.LegalDocumentURL?`<p><a href="${attr(a.LegalDocumentURL)}" target="_blank" rel="noopener">Open accession documentation PDF</a></p>`:''}</div></div>
+            <div class="card"><div class="card-header"><h2>Linked collection records</h2></div><div class="card-body related-list">${d.records.length?d.records.map(r=>`<button class="record-link" data-record="${attr(r.RecordID)}">${esc(r.PreferredTitle||r.RecordID)}</button>`).join('<hr>'):'<div class="empty">No records linked yet.</div>'}</div></div>
+          </div><div>${textCard('Notes',a.Notes)}</div></div>`);
+
+        document.getElementById('backAccessions').onclick=goBack;
+        if(document.getElementById('editAccession'))document.getElementById('editAccession').onclick=()=>accessionForm(d);
+        document.querySelectorAll('[data-record]').forEach(b=>b.onclick=()=>openRecord(b.dataset.record));
+      }catch(e){error(e)}
+    }
+
+    async function accessionForm(existingData=null,recordId=null){
+      if(!App.people.length)App.people=await gas('apiListPeopleOrgs',{});
+      const a=existingData&&existingData.accession?existingData.accession:{};
+      const isEdit=!!a.AccessionID;
+
+      modal(isEdit?'Edit accession':(recordId?'Accession this record':'New accession'),
+        `<div class="form-grid">
+          ${field(['AccessionNumber','Accession number','text'],a.AccessionNumber||'')}
+          ${field(['AccessionDate','Accession date','text'],a.AccessionDate||'')}
+          ${field(['AcquisitionMethod','Acquisition method','select',App.enums.acquisitionMethod],a.AcquisitionMethod||'')}
+          ${field(['SourcePartyID','Source person / organisation','select',[{value:'',label:'Not linked'}].concat(App.people.map(p=>({value:p.PartyID,label:p.PreferredName})))],a.SourcePartyID||'')}
+          ${field(['DonorSourceDisplay','Source display text','text'],a.DonorSourceDisplay||'')}
+          ${field(['AccessionSummary','Summary','textarea'],a.AccessionSummary||'')}
+          ${field(['LegalDocumentStatus','Legal document status','select',App.enums.legalDocumentStatus],a.LegalDocumentStatus||'Not assessed')}
+          ${field(['OwnershipStatus','Ownership status','select',App.enums.ownershipStatus],a.OwnershipStatus||'Unknown')}
+          <div class="field full"><label>Accession documentation PDF</label><input id="accessionDocumentFile" type="file" accept="application/pdf,.pdf"><small>${a.LegalDocumentURL?'A PDF is already linked. Uploading another will replace the primary document link.':'Optional. Saved to the configured accession-document Shared Drive folder.'}</small></div>
+          ${field(['DocumentationFolderURL','Documentation folder URL','text'],a.DocumentationFolderURL||'')}
+          ${field(['RestrictionsConditions','Restrictions / conditions','textarea'],a.RestrictionsConditions||'')}
+          ${field(['Notes','Notes','textarea'],a.Notes||'')}
+        </div>`,
+        `<button class="button" data-close>Cancel</button>${!isEdit&&recordId?'<button id="linkExistingAccession" class="button">Link existing accession</button>':''}<button id="saveAccession" class="button primary">${isEdit?'Save accession':recordId?'Create & assign accession':'Create accession'}</button>`);
+
+      if(document.getElementById('linkExistingAccession'))document.getElementById('linkExistingAccession').onclick=()=>linkExistingAccessionForm(recordId);
+
+      document.getElementById('saveAccession').onclick=async()=>{
+        try{
+          busy(true);
+          const payload={
+            AccessionNumber:val('AccessionNumber'),AccessionDate:val('AccessionDate'),AcquisitionMethod:val('AcquisitionMethod'),
+            SourcePartyID:val('SourcePartyID'),DonorSourceDisplay:val('DonorSourceDisplay'),AccessionSummary:val('AccessionSummary'),
+            LegalDocumentStatus:val('LegalDocumentStatus'),OwnershipStatus:val('OwnershipStatus'),
+            DocumentationFolderURL:val('DocumentationFolderURL'),RestrictionsConditions:val('RestrictionsConditions'),Notes:val('Notes')
+          };
+          const file=document.getElementById('accessionDocumentFile').files[0];
+          let doc=null;
+          if(file){
+            if(file.size>12*1024*1024)throw new Error('Accession PDF must be approximately 12 MB or smaller.');
+            doc={fileName:file.name,mimeType:file.type||'application/pdf',base64:await toBase64(file)};
+          }
+
+          let out;
+          if(isEdit)out=await gas('apiSaveAccession',a.AccessionID,payload,doc);
+          else if(recordId)out=await gas('apiCreateAccessionForRecord',recordId,payload,doc);
+          else out=await gas('apiCreateAccession',payload,doc);
+
+          closeModal();toast(isEdit?'Accession saved.':'Accession created.');
+          if(recordId)return openRecord(recordId,false);
+          return openAccession(isEdit?a.AccessionID:out.accession.AccessionID,false);
+        }catch(e){toast(e.message,true);busy(false)}
+      };
+    }
+
+    function recordAccessionForm(d){
+      if(d.record.AccessionID&&d.accession)return accessionForm({accession:d.accession},d.record.RecordID);
+      return accessionForm(null,d.record.RecordID);
+    }
+
+    async function linkExistingAccessionForm(recordId){
+      const accessions=await gas('apiListAccessions',{});
+      modal('Link existing accession',
+        `<div class="form-grid"><div class="field full"><label>Existing accession</label>${selectHtml('f_assignAccession',accessions.map(a=>({value:a.AccessionID,label:(a.AccessionNumber||'Unnumbered')+' — '+(a.DonorSourceDisplay||a.AccessionID)})),'','Choose accession')}</div></div>`,
+        `<button class="button" data-close>Cancel</button><button id="saveAccessionLink" class="button primary">Link accession</button>`);
+      document.getElementById('saveAccessionLink').onclick=async()=>{
+        try{
+          busy(true);
+          const id=document.getElementById('f_assignAccession').value;
+          if(!id)throw new Error('Choose an accession.');
+          const out=await gas('apiAssignRecordToAccession',recordId,id);
+          closeModal();toast('Accession linked.');openRecord(out.record.RecordID,false);
+        }catch(e){toast(e.message,true);busy(false)}
+      };
+    }
+
+    function authoritySubnav(mode){return `<div class="subnav authority-subnav"><button class="${mode==='people'?'active':''}" data-authority-mode="people">People &amp; Organisations</button><button class="${mode==='places'?'active':''}" data-authority-mode="places">Places</button><button class="${mode==='subjects'?'active':''}" data-authority-mode="subjects">Subjects</button><button class="${mode==='references'?'active':''}" data-authority-mode="references">Bibliography</button></div>`}
+    function bindAuthoritySubnav(){document.querySelectorAll('[data-authority-mode]').forEach(b=>b.onclick=()=>authoritiesPage(b.dataset.authorityMode))}
+    function authoritiesPage(mode='people'){App.authorityMode=mode;if(mode==='places')return placesPage();if(mode==='subjects')return subjectsPage();if(mode==='references')return referencesPage();return peoplePage();}
+
+    async function peoplePage(){
+      App.view='authorities';setNav('authorities');closeMobileNav();loading();
+      try{const rows=await gas('apiListPeopleOrgs',{});App.people=rows;html(`<div class="eyebrow">Authority control</div><div class="page-title"><div><h1>People &amp; Organisations</h1><p>Standard authority records for creators, donors, owners, subjects, organisations, and other associated parties.</p></div>${App.user.permissions.includes('authorities')?'<button id="newParty" class="button primary">+ New authority</button>':''}</div>${authoritySubnav('people')}<div class="filter-grid"><div class="field span-2"><label>Search</label><input id="partySearch" placeholder="Name, occupation, nationality/community, place…"></div></div><div id="partyList">${partyCards(rows)}</div>`);if(document.getElementById('newParty'))document.getElementById('newParty').onclick=()=>partyForm();document.getElementById('partySearch').oninput=e=>{const q=e.target.value.toLowerCase();document.getElementById('partyList').innerHTML=partyCards(rows.filter(r=>JSON.stringify(r).toLowerCase().includes(q)));bindPartyCards();};setCurrentScreen({kind:'authorities',mode:'people'});bindAuthoritySubnav();bindPartyCards();}catch(e){error(e)}
+    }
+    function partyCards(rows){return `<div class="entity-grid">${rows.length?rows.map(p=>`<button class="entity-card" data-party="${attr(p.PartyID)}"><span class="entity-title">${esc(p.PreferredName||'Unnamed authority')}</span><span>${esc(p.PartyType||'')}</span><span class="muted">${esc([p.OccupationsTypes,p.NationalityCommunity,p.PlaceAssociated].filter(Boolean).join(' · '))}</span><strong>${esc(p.LinkedRecordCount||0)} linked record${Number(p.LinkedRecordCount)===1?'':'s'}</strong></button>`).join(''):'<div class="empty">No authority records yet.</div>'}</div>`}
+    function bindPartyCards(){document.querySelectorAll('[data-party]').forEach(b=>b.onclick=()=>openParty(b.dataset.party))}
+    async function openParty(id,remember=true){if(remember)pushCurrentScreen();loading();try{const d=await gas('apiGetParty',id),p=d.party;html(`<div class="eyebrow">Authority record</div><div class="page-title"><div><button id="backPeople" class="button small">← Back</button><h1 style="margin-top:12px">${esc(p.PreferredName)}</h1><p>${esc(p.PartyType||'')}</p></div>${App.user.permissions.includes('authorities')?'<button id="editParty" class="button">Edit authority</button>':''}</div><div class="detail-grid"><div><div class="card"><div class="card-body"><dl class="definition-grid">${def('Sort name',p.SortName)}${def('Alternate names',p.AlternateNames)}${def('Dates',([p.DateOfBirthOrFoundation,p.DateOfDeathOrDissolution].filter(Boolean).join('–')))}${def('Nationality / community',p.NationalityCommunity)}${def('Occupations / types',p.OccupationsTypes)}${def('Addresses',p.Addresses)}${def('Associated place (legacy)',p.PlaceAssociated)}${def('External identifiers',p.ExternalIdentifiers)}${def('External authority',p.ExternalAuthorityURL)}</dl></div></div>${textCard('Biography / organisational history',p.BiographicalNote)}${textCard('Internal notes',p.InternalNotes)}</div><div class="card"><div class="card-header"><h2>Linked records</h2></div><div class="card-body related-list">${d.links.length?d.links.map(l=>`<div class="related-item"><button class="record-link" data-record="${attr(l.RecordID)}">${esc(l.Record?l.Record.PreferredTitle:l.RecordID)}</button><div>${esc(l.RoleType||'')} · ${esc(l.AttributionStatus||'')}</div></div>`).join(''):'<div class="empty">No linked records.</div>'}</div></div></div>`);setCurrentScreen({kind:'party',id});document.getElementById('backPeople').onclick=goBack;if(document.getElementById('editParty'))document.getElementById('editParty').onclick=()=>partyForm(p);document.querySelectorAll('[data-record]').forEach(b=>b.onclick=()=>openRecord(b.dataset.record));}catch(e){error(e)}}
+    function partyForm(p={}){modal(p.PartyID?'Edit authority':'New authority',`<div class="form-grid">${field(['PartyType','Type','select',App.enums.partyType],p.PartyType||'Person')}${field(['PreferredName','Preferred name','text'],p.PreferredName||'')}${field(['SortName','Sort name','text'],p.SortName||'')}${field(['AlternateNames','Alternate names','text'],p.AlternateNames||'')}${field(['DateOfBirthOrFoundation','Birth / foundation date','text'],p.DateOfBirthOrFoundation||'')}${field(['DateOfDeathOrDissolution','Death / dissolution date','text'],p.DateOfDeathOrDissolution||'')}${field(['NationalityCommunity','Nationality / community association','text'],p.NationalityCommunity||'')}${field(['OccupationsTypes','Occupations / organisation types','text'],p.OccupationsTypes||'')}${field(['Addresses','Addresses','textarea'],p.Addresses||'')}${field(['PlaceAssociated','Associated place (legacy)','text'],p.PlaceAssociated||'')}${field(['ExternalAuthorityURL','External authority URL','text'],p.ExternalAuthorityURL||'')}${field(['ExternalIdentifiers','External identifiers','textarea'],p.ExternalIdentifiers||'')}${field(['BiographicalNote','Biography / organisational history','textarea'],p.BiographicalNote||'')}${field(['ContactDetailsInternal','Internal contact details','textarea'],p.ContactDetailsInternal||'')}${field(['InternalNotes','Internal notes','textarea'],p.InternalNotes||'')}</div>`,`<button class="button" data-close>Cancel</button><button id="saveParty" class="button primary">Save authority</button>`);document.getElementById('saveParty').onclick=async()=>{try{busy(true);const payload={PartyID:p.PartyID||'',PartyType:val('PartyType'),PreferredName:val('PreferredName'),SortName:val('SortName'),AlternateNames:val('AlternateNames'),DateOfBirthOrFoundation:val('DateOfBirthOrFoundation'),DateOfDeathOrDissolution:val('DateOfDeathOrDissolution'),NationalityCommunity:val('NationalityCommunity'),OccupationsTypes:val('OccupationsTypes'),Addresses:val('Addresses'),PlaceAssociated:val('PlaceAssociated'),ExternalAuthorityURL:val('ExternalAuthorityURL'),ExternalIdentifiers:val('ExternalIdentifiers'),BiographicalNote:val('BiographicalNote'),ContactDetailsInternal:val('ContactDetailsInternal'),InternalNotes:val('InternalNotes')};const d=await gas('apiSaveParty',payload);closeModal();toast('Authority saved.');App.people=[];openParty(d.party.PartyID,false);}catch(e){toast(e.message,true);busy(false)}};}
+
+    async function placesPage(){App.view='authorities';setNav('authorities');closeMobileNav();loading();try{const rows=await gas('apiListPlaces',{});App.places=rows;html(`<div class="eyebrow">Authority control</div><div class="page-title"><div><h1>Places</h1><p>Controlled geographic authorities for production, use, findspots, associations, and depicted places.</p></div>${App.user.permissions.includes('authorities')?'<button id="newPlaceAuthority" class="button primary">+ New place</button>':''}</div>${authoritySubnav('places')}<div class="filter-grid"><div class="field span-2"><label>Search</label><input id="placeSearch" placeholder="Preferred name, alternate name, country, type…"></div></div><div id="placeList">${placeCards(rows)}</div>`);setCurrentScreen({kind:'authorities',mode:'places'});bindAuthoritySubnav();if(document.getElementById('newPlaceAuthority'))document.getElementById('newPlaceAuthority').onclick=()=>placeForm();document.getElementById('placeSearch').oninput=e=>{const q=e.target.value.toLowerCase();document.getElementById('placeList').innerHTML=placeCards(rows.filter(r=>JSON.stringify(r).toLowerCase().includes(q)));bindPlaceCards();};bindPlaceCards();}catch(e){error(e)}}
+    function placeCards(rows){return `<div class="entity-grid">${rows.length?rows.map(p=>`<button class="entity-card" data-place="${attr(p.PlaceID)}"><span class="entity-title">${esc(p.PreferredName)}</span><span>${esc(p.PlaceType||'')} ${p.Country?'· '+esc(p.Country):''}</span><span class="muted">${esc(p.AlternateNames||'')}</span><strong>${esc(p.LinkedRecordCount||0)} linked record${Number(p.LinkedRecordCount)===1?'':'s'}</strong></button>`).join(''):'<div class="empty">No place authorities.</div>'}</div>`}
+    function bindPlaceCards(){document.querySelectorAll('[data-place]').forEach(b=>b.onclick=()=>openPlace(b.dataset.place))}
+    async function openPlace(id,remember=true){if(remember)pushCurrentScreen();loading();try{const d=await gas('apiGetPlace',id),p=d.place;setCurrentScreen({kind:'place',id});html(`<div class="eyebrow">Place authority</div><div class="page-title"><div><button id="backPlace" class="button small">← Back</button><h1 style="margin-top:12px">${esc(p.PreferredName)}</h1><p>${esc([p.PlaceType,p.Country].filter(Boolean).join(' · '))}</p></div>${App.user.permissions.includes('authorities')?'<button id="editPlace" class="button">Edit place</button>':''}</div><div class="detail-grid"><div><div class="card"><div class="card-body"><dl class="definition-grid">${def('Alternate names',p.AlternateNames)}${def('Parent place',p.ParentPlaceID)}${def('Coordinates',[p.Latitude,p.Longitude].filter(Boolean).join(', '))}${def('External authority',p.ExternalAuthorityURL)}</dl></div></div>${textCard('Scope note',p.ScopeNote)}</div><div class="card"><div class="card-header"><h2>Related collection records</h2></div><div class="card-body related-list">${d.links.length?d.links.map(l=>`<div class="related-item"><button class="record-link" data-record="${attr(l.RecordID)}">${esc(l.Record?l.Record.PreferredTitle:l.RecordID)}</button><div>${esc(l.PlaceRole||'')} · ${esc(l.Certainty||'')}</div></div>`).join(''):'<div class="empty">No linked records.</div>'}</div></div></div>`);document.getElementById('backPlace').onclick=goBack;if(document.getElementById('editPlace'))document.getElementById('editPlace').onclick=()=>placeForm(p);document.querySelectorAll('[data-record]').forEach(b=>b.onclick=()=>openRecord(b.dataset.record));}catch(e){error(e)}}
+    async function placeForm(p={}){if(!App.places.length)App.places=await gas('apiListPlaces',{});modal(p.PlaceID?'Edit place':'New place',`<div class="form-grid">${field(['PreferredName','Preferred name','text'],p.PreferredName||'')}${field(['AlternateNames','Alternate / historical names','text'],p.AlternateNames||'')}${field(['PlaceType','Place type','select',App.enums.placeType],p.PlaceType||'Other')}${field(['ParentPlaceID','Parent place','select',[{value:'',label:'No parent'}].concat(App.places.filter(x=>x.PlaceID!==p.PlaceID).map(x=>({value:x.PlaceID,label:x.PreferredName})))],p.ParentPlaceID||'')}${field(['Country','Country','text'],p.Country||'')}${field(['Latitude','Latitude','text'],p.Latitude||'')}${field(['Longitude','Longitude','text'],p.Longitude||'')}${field(['ExternalAuthorityURL','External authority URL','text'],p.ExternalAuthorityURL||'')}${field(['ScopeNote','Scope note','textarea'],p.ScopeNote||'')}</div>`,`<button class="button" data-close>Cancel</button><button id="savePlaceAuthority" class="button primary">Save place</button>`);document.getElementById('savePlaceAuthority').onclick=async()=>{try{busy(true);const d=await gas('apiSavePlace',{PlaceID:p.PlaceID||'',PreferredName:val('PreferredName'),AlternateNames:val('AlternateNames'),PlaceType:val('PlaceType'),ParentPlaceID:val('ParentPlaceID'),Country:val('Country'),Latitude:val('Latitude'),Longitude:val('Longitude'),ExternalAuthorityURL:val('ExternalAuthorityURL'),ScopeNote:val('ScopeNote')});closeModal();toast('Place saved.');App.places=[];openPlace(d.place.PlaceID,false);}catch(e){toast(e.message,true);busy(false)}}}
+
+    async function subjectsPage(){App.view='authorities';setNav('authorities');closeMobileNav();loading();try{const rows=await gas('apiListSubjects',{});App.subjects=rows;html(`<div class="eyebrow">Authority control</div><div class="page-title"><div><h1>Subjects</h1><p>Controlled topical and thematic terms for research, interpretation, and exhibition planning.</p></div>${App.user.permissions.includes('authorities')?'<button id="newSubject" class="button primary">+ New subject</button>':''}</div>${authoritySubnav('subjects')}<div class="filter-grid"><div class="field span-2"><label>Search</label><input id="subjectSearch" placeholder="Preferred term, alternate term, scope note…"></div></div><div id="subjectList">${subjectCards(rows)}</div>`);setCurrentScreen({kind:'authorities',mode:'subjects'});bindAuthoritySubnav();if(document.getElementById('newSubject'))document.getElementById('newSubject').onclick=()=>subjectForm();document.getElementById('subjectSearch').oninput=e=>{const q=e.target.value.toLowerCase();document.getElementById('subjectList').innerHTML=subjectCards(rows.filter(r=>JSON.stringify(r).toLowerCase().includes(q)));bindSubjectCards();};bindSubjectCards();}catch(e){error(e)}}
+    function subjectCards(rows){return `<div class="entity-grid">${rows.length?rows.map(s=>`<button class="entity-card" data-subject="${attr(s.SubjectID)}"><span class="entity-title">${esc(s.PreferredTerm)}</span><span class="muted">${esc(s.AlternateTerms||'')}</span><strong>${esc(s.LinkedRecordCount||0)} linked record${Number(s.LinkedRecordCount)===1?'':'s'}</strong></button>`).join(''):'<div class="empty">No subject authorities.</div>'}</div>`}
+    function bindSubjectCards(){document.querySelectorAll('[data-subject]').forEach(b=>b.onclick=()=>openSubject(b.dataset.subject))}
+    async function openSubject(id,remember=true){if(remember)pushCurrentScreen();loading();try{const d=await gas('apiGetSubject',id),s=d.subject;setCurrentScreen({kind:'subject',id});html(`<div class="eyebrow">Subject authority</div><div class="page-title"><div><button id="backSubject" class="button small">← Back</button><h1 style="margin-top:12px">${esc(s.PreferredTerm)}</h1></div>${App.user.permissions.includes('authorities')?'<button id="editSubject" class="button">Edit subject</button>':''}</div><div class="detail-grid"><div><div class="card"><div class="card-body"><dl class="definition-grid">${def('Alternate terms',s.AlternateTerms)}${def('Parent subject',s.ParentSubjectID)}${def('External authority',s.ExternalAuthorityURL)}</dl></div></div>${textCard('Scope note',s.ScopeNote)}</div><div class="card"><div class="card-header"><h2>Related collection records</h2></div><div class="card-body related-list">${d.links.length?d.links.map(l=>`<div class="related-item"><button class="record-link" data-record="${attr(l.RecordID)}">${esc(l.Record?l.Record.PreferredTitle:l.RecordID)}</button><div>${esc(l.Certainty||'')}</div></div>`).join(''):'<div class="empty">No linked records.</div>'}</div></div></div>`);document.getElementById('backSubject').onclick=goBack;if(document.getElementById('editSubject'))document.getElementById('editSubject').onclick=()=>subjectForm(s);document.querySelectorAll('[data-record]').forEach(b=>b.onclick=()=>openRecord(b.dataset.record));}catch(e){error(e)}}
+    async function subjectForm(s={}){if(!App.subjects.length)App.subjects=await gas('apiListSubjects',{});modal(s.SubjectID?'Edit subject':'New subject',`<div class="form-grid">${field(['PreferredTerm','Preferred term','text'],s.PreferredTerm||'')}${field(['AlternateTerms','Alternate terms','text'],s.AlternateTerms||'')}${field(['ParentSubjectID','Broader / parent subject','select',[{value:'',label:'No parent'}].concat(App.subjects.filter(x=>x.SubjectID!==s.SubjectID).map(x=>({value:x.SubjectID,label:x.PreferredTerm})))],s.ParentSubjectID||'')}${field(['ExternalAuthorityURL','External authority URL','text'],s.ExternalAuthorityURL||'')}${field(['ScopeNote','Scope note','textarea'],s.ScopeNote||'')}</div>`,`<button class="button" data-close>Cancel</button><button id="saveSubject" class="button primary">Save subject</button>`);document.getElementById('saveSubject').onclick=async()=>{try{busy(true);const d=await gas('apiSaveSubject',{SubjectID:s.SubjectID||'',PreferredTerm:val('PreferredTerm'),AlternateTerms:val('AlternateTerms'),ParentSubjectID:val('ParentSubjectID'),ExternalAuthorityURL:val('ExternalAuthorityURL'),ScopeNote:val('ScopeNote')});closeModal();toast('Subject saved.');App.subjects=[];openSubject(d.subject.SubjectID,false);}catch(e){toast(e.message,true);busy(false)}}}
+
+    async function referencesPage(){App.view='authorities';setNav('authorities');closeMobileNav();loading();try{const rows=await gas('apiListReferences',{});App.references=rows;html(`<div class="eyebrow">Research authorities</div><div class="page-title"><div><h1>Bibliography &amp; Sources</h1><p>Reusable citations and sources linked to identification, dating, provenance, interpretation, and exhibition research.</p></div>${App.user.permissions.includes('authorities')?'<button id="newReference" class="button primary">+ New reference</button>':''}</div>${authoritySubnav('references')}<div class="filter-grid"><div class="field span-2"><label>Search</label><input id="referenceSearch" placeholder="Citation, author, title, publication…"></div></div><div id="referenceList">${referenceCards(rows)}</div>`);setCurrentScreen({kind:'authorities',mode:'references'});bindAuthoritySubnav();if(document.getElementById('newReference'))document.getElementById('newReference').onclick=()=>referenceForm();document.getElementById('referenceSearch').oninput=e=>{const q=e.target.value.toLowerCase();document.getElementById('referenceList').innerHTML=referenceCards(rows.filter(r=>JSON.stringify(r).toLowerCase().includes(q)));bindReferenceCards();};bindReferenceCards();}catch(e){error(e)}}
+    function referenceCards(rows){return `<div class="entity-grid">${rows.length?rows.map(r=>`<button class="entity-card" data-reference="${attr(r.ReferenceID)}"><span class="entity-title">${esc(r.Citation||r.Title||'Untitled reference')}</span><span>${esc([r.AuthorEditor,r.Year].filter(Boolean).join(' · '))}</span><strong>${esc(r.LinkedRecordCount||0)} linked record${Number(r.LinkedRecordCount)===1?'':'s'}</strong></button>`).join(''):'<div class="empty">No references.</div>'}</div>`}
+    function bindReferenceCards(){document.querySelectorAll('[data-reference]').forEach(b=>b.onclick=()=>openReference(b.dataset.reference))}
+    async function openReference(id,remember=true){if(remember)pushCurrentScreen();loading();try{const d=await gas('apiGetReference',id),r=d.reference;setCurrentScreen({kind:'reference',id});html(`<div class="eyebrow">Bibliographic authority</div><div class="page-title"><div><button id="backReference" class="button small">← Back</button><h1 style="margin-top:12px">${esc(r.Citation||r.Title||'Reference')}</h1></div>${App.user.permissions.includes('authorities')?'<button id="editReference" class="button">Edit reference</button>':''}</div><div class="detail-grid"><div><div class="card"><div class="card-body"><dl class="definition-grid">${def('Author / editor',r.AuthorEditor)}${def('Title',r.Title)}${def('Publication',r.Publication)}${def('Year',r.Year)}${def('URL / DOI',r.URLDOI)}</dl></div></div>${textCard('Notes',r.Notes)}</div><div class="card"><div class="card-header"><h2>Related collection records</h2></div><div class="card-body related-list">${d.links.length?d.links.map(l=>`<div class="related-item"><button class="record-link" data-record="${attr(l.RecordID)}">${esc(l.Record?l.Record.PreferredTitle:l.RecordID)}</button><div>${esc(l.ReferenceRole||'')} ${l.PageFigure?'· '+esc(l.PageFigure):''}</div></div>`).join(''):'<div class="empty">No linked records.</div>'}</div></div></div>`);document.getElementById('backReference').onclick=goBack;if(document.getElementById('editReference'))document.getElementById('editReference').onclick=()=>referenceForm(r);document.querySelectorAll('[data-record]').forEach(b=>b.onclick=()=>openRecord(b.dataset.record));}catch(e){error(e)}}
+    function referenceForm(r={}){modal(r.ReferenceID?'Edit reference':'New reference',`<div class="form-grid">${field(['Citation','Full citation','textarea'],r.Citation||'')}${field(['AuthorEditor','Author / editor','text'],r.AuthorEditor||'')}${field(['Title','Title','text'],r.Title||'')}${field(['Publication','Publication / publisher','text'],r.Publication||'')}${field(['Year','Year','text'],r.Year||'')}${field(['URLDOI','URL / DOI','text'],r.URLDOI||'')}${field(['Notes','Notes','textarea'],r.Notes||'')}</div>`,`<button class="button" data-close>Cancel</button><button id="saveReference" class="button primary">Save reference</button>`);document.getElementById('saveReference').onclick=async()=>{try{busy(true);const d=await gas('apiSaveReference',{ReferenceID:r.ReferenceID||'',Citation:val('Citation'),AuthorEditor:val('AuthorEditor'),Title:val('Title'),Publication:val('Publication'),Year:val('Year'),URLDOI:val('URLDOI'),Notes:val('Notes')});closeModal();toast('Reference saved.');App.references=[];openReference(d.reference.ReferenceID,false);}catch(e){toast(e.message,true);busy(false)}}}
+
+    async function linkAuthorityForm(record){
+      if(!App.people.length)App.people=await gas('apiListPeopleOrgs',{});
+      modal('Link person / organisation',`<div class="form-grid">${field(['PartyID','Person / organisation','select',App.people.map(p=>({value:p.PartyID,label:p.PreferredName}))],'')}${field(['RoleType','Role','select',App.enums.roleType],'Associated Person / Organisation')}${field(['AttributionStatus','Attribution / certainty','select',App.enums.attributionStatus],'Documented')}${field(['RoleNote','Role note','text'],'')}${field(['StartDate','Start date','text'],'')}${field(['EndDate','End date','text'],'')}${field(['Notes','Notes','textarea'],'')}</div>`,`<button class="button" data-close>Cancel</button><button id="saveAuthorityLink" class="button primary">Link authority</button>`);
+      document.getElementById('saveAuthorityLink').onclick=async()=>{try{busy(true);const out=await gas('apiLinkPartyToRecord',{RecordID:record.RecordID,PartyID:val('PartyID'),RoleType:val('RoleType'),AttributionStatus:val('AttributionStatus'),RoleNote:val('RoleNote'),StartDate:val('StartDate'),EndDate:val('EndDate'),Notes:val('Notes')});closeModal();toast('Authority linked.');openRecord(out.record.RecordID,false);}catch(e){toast(e.message,true);busy(false)}};
+    }
+    async function linkPlaceForm(record){if(!App.places.length)App.places=await gas('apiListPlaces',{});modal('Link place',`<div class="form-grid">${field(['PlaceID','Place','select',App.places.map(p=>({value:p.PlaceID,label:p.PreferredName}))],'')}${field(['PlaceRole','Relationship','select',App.enums.placeRole],'Associated with')}${field(['Certainty','Certainty','select',App.enums.certainty],'Certain')}${field(['StartDate','Start date','text'],'')}${field(['EndDate','End date','text'],'')}${field(['Notes','Notes','textarea'],'')}</div>`,`<button class="button" data-close>Cancel</button><button id="savePlaceLink" class="button primary">Link place</button>`);document.getElementById('savePlaceLink').onclick=async()=>{try{busy(true);const out=await gas('apiLinkPlaceToRecord',{RecordID:record.RecordID,PlaceID:val('PlaceID'),PlaceRole:val('PlaceRole'),Certainty:val('Certainty'),StartDate:val('StartDate'),EndDate:val('EndDate'),Notes:val('Notes')});closeModal();toast('Place linked.');openRecord(out.record.RecordID,false);}catch(e){toast(e.message,true);busy(false)}}}
+    async function linkSubjectForm(record){if(!App.subjects.length)App.subjects=await gas('apiListSubjects',{});modal('Add subject',`<div class="form-grid">${field(['SubjectID','Subject','select',App.subjects.map(s=>({value:s.SubjectID,label:s.PreferredTerm}))],'')}${field(['Certainty','Certainty','select',App.enums.certainty],'Certain')}${field(['Notes','Notes','textarea'],'')}</div>`,`<button class="button" data-close>Cancel</button><button id="saveSubjectLink" class="button primary">Add subject</button>`);document.getElementById('saveSubjectLink').onclick=async()=>{try{busy(true);const out=await gas('apiLinkSubjectToRecord',{RecordID:record.RecordID,SubjectID:val('SubjectID'),Certainty:val('Certainty'),Notes:val('Notes')});closeModal();toast('Subject added.');openRecord(out.record.RecordID,false);}catch(e){toast(e.message,true);busy(false)}}}
+    function inscriptionForm(record,x={}){modal(x.InscriptionID?'Edit inscription / mark':'Add inscription / mark',`<div class="form-grid">${field(['InscriptionType','Type','select',App.enums.inscriptionType],x.InscriptionType||'Inscription')}${field(['Position','Position on object','text'],x.Position||'')}${field(['Language','Language','text'],x.Language||'')}${field(['Script','Script','text'],x.Script||'')}${field(['Certainty','Certainty','select',App.enums.certainty],x.Certainty||'Certain')}${field(['InscriptionText','Text','textarea'],x.InscriptionText||'')}${field(['Transliteration','Transliteration','textarea'],x.Transliteration||'')}${field(['Translation','Translation','textarea'],x.Translation||'')}${field(['Notes','Notes / interpretation','textarea'],x.Notes||'')}</div>`,`<button class="button" data-close>Cancel</button><button id="saveInscription" class="button primary">Save</button>`);document.getElementById('saveInscription').onclick=async()=>{try{busy(true);const out=await gas('apiSaveInscription',{InscriptionID:x.InscriptionID||'',RecordID:record.RecordID,InscriptionType:val('InscriptionType'),Position:val('Position'),Language:val('Language'),Script:val('Script'),Certainty:val('Certainty'),InscriptionText:val('InscriptionText'),Transliteration:val('Transliteration'),Translation:val('Translation'),Notes:val('Notes')});closeModal();toast('Inscription / mark saved.');openRecord(out.record.RecordID,false);}catch(e){toast(e.message,true);busy(false)}}}
+    async function linkReferenceForm(record){if(!App.references.length)App.references=await gas('apiListReferences',{});modal('Add reference',`<div class="form-grid">${field(['ReferenceID','Reference','select',App.references.map(r=>({value:r.ReferenceID,label:r.Citation||r.Title||r.ReferenceID}))],'')}${field(['ReferenceRole','Use of source','select',App.enums.referenceRole],'General reference')}${field(['PageFigure','Page / figure','text'],'')}${field(['Notes','Notes','textarea'],'')}</div>`,`<button class="button" id="createReferenceInline">+ New reference</button><button class="button" data-close>Cancel</button><button id="saveReferenceLink" class="button primary">Link reference</button>`);document.getElementById('createReferenceInline').onclick=()=>referenceForm();document.getElementById('saveReferenceLink').onclick=async()=>{try{busy(true);const out=await gas('apiLinkReferenceToRecord',{RecordID:record.RecordID,ReferenceID:val('ReferenceID'),ReferenceRole:val('ReferenceRole'),PageFigure:val('PageFigure'),Notes:val('Notes')});closeModal();toast('Reference linked.');openRecord(out.record.RecordID,false);}catch(e){toast(e.message,true);busy(false)}}}
+
+    function deaccessionForm(d){
+      const r=d.record;const accessionWarning=!r.AccessionID?'<div class="legacy-note">This record is not currently linked to an accession in the new database. You can still record a deaccession for legacy holdings, but check the documentary record first.</div>':'';
+      modal('Deaccession record',`${accessionWarning}<div class="form-grid">${field(['DeaccessionDate','Deaccession date','text'],'')}${field(['Reason','Reason','select',App.enums.deaccessionReason],'')}${field(['ApprovalReference','Approval / resolution reference','text'],'')}${field(['ApprovalDate','Approval date','text'],'')}${field(['ApprovedBy','Approved by','text'],'')}${field(['DispositionMethod','Disposition method','select',App.enums.dispositionMethod],'')}${field(['DispositionDate','Disposition date','text'],'')}${field(['Recipient','Recipient / destination','text'],'')}${field(['Notes','Notes','textarea'],'')}</div>`,`<button class="button" data-close>Cancel</button><button id="confirmDeaccession" class="button warning">Deaccession</button>`);
+      document.getElementById('confirmDeaccession').onclick=async()=>{if(!confirm('Deaccession this record? It will leave the active collection but remain permanently in the institutional record.'))return;try{busy(true);const out=await gas('apiDeaccessionRecord',{RecordID:r.RecordID,DeaccessionDate:val('DeaccessionDate'),Reason:val('Reason'),ApprovalReference:val('ApprovalReference'),ApprovalDate:val('ApprovalDate'),ApprovedBy:val('ApprovedBy'),DispositionMethod:val('DispositionMethod'),DispositionDate:val('DispositionDate'),Recipient:val('Recipient'),Notes:val('Notes')});closeModal();toast('Record deaccessioned.');openRecord(out.record.RecordID,false);}catch(e){toast(e.message,true);busy(false)}};
+    }
+    function deleteRecordForm(d){
+      modal('Delete record',`<div class="danger-panel"><strong>This is for records that should never have been collection records.</strong><p>The item will disappear from the active catalogue, but the row and audit trail are retained so accidental deletions can be restored. Accessioned records cannot be deleted; they must be deaccessioned.</p></div><div class="field"><label>Deletion reason</label><textarea id="deleteReason" placeholder="e.g. Office decoration entered in error; not part of the museum collection"></textarea></div>`,`<button class="button" data-close>Cancel</button><button id="confirmDelete" class="button danger">Delete record</button>`);
+      document.getElementById('confirmDelete').onclick=async()=>{const reason=document.getElementById('deleteReason').value.trim();if(!reason)return toast('Enter a deletion reason.',true);if(!confirm('Remove this non-accessioned record from the active catalogue?'))return;try{busy(true);const out=await gas('apiDeleteRecord',d.record.RecordID,reason);closeModal();toast('Record deleted from active catalogue.');openRecord(out.record.RecordID,false);}catch(e){toast(e.message,true);busy(false)}};
+    }
+
+    async function futureExhibitsPage(mode='permanent'){
+      App.futureExhibitMode=mode;
+      App.view='futureExhibits';setNav('futureExhibits');closeMobileNav();loading();
+      try{const type=mode==='temporary'?'Temporary':'Permanent';const rows=await gas('apiListExhibitions',type);App.exhibitions=rows;const controls=`<div class="subnav"><button class="${mode==='permanent'?'active':''}" id="permEx">Permanent Exhibits</button><button class="${mode==='temporary'?'active':''}" id="tempEx">Temporary Exhibits</button></div>`;html(`<div class="eyebrow">Curatorial planning</div><div class="page-title"><div><h1>Future Exhibit Planning</h1><p>${mode==='permanent'?'Plan object selections for the permanent galleries.':'Develop and compare temporary exhibition concepts.'}</p></div>${mode==='temporary'&&App.user.permissions.includes('exhibits')?'<button id="newTempExhibit" class="button primary">+ New temporary exhibit</button>':''}</div>${controls}<div class="exhibit-grid">${rows.length?rows.map(e=>`<button class="exhibit-card" data-exhibition="${attr(e.ExhibitionID)}"><span class="eyebrow">${esc(e.ExhibitionStatus||e.PlanningStatus||'Planning')}</span><span class="exhibit-title">${esc(e.ExhibitionTitle)}</span><span class="exhibit-count">${esc(e.ItemCount||0)}</span><span class="muted">object${Number(e.ItemCount)===1?'':'s'} assigned</span>${e.StartDate||e.EndDate?`<span class="tiny">${esc(e.StartDate||'')} ${e.EndDate?'– '+esc(e.EndDate):''}</span>`:''}</button>`).join(''):'<div class="empty">No exhibit plans.</div>'}</div>`);document.getElementById('permEx').onclick=()=>futureExhibitsPage('permanent');document.getElementById('tempEx').onclick=()=>futureExhibitsPage('temporary');if(document.getElementById('newTempExhibit'))document.getElementById('newTempExhibit').onclick=()=>temporaryExhibitionForm();setCurrentScreen({kind:'futureExhibits',mode});document.querySelectorAll('[data-exhibition]').forEach(b=>b.onclick=()=>openExhibition(b.dataset.exhibition));}catch(e){error(e)}
+    }
+    async function openExhibition(id,remember=true){if(remember)pushCurrentScreen();loading();try{const d=await gas('apiGetExhibition',id),e=d.exhibition;html(`<div class="eyebrow">${esc(e.ExhibitionType||'Exhibit')} exhibit plan</div><div class="page-title"><div><button class="button small" id="backExhibits">← Exhibit Planning</button><h1 style="margin-top:12px">${esc(e.ExhibitionTitle)}</h1><p>${esc(e.ExhibitionStatus||e.PlanningStatus||'Planning')} · ${d.items.length} assigned item${d.items.length===1?'':'s'}</p></div>${App.user.permissions.includes('exhibits')?'<div><button id="editExhibit" class="button">Edit plan</button> <button id="addExhibitItem" class="button primary">+ Add item</button></div>':''}</div>${e.Description?textCard('Planning description',e.Description):''}<div class="card"><div class="card-header"><h2>Selected collection &amp; archive material</h2></div><div class="card-body related-list">${d.items.length?d.items.map(i=>exhibitItemHtml(i)).join(''):'<div class="empty">No objects assigned yet. Use + Add item to start shortlisting.</div>'}</div></div>`);setCurrentScreen({kind:'exhibition',id});document.getElementById('backExhibits').onclick=goBack;if(document.getElementById('editExhibit'))document.getElementById('editExhibit').onclick=()=>exhibitionEditForm(e);if(document.getElementById('addExhibitItem'))document.getElementById('addExhibitItem').onclick=()=>addExhibitItemForm(d);document.querySelectorAll('[data-exhibit-record]').forEach(b=>b.onclick=()=>openRecord(b.dataset.exhibitRecord));document.querySelectorAll('[data-edit-exhibit-item]').forEach(b=>b.onclick=()=>{const item=d.items.find(x=>String(x.ExhibitionItemID)===String(b.dataset.editExhibitItem));if(item)editExhibitItemForm(d.exhibition,item);});document.querySelectorAll('[data-remove-exhibit-item]').forEach(b=>b.onclick=async()=>{if(confirm('Remove this item from the exhibit plan? Historic installed items will be retained in exhibition history.')){try{const out=await gas('apiRemoveExhibitionItem',b.dataset.removeExhibitItem);toast('Exhibit assignment updated.');openExhibition(out.exhibition.ExhibitionID,false);}catch(err){toast(err.message,true)}}});}catch(e){error(e)}}
+    function exhibitItemHtml(i){const r=i.Record||{};return `<div class="exhibit-item"><div><button class="record-link" data-exhibit-record="${attr(i.RecordID)}">${esc(r.PreferredTitle||i.RecordID)}</button><div class="tiny muted">${esc(r.RecordType||'')} · ${esc(r.CollectionArea||'')} · ${esc(r.DateDisplay||'')}</div>${i.InstalledDate?`<div class="tiny muted">Installed: ${esc(i.InstalledDate)}${i.DeinstalledDate?' · Deinstalled: '+esc(i.DeinstalledDate):''}</div>`:''}</div><div><span class="badge">${esc(i.SelectionStatus||'Candidate')}</span> <span class="badge">${esc(i.Priority||'Medium')}</span><div class="tiny">${esc(i.InterpretiveRole||'')}</div><div class="tiny">${esc(i.DisplayLocation||'')}</div></div>${App.user.permissions.includes('exhibits')?`<div><button class="button small" data-edit-exhibit-item="${attr(i.ExhibitionItemID)}">Edit</button> <button class="button small danger" data-remove-exhibit-item="${attr(i.ExhibitionItemID)}">Remove</button></div>`:''}</div>`}
+    function temporaryExhibitionForm(){modal('New temporary exhibit',`<div class="form-grid">${field(['ExhibitionTitle','Title','text'],'')}${field(['ExhibitionStatus','Planning status','select',App.enums.exhibitionStatus],'Concept')}${field(['StartDate','Proposed opening date','text'],'')}${field(['EndDate','Proposed closing date','text'],'')}${field(['Curator','Curator / lead','text'],'')}${field(['Venue','Venue','text'],App.settings.defaultVenue||'')}${field(['Description','Planning description','textarea'],'')}${field(['Notes','Notes','textarea'],'')}</div>`,`<button class="button" data-close>Cancel</button><button id="saveTempEx" class="button primary">Create exhibit</button>`);document.getElementById('saveTempEx').onclick=async()=>{try{busy(true);const d=await gas('apiCreateTemporaryExhibition',{ExhibitionTitle:val('ExhibitionTitle'),ExhibitionStatus:val('ExhibitionStatus'),StartDate:val('StartDate'),EndDate:val('EndDate'),Curator:val('Curator'),Venue:val('Venue'),Description:val('Description'),Notes:val('Notes')});closeModal();toast('Temporary exhibit created.');openExhibition(d.exhibition.ExhibitionID,false);}catch(e){toast(e.message,true);busy(false)}};}
+    function exhibitionEditForm(e){modal('Edit exhibit plan',`<div class="form-grid">${field(['ExhibitionTitle','Title','text'],e.ExhibitionTitle||'')}${field(['ExhibitionStatus','Planning status','select',App.enums.exhibitionStatus],e.ExhibitionStatus||e.PlanningStatus||'Planning')}${field(['StartDate','Start date','text'],e.StartDate||'')}${field(['EndDate','End date','text'],e.EndDate||'')}${field(['Curator','Curator / lead','text'],e.Curator||'')}${field(['Venue','Venue','text'],e.Venue||'')}${field(['Description','Planning description','textarea'],e.Description||'')}${field(['Notes','Notes','textarea'],e.Notes||'')}</div>`,`<button class="button" data-close>Cancel</button><button id="saveExhibitEdit" class="button primary">Save</button>`);document.getElementById('saveExhibitEdit').onclick=async()=>{try{busy(true);const d=await gas('apiUpdateExhibition',e.ExhibitionID,{ExhibitionTitle:val('ExhibitionTitle'),ExhibitionStatus:val('ExhibitionStatus'),StartDate:val('StartDate'),EndDate:val('EndDate'),Curator:val('Curator'),Venue:val('Venue'),Description:val('Description'),Notes:val('Notes')});closeModal();toast('Exhibit plan updated.');openExhibition(d.exhibition.ExhibitionID,false);}catch(err){toast(err.message,true);busy(false)}};}
+    function addExhibitItemForm(d){modal('Add item to '+d.exhibition.ExhibitionTitle,`<div class="field"><label>Search the active collection / archives</label><input id="exhibitItemSearch" placeholder="Type a title, object type, ID, place…"></div><div id="exhibitSearchResults" style="margin-top:12px" class="empty">Enter a search term.</div>`,`<button class="button" data-close>Close</button>`);let timer;document.getElementById('exhibitItemSearch').oninput=e=>{clearTimeout(timer);const q=e.target.value.trim();if(!q){document.getElementById('exhibitSearchResults').innerHTML='<div class="empty">Enter a search term.</div>';return;}timer=setTimeout(async()=>{try{const result=await gas('apiListRecords',{q,page:1,pageSize:25});const existing=new Set(d.items.map(i=>i.RecordID));document.getElementById('exhibitSearchResults').innerHTML=result.rows.filter(r=>!existing.has(r.RecordID)).map(r=>`<div class="candidate-row"><div><strong>${esc(r.PreferredTitle)}</strong><div class="tiny muted">${esc(r.RecordID)} · ${esc(r.CollectionArea)} · ${esc(r.DateDisplay)}</div></div><button class="button small" data-add-candidate="${attr(r.RecordID)}">Add</button></div>`).join('')||'<div class="empty">No available matches.</div>';document.querySelectorAll('[data-add-candidate]').forEach(b=>b.onclick=()=>exhibitCandidateOptions(d.exhibition.ExhibitionID,b.dataset.addCandidate));}catch(err){toast(err.message,true)}},250);};}
+    function exhibitCandidateOptions(exhibitionId,recordId){modal('Add to exhibit plan',`<div class="form-grid">${field(['SelectionStatus','Selection status','select',App.enums.selectionStatus],'Candidate')}${field(['Priority','Priority','select',App.enums.exhibitPriority],'Medium')}${field(['InterpretiveRole','Interpretive role','select',App.enums.interpretiveRole],'Supporting object')}${field(['DisplayLocation','Proposed section / case','text'],'')}${field(['PlanningNotes','Planning notes','textarea'],'')}</div>`,`<button class="button" data-close>Cancel</button><button id="saveExhibitItem" class="button primary">Add to plan</button>`);document.getElementById('saveExhibitItem').onclick=async()=>{try{busy(true);const out=await gas('apiAddExhibitionItem',{ExhibitionID:exhibitionId,RecordID:recordId,SelectionStatus:val('SelectionStatus'),Priority:val('Priority'),InterpretiveRole:val('InterpretiveRole'),DisplayLocation:val('DisplayLocation'),PlanningNotes:val('PlanningNotes')});closeModal();toast('Added to exhibit plan.');openExhibition(out.exhibition.ExhibitionID,false);}catch(e){toast(e.message,true);busy(false)}};}
+    function editExhibitItemForm(exhibition,item){modal('Edit exhibit assignment',`<div class="form-grid">${field(['SelectionStatus','Selection status','select',App.enums.selectionStatus],item.SelectionStatus||'Candidate')}${field(['Priority','Priority','select',App.enums.exhibitPriority],item.Priority||'Medium')}${field(['InterpretiveRole','Interpretive role','select',App.enums.interpretiveRole],item.InterpretiveRole||'Supporting object')}${field(['DisplayLocation','Section / case / display location','text'],item.DisplayLocation||'')}${field(['InstalledDate','Installed date','text'],item.InstalledDate||'')}${field(['DeinstalledDate','Deinstalled date','text'],item.DeinstalledDate||'')}${field(['PlanningNotes','Planning notes','textarea'],item.PlanningNotes||'')}${field(['Notes','Historic / installation notes','textarea'],item.Notes||'')}</div><div class="legacy-note">Setting Selection Status to <strong>Installed</strong> makes this a current display assignment while the exhibit itself is also marked Installed. Closing/archiving the exhibit preserves the assignment as exhibition history.</div>`,`<button class="button" data-close>Cancel</button><button id="saveExhibitAssignment" class="button primary">Save assignment</button>`);document.getElementById('saveExhibitAssignment').onclick=async()=>{try{busy(true);const out=await gas('apiUpdateExhibitionItem',item.ExhibitionItemID,{SelectionStatus:val('SelectionStatus'),Priority:val('Priority'),InterpretiveRole:val('InterpretiveRole'),DisplayLocation:val('DisplayLocation'),InstalledDate:val('InstalledDate'),DeinstalledDate:val('DeinstalledDate'),PlanningNotes:val('PlanningNotes'),Notes:val('Notes')});closeModal();toast('Exhibit assignment saved.');openExhibition(out.exhibition.ExhibitionID,false);}catch(e){toast(e.message,true);busy(false)}};}
+
+
+    async function moveForm(r){
+      if(!App.locations.length)App.locations=await gas('apiListLocations');
+      modal('Move '+(r.PreferredTitle||r.RecordID),`<div class="form-grid">
+        ${field(['ToLocationID','New location','select',App.locations.map(x=>({value:x.LocationID,label:x.LocationName||x.LocationID}))],'')}
+        ${field(['MovementType','Movement type','select',['Relocation','Exhibition','Loan','Photography','Research','Conservation','Temporary location','Return','Other']],'Relocation')}
+        ${field(['Reason','Reason','textarea'],'')}</div>`,
+        `<button class="button" data-close>Cancel</button><button class="button primary" id="go">Record movement</button>`);
+      document.getElementById('go').onclick=async()=>{
+        try{busy(true);const d=await gas('apiMoveRecord',{RecordID:r.RecordID,ToLocationID:val('ToLocationID'),MovementType:val('MovementType'),Reason:val('Reason')});closeModal();toast('Movement recorded.');openRecord(d.record.RecordID,false);}catch(e){toast(e.message,true);busy(false)}
+      };
+    }
+
+    function reviewForm(r){
+      modal('Add review',`<div class="form-grid">
+        ${field(['ReviewType','Review type','select',App.enums.reviewType],'Catalogue review')}
+        ${field(['CatalogueStatusAfter','Catalogue status after review','select',App.enums.catalogueStatus],r.CatalogueStatus||'')}
+        ${field(['Outcome','Outcome','text'],'')}${field(['Notes','Notes','textarea'],'')}</div>`,
+        `<button class="button" data-close>Cancel</button><button class="button primary" id="go">Add review</button>`);
+      document.getElementById('go').onclick=async()=>{
+        try{busy(true);const d=await gas('apiAddReview',{RecordID:r.RecordID,ReviewType:val('ReviewType'),CatalogueStatusAfter:val('CatalogueStatusAfter'),Outcome:val('Outcome'),Notes:val('Notes')});closeModal();toast('Review added.');openRecord(d.record.RecordID,false);}catch(e){toast(e.message,true);busy(false)}
+      };
+    }
+
+    function mediaForm(r){
+      modal('Add media',`<div class="form-grid">
+        <div class="field full"><label>File</label><input id="mediaFile" type="file"><small>Files are saved to the configured media folder in Google Drive or a Shared Drive.</small></div>
+        ${field(['ViewDescription','View / description','text'],'')}
+        ${field(['RightsStatement','Rights / credit statement','textarea'],'')}
+        ${field(['PublicAccessStatus','Public access','select',App.enums.publicAccessStatus],'Internal only')}
+        <div class="field"><label><input id="primary" style="width:auto" type="checkbox"> Set as primary media</label></div></div>`,
+        `<button class="button" data-close>Cancel</button><button class="button primary" id="go">Upload</button>`);
+      document.getElementById('go').onclick=async()=>{
+        const f=document.getElementById('mediaFile').files[0];if(!f)return toast('Choose a file.',true);
+        if(f.size>8*1024*1024)return toast('The browser uploader accepts files up to about 8 MB.',true);
+        try{busy(true);const d=await gas('apiUploadMedia',{RecordID:r.RecordID,fileName:f.name,mimeType:f.type,base64:await toBase64(f),ViewDescription:val('ViewDescription'),RightsStatement:val('RightsStatement'),PublicAccessStatus:val('PublicAccessStatus'),IsPrimary:document.getElementById('primary').checked});closeModal();toast('Media uploaded.');openRecord(d.record.RecordID,false);}catch(e){toast(e.message,true);busy(false)}
+      };
+    }
+
+    async function locationForm(){
+      if(!App.locations.length)App.locations=await gas('apiListLocations');
+      modal('New location',`<div class="form-grid">
+        ${field(['LocationName','Location name','text'],'')}${field(['LocationType','Location type','select',App.enums.locationType],'Other')}
+        ${field(['ParentLocationID','Parent location','select',[{value:'',label:'No parent / root'}].concat(App.locations.map(x=>({value:x.LocationID,label:x.LocationName||x.LocationID})))],'')}
+        ${field(['ShortCode','Short code','text'],'')}${field(['Description','Description','textarea'],'')}${field(['Notes','Notes','textarea'],'')}</div>`,
+        `<button class="button" data-close>Cancel</button><button class="button primary" id="go">Create location</button>`);
+      document.getElementById('go').onclick=async()=>{
+        try{busy(true);await gas('apiCreateLocation',{LocationName:val('LocationName'),LocationType:val('LocationType'),ParentLocationID:val('ParentLocationID'),ShortCode:val('ShortCode'),Description:val('Description'),Notes:val('Notes')});closeModal();toast('Location created.');App.locations=[];locations();}catch(e){toast(e.message,true);busy(false)}
+      };
+    }
+
+    async function loadOverviewCarousel(){
+      const host=document.getElementById('overviewCarousel'); if(!host)return;
+      try{
+        const rows=await gas('apiGetOverviewMedia',6);
+        if(!rows||!rows.length){host.style.display='none';return;}
+        loadOverviewCarousel.imageCache=loadOverviewCarousel.imageCache||{};
+        const cache=loadOverviewCarousel.imageCache;
+        const missing=[...new Set(rows.map(r=>String(r.DriveFileID||'')).filter(id=>id&&!cache[id]))];
+        if(missing.length)Object.assign(cache,await gas('apiGetCarouselImages',missing,2200)||{});
+        const usable=rows.filter(r=>cache[r.DriveFileID]);
+        if(!usable.length){host.style.display='none';return;}
+        host.style.display='';
+        host.innerHTML=`<div class="carousel-stage">${usable.map((m,i)=>`<button type="button" class="carousel-slide ${i===0?'active':''}" data-carousel-record="${attr(m.RecordID)}" aria-label="Open ${attr(m.PreferredTitle)}"><img src="${attr(cache[m.DriveFileID])}" alt="${attr(m.ViewDescription||m.PreferredTitle||'Collection object')}" decoding="async"><div class="carousel-overlay"><div class="carousel-title">${esc(m.PreferredTitle)}</div><div class="carousel-caption">${esc([m.CollectionArea,m.DateDisplay,m.ViewDescription].filter(Boolean).join(' · '))}</div></div></button>`).join('')}</div><div class="carousel-controls"><button type="button" id="carouselPrev" aria-label="Previous image">‹</button><button type="button" id="carouselNext" aria-label="Next image">›</button></div>`;
+        let index=0; const slides=[...host.querySelectorAll('.carousel-slide')];
+        const show=n=>{if(!slides.length)return;slides[index].classList.remove('active');index=(n+slides.length)%slides.length;slides[index].classList.add('active');};
+        host.querySelector('#carouselPrev').onclick=e=>{e.stopPropagation();show(index-1)};
+        host.querySelector('#carouselNext').onclick=e=>{e.stopPropagation();show(index+1)};
+        slides.forEach(s=>s.onclick=()=>openRecord(s.dataset.carouselRecord));
+        if(App.carouselTimer)clearInterval(App.carouselTimer);
+        App.carouselTimer=setInterval(()=>{if(document.getElementById('overviewCarousel'))show(index+1);else clearInterval(App.carouselTimer)},7000);
+      }catch(e){console.error('Overview carousel failed:',e);host.style.display='none';}
+    }
+
+    function modal(title,body,footer){
+      document.getElementById('modalRoot').innerHTML=`<div class="modal-backdrop"><div class="modal"><div class="modal-header"><h2>${esc(title)}</h2><button class="button small" data-close>Close</button></div><div class="modal-body">${body}</div><div class="modal-footer">${footer}</div></div></div>`;
+      document.querySelectorAll('[data-close]').forEach(x=>x.onclick=closeModal);
+    }
+    function closeModal(){document.getElementById('modalRoot').innerHTML=''}
+    function busy(v){document.querySelectorAll('#modalRoot button,#modalRoot input,#modalRoot select,#modalRoot textarea').forEach(x=>x.disabled=v)}
+    function val(n){return document.getElementById('f_'+n).value}
+
+    function field(d,v){
+      const [n,l,t,opts]=d,id='f_'+n,full=t==='textarea'?' full':'';
+      if(t==='textarea')return `<div class="field${full}"><label for="${id}">${esc(l)}</label><textarea id="${id}">${esc(v||'')}</textarea></div>`;
+      if(t==='select'){
+        const o=(opts||[]).map(x=>typeof x==='object'?x:{value:x,label:x});
+        return `<div class="field"><label for="${id}">${esc(l)}</label>${selectHtml(id,o,v,'Select')}</div>`;
+      }
+      return `<div class="field"><label for="${id}">${esc(l)}</label><input id="${id}" value="${attr(v||'')}"></div>`;
+    }
+
+    function datalistField(name,label,options,value,help){
+      const id='f_'+name,listId='dl_'+name;
+      return `<div class="field"><label for="${id}">${esc(label)}</label><input id="${id}" list="${listId}" value="${attr(value||'')}"><datalist id="${listId}">${(options||[]).map(x=>`<option value="${attr(x)}"></option>`).join('')}</datalist>${help?`<small>${esc(help)}</small>`:''}</div>`;
+    }
+
+    function selectHtml(id,opts,v,blankLabel='Select'){
+      const o=(opts||[]).map(x=>typeof x==='object'?x:{value:x,label:x});
+      const hasLegacy=v&&!o.some(x=>String(x.value)===String(v));
+      return `<select id="${id}"><option value="">${esc(blankLabel)}</option>${hasLegacy?`<option value="${attr(v)}" selected>${esc(v)} (legacy)</option>`:''}${o.map(x=>`<option value="${attr(x.value)}" ${String(x.value)===String(v)?'selected':''}>${esc(x.label)}</option>`).join('')}</select>`;
+    }
+
+    function def(l,v){return v?`<dt>${esc(l)}</dt><dd>${nl(v)}</dd>`:''}
+    function textCard(t,v){return v?`<div class="card"><div class="card-header"><h2>${esc(t)}</h2></div><div class="card-body">${nl(v)}</div></div>`:''}
+    function splitTerms(v){return String(v||'').split(' | ').map(x=>x.trim()).filter(Boolean)}
+    function loading(){html('<div class="loading-card">Loading…</div>')}
+    function error(e){html(`<div class="error-card"><strong>Something went wrong.</strong><div>${esc(e.message||String(e))}</div></div>`)}
+    function fatal(e){error(e)}
+    function html(x){document.getElementById('content').innerHTML=x}
+    function toast(m,bad=false){document.getElementById('toastRoot').innerHTML=`<div class="toast ${bad?'error':''}">${esc(m)}</div>`;setTimeout(()=>document.getElementById('toastRoot').innerHTML='',3500)}
+    function nl(v){return esc(v||'').replace(/\n/g,'<br>')}
+    function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]))}
+    function attr(v){return esc(v)}
+    function toBase64(f){return new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(String(r.result).split(',')[1]);r.onerror=rej;r.readAsDataURL(f)})}
+  </script>
+</body>
+</html>
