@@ -1,6 +1,6 @@
 # Open Museum CMS
 
-**Open Museum CMS** is an open-source collections-management foundation for small museums, historical societies, archives, community heritage organisations, and other not-for-profit collections that already use Google Workspace.
+**Open Museum CMS** is an open-source collections-management foundation for small museums, historical societies, archives, community heritage organisations, and other not-for-profit collections that already use Google Drive.
 
 It combines **Google Sheets** as the institutional datastore, **Google Drive / Shared Drives** for media and documentation, and a custom **Google Apps Script web application** for day-to-day collections work.
 
