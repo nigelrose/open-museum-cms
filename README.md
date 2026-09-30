@@ -133,8 +133,6 @@ Open Museum CMS was created and is maintained by **Nigel Klemenčič-Puglisevich
 - Email: [klemencicpuglisevich@gmail.com](mailto:klemencicpuglisevich@gmail.com)
 - Instagram: [@prositministru](https://www.instagram.com/prositministru/)
 
-Citation metadata is provided in [`CITATION.cff`](CITATION.cff).
-
 ## Contributing
 
 Bug reports, feature proposals, documentation improvements, controlled-vocabulary suggestions, and code contributions are welcome. Read [`CONTRIBUTING.md`](CONTRIBUTING.md) first.
